@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonino Angi, Ph.D. | Healthcare AI</title>
+<meta name="description" content="Antonino Angi, Ph.D., AI Research Scientist focused on healthcare AI and medtech, with a background in LLMs, deep reinforcement learning, federated learning and networks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EFE6; --paper-2:#EAE4D7; --ink:#14233A; --ink-2:#3C4A60; --muted:#6F7787;
+    --pulse:#E5484D; --pulse-soft:#F7D4D2; --line:#D8D0BF;
+    --serif:"Instrument Serif", Georgia, serif;
+    --sans:"IBM Plex Sans", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  [data-theme="dark"]{
+    --paper:#0E1726; --paper-2:#152036; --ink:#EDE8DD; --ink-2:#B9BFCB; --muted:#8A93A3;
+    --pulse:#FF6369; --pulse-soft:#3A1E26; --line:#26324A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
+    transition:background .4s,color .4s;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  button{font:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+  .logo{font-family:var(--mono);font-size:14px;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--pulse);animation:beat 1.2s infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.5)}30%{transform:scale(1)}45%{transform:scale(1.3)}}
+  .links{display:flex;gap:22px;align-items:center}
+  .links a{font-family:var(--mono);font-size:13px;text-decoration:none;color:var(--ink-2);text-transform:lowercase}
+  .links a:hover{color:var(--pulse)}
+  .tools{display:flex;gap:10px;align-items:center}
+  .langs-sw{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .langs-sw button{background:none;border:none;color:var(--ink-2);font-family:var(--mono);font-size:11.5px;padding:4px 8px;cursor:pointer;letter-spacing:.04em}
+  .langs-sw button.on{background:var(--ink);color:var(--paper)}
+  #theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:4px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;white-space:nowrap}
+
+  .hero{padding:80px 0 30px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1fr 330px;gap:56px;align-items:center}
+  .status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;border:1px solid var(--line);padding:6px 14px;border-radius:30px;color:var(--ink-2);background:var(--paper-2)}
+  .status i{width:7px;height:7px;border-radius:50%;background:#2FA36B;box-shadow:0 0 0 4px color-mix(in srgb,#2FA36B 25%,transparent);flex:none}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7.2vw,98px);line-height:.95;letter-spacing:-.02em;margin:26px 0 22px}
+  h1 em{color:var(--pulse);font-style:italic}
+  .lede{font-size:clamp(18px,1.9vw,21px);max-width:720px;color:var(--ink-2);line-height:1.5}
+  .lede b{color:var(--ink);font-weight:500}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{font-family:var(--mono);font-size:14px;text-decoration:none;padding:11px 20px;border-radius:40px;border:1px solid var(--ink);transition:.2s}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btn:hover{background:var(--pulse);border-color:var(--pulse);color:#fff}
+
+  .portrait{position:relative}
+  .frame{width:100%;aspect-ratio:4/5;border-radius:180px 180px 22px 22px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);position:relative}
+  .frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .frame .mono{position:absolute;inset:0;display:none;place-items:center;font-family:var(--serif);font-size:120px;color:var(--pulse);
+    background:repeating-linear-gradient(0deg,transparent 0 23px,var(--line) 23px 24px),repeating-linear-gradient(90deg,transparent 0 23px,var(--line) 23px 24px)}
+  .frame.noimg .mono{display:grid}
+  .badge{position:absolute;left:-26px;bottom:34px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-family:var(--mono);font-size:12px;
+    display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px -12px rgba(0,0,0,.25)}
+  .badge svg{width:46px;height:18px}
+  .badge path{fill:none;stroke:var(--pulse);stroke-width:2;stroke-linejoin:round}
+
+  .ecg{width:100%;height:140px;margin-top:60px;display:block}
+  .ecg path{fill:none;stroke:var(--pulse);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+  .ecg .trace{stroke-dasharray:2800;stroke-dashoffset:2800;animation:draw 3.4s ease-out forwards}
+  .ecg line{stroke:var(--line);stroke-width:1}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .ecg-labels{display:grid;grid-template-columns:repeat(4,1fr);font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .ecg-labels span{padding-left:29%}
+  .ecg-labels span:last-child{color:var(--pulse)}
+
+  section{padding:100px 0;border-top:1px solid var(--line)}
+  body{counter-reset:sec}
+  section{counter-increment:sec}
+  .kicker::before{content:counter(sec,decimal-leading-zero) "\00a0\00a0\00a0"}
+  .kicker{font-family:var(--mono);font-size:12px;color:var(--pulse);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.5vw,68px);line-height:1;letter-spacing:-.01em;margin-bottom:24px}
+  h2 em{font-style:italic;color:var(--ink-2)}
+  .sub{color:var(--ink-2);max-width:640px;margin:-8px 0 40px;font-size:18px}
+  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start}
+  .prose p{margin-bottom:18px;color:var(--ink-2)}
+  .prose p b{color:var(--ink);font-weight:500}
+  .quote{font-family:var(--serif);font-size:34px;line-height:1.15;font-style:italic;border-left:3px solid var(--pulse);padding-left:24px;position:sticky;top:110px}
+  .quote small{display:block;font-family:var(--mono);font-style:normal;font-size:12px;color:var(--muted);margin-top:16px;letter-spacing:.05em}
+
+  .stats-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin:56px 0 12px}
+  .stats-h{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .proj-links{display:flex;gap:8px}
+  .proj-links a{font-family:var(--mono);font-size:12px;text-decoration:none;padding:5px 12px;border:1px solid var(--line);border-radius:20px;color:var(--ink-2);transition:.2s}
+  .proj-links a:hover{border-color:var(--pulse);color:var(--pulse)}
+  .prose a.p{color:var(--ink);font-weight:500;text-decoration:underline;text-decoration-color:var(--pulse);text-underline-offset:3px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper-2)}
+  .stat{padding:28px 26px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:var(--serif);font-size:58px;line-height:1}
+  .stat .n span{color:var(--pulse)}
+  .stat .l{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+
+  .arc{display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+  .arc::before{content:"";position:absolute;top:22px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--line),var(--pulse))}
+  .step{padding-right:20px;position:relative}
+  .step .node{width:46px;height:46px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--mono);font-size:13px;position:relative;z-index:1;margin-bottom:20px}
+  .step:last-child .node{background:var(--pulse);border-color:var(--pulse);color:#fff}
+  .step h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.05;margin-bottom:8px}
+  .step p{font-size:14.5px;color:var(--ink-2)}
+  .step .yr{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+  .chip{font-family:var(--mono);font-size:13px;padding:7px 15px;border-radius:30px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;transition:.2s}
+  .chip.on,.chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .log{position:relative;padding-left:34px}
+  .log::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .entry{position:relative;margin-bottom:22px}
+  .entry.hide{display:none}
+  .entry::before{content:"";position:absolute;left:-33px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--pulse)}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:24px 26px;transition:.25s}
+  .card:hover{transform:translateX(4px);border-color:var(--pulse)}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+  .tag{padding:2px 9px;border-radius:20px;background:var(--pulse-soft);color:var(--pulse);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+  .card h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;margin-bottom:8px}
+  .card p{font-size:15.5px;color:var(--ink-2)}
+  .card .more{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--pulse);text-decoration:none}
+  .card .more:hover{text-decoration:underline}
+
+  .gallery{columns:3 280px;column-gap:18px}
+  .shot{break-inside:avoid;margin-bottom:18px;cursor:zoom-in;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--paper-2);position:relative}
+  .shot img{width:100%;display:block;transition:transform .5s}
+  .shot:hover img{transform:scale(1.04)}
+  .shot figcaption{padding:12px 14px;font-size:14px;color:var(--ink-2)}
+  .shot figcaption b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--pulse);text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+  .ph{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:20px;font-family:var(--serif);font-size:24px;color:var(--ink-2);
+    background:repeating-linear-gradient(0deg,transparent 0 19px,var(--line) 19px 20px),repeating-linear-gradient(90deg,transparent 0 19px,var(--line) 19px 20px)}
+  .ph.tall{aspect-ratio:3/4}
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(8,12,20,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:30px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:78vh;border-radius:10px}
+  .lb p{color:#EDE8DD;font-size:15px;margin-top:14px;text-align:center;max-width:700px}
+  .lb button{position:absolute;background:none;border:1px solid #444;color:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:18px}
+  .lb .x{top:20px;right:20px}.lb .pv{left:20px;top:50%}.lb .nx{right:20px;top:50%}
+
+  .xp{display:grid;grid-template-columns:190px 1fr;gap:10px 40px;padding:28px 0;border-bottom:1px solid var(--line)}
+  .xp:first-child{border-top:1px solid var(--line)}
+  .xp .when{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:6px}
+  .xp h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1}
+  .xp .org{font-family:var(--mono);font-size:13px;color:var(--pulse);margin:4px 0 10px}
+  .xp ul{list-style:none}
+  .xp li{position:relative;padding-left:18px;color:var(--ink-2);font-size:15.5px;margin-bottom:6px}
+  .xp li::before{content:"";position:absolute;left:0;top:.8em;width:9px;height:1px;background:var(--muted)}
+
+  .pubs{list-style:none}
+  .pub{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .pub .y{font-family:var(--mono);font-size:14px;color:var(--pulse);padding-top:3px}
+  .pub .t{font-family:var(--serif);font-size:23px;line-height:1.2}
+  .pub .t a{text-decoration:none}
+  .pub .a{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+  .pub .a u{text-decoration:none;font-weight:600;color:var(--ink)}
+  .pub .v{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:4px}
+
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .sk{border:1px solid var(--line);border-radius:16px;padding:22px}
+  .sk h4{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--pulse);margin-bottom:12px;font-weight:500}
+  .sk div{display:flex;flex-wrap:wrap;gap:6px}
+  .sk span{font-size:13.5px;padding:4px 10px;border-radius:20px;background:var(--paper-2);border:1px solid var(--line)}
+  .spoken{margin-top:30px;font-family:var(--mono);font-size:13.5px;color:var(--ink-2)}
+
+  .off{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+  .off .box:first-child{grid-row:span 2}
+  .pot{position:absolute;right:18px;bottom:14px;width:96px;height:96px}
+  .pot .bd{fill:none;stroke:var(--pulse);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .pot .st{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-linecap:round;opacity:0;animation:steam 3s ease-in-out infinite}
+  .pot .s2{animation-delay:1s}.pot .s3{animation-delay:2s}
+  @keyframes steam{0%{opacity:0;transform:translateY(8px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-10px)}}
+  .cook p{padding-right:90px}
+  .off .box{border:1px solid var(--line);border-radius:20px;padding:30px;background:var(--paper-2);position:relative;overflow:hidden}
+  .off .box>*:not(svg){position:relative}
+  .off h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.05;margin-bottom:12px}
+  .off p{color:var(--ink-2);font-size:15.5px}
+  .lv{margin-top:24px;display:grid;gap:12px}
+  .lv-row{display:grid;grid-template-columns:150px 1fr 110px;gap:14px;align-items:center;font-size:14.5px}
+  .lv-row .lvl{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+  .bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--ink);border-radius:8px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  .lv-row.learning .bar i{background:var(--pulse);animation:breathe 1.6s ease-in-out infinite}
+  @keyframes breathe{50%{opacity:.45}}
+  .reveal.in .bar i{width:var(--w)}
+  .ball{position:absolute;right:-44px;bottom:-54px;width:140px;height:140px;opacity:.35;animation:spin 18s linear infinite}
+  .ball circle,.ball path{fill:none;stroke:var(--pulse);stroke-width:2.4}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .vb-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .vb-tags span{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--line);background:var(--paper)}
+  @media (max-width:980px){ .off{grid-template-columns:1fr} .lv-row{grid-template-columns:110px 1fr 84px} }
+
+  #menuBtn{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);border:none;border-radius:20px;padding:5px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;white-space:nowrap}
+  #menuBtn kbd{font-family:var(--mono);font-size:10.5px;opacity:.7;border:1px solid color-mix(in srgb,var(--paper) 40%,transparent);border-radius:5px;padding:0 5px}
+  .cmd{position:fixed;inset:0;z-index:120;background:color-mix(in srgb,var(--paper) 55%,transparent);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding:12vh 16px 16px}
+  .cmd.open{display:flex}
+  .cmd-box{width:min(620px,100%);background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.35);overflow:hidden;animation:pop .18s ease-out}
+  @keyframes pop{from{transform:translateY(10px) scale(.98);opacity:0}}
+  .cmd-in{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .cmd-in svg{width:22px;height:14px;flex:none}
+  .cmd-in svg path{fill:none;stroke:var(--pulse);stroke-width:2}
+  .cmd-in input{flex:1;border:none;background:none;color:var(--ink);font-family:var(--sans);font-size:17px;outline:none}
+  .cmd-list{max-height:52vh;overflow:auto;padding:8px}
+  .cmd-g{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:10px 12px 4px}
+  .cmd-it{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;cursor:pointer;font-size:15.5px}
+  .cmd-it .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .cmd-it.sel{background:var(--ink);color:var(--paper)}
+  .cmd-it.sel .n{color:var(--paper);opacity:.7}
+  .cmd-ft{display:flex;justify-content:space-between;padding:10px 18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+  .map-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:22px}
+  .map-stats{display:flex;gap:26px;font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .map-stats b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--ink);letter-spacing:0;text-transform:none}
+  .map-wrap{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--paper-2);overflow:hidden}
+  .map-wrap svg{display:block;width:100%;height:auto}
+  .map-wrap .d{fill:color-mix(in srgb,var(--ink) 18%,transparent)}
+  .seg{fill:none;stroke:var(--pulse);stroke-width:2;stroke-linecap:round;opacity:.9}
+  .mk{cursor:pointer}
+  .mk .c{fill:var(--paper);stroke:var(--pulse);stroke-width:3}
+  .mk .r{fill:none;stroke:var(--pulse);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+  .mk.home .c{fill:var(--pulse)}
+  .mk.born .c{fill:var(--ink);stroke:var(--ink)}
+  .mk.born .r{stroke:var(--ink)}
+  .mk.home .r,.mk.on .r{opacity:1}
+  .mk.on .c{fill:var(--pulse)}
+  @keyframes ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+  .mk text{font-family:var(--mono);font-size:14px;fill:var(--ink);paint-order:stroke;stroke:var(--paper-2);stroke-width:4px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .mk:hover text,.mk.on text{opacity:1}
+  .mcard{position:absolute;left:22px;top:22px;width:min(340px,calc(100% - 44px));background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 18px 40px -18px rgba(0,0,0,.3);transition:opacity .2s,transform .2s}
+  .mcard.swap{opacity:0;transform:translateY(6px)}
+  .mcard .yr{font-family:var(--mono);font-size:12px;color:var(--pulse)}
+  .mcard h4{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.05;margin:2px 0 6px}
+  .mcard p{font-size:14.5px;color:var(--ink-2)}
+  #play{position:absolute;right:22px;top:22px;cursor:pointer}
+
+  .demo{display:grid;grid-template-columns:.9fr 1.1fr;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  .dm-left{padding:28px;border-right:1px solid var(--line)}
+  .dm-right{padding:28px;background:var(--paper-2)}
+  .dm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .dm-head .chip{text-transform:none;letter-spacing:0}
+  .sl{margin-bottom:20px}
+  .sl label{display:flex;justify-content:space-between;font-size:15px;margin-bottom:6px}
+  .sl label output{font-family:var(--mono);font-size:13.5px;color:var(--pulse)}
+  .sl input[type=range]{width:100%;accent-color:var(--pulse)}
+  .tg{display:flex;justify-content:space-between;align-items:center;font-size:15px}
+  .sw{width:46px;height:26px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;border:none;transition:.2s}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--paper);transition:.2s}
+  .sw.on{background:var(--pulse)}.sw.on::after{left:23px}
+  .risk{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+  .beat{width:18px;height:18px;border-radius:50%;background:var(--pulse);flex:none;animation:beat var(--bpm,1s) infinite}
+  .rl{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .rv{font-family:var(--serif);font-size:64px;line-height:1}
+  .rc{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:2px 10px;border-radius:20px}
+  .rc.hi{background:var(--pulse-soft);color:var(--pulse)}.rc.lo{background:color-mix(in srgb,#2FA36B 18%,transparent);color:#2F8F5F}
+  .wf-h{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+  .wf-row{display:grid;grid-template-columns:150px 1fr 54px;gap:10px;align-items:center;font-size:13.5px;margin-bottom:7px}
+  .wf-bar{position:relative;height:16px}
+  .wf-bar::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted)}
+  .wf-bar i{position:absolute;top:2px;height:12px;border-radius:3px;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+  .wf-bar i.up{background:var(--pulse);left:50%}
+  .wf-bar i.dn{background:color-mix(in srgb,var(--ink) 55%,transparent);right:50%}
+  .wf-row .v{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+  .cf{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}
+  .cf-q{font-family:var(--serif);font-size:26px;line-height:1.15;margin-bottom:10px}
+  .cf-q b{font-weight:400;color:var(--pulse);font-style:italic}
+  .cf-a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;font-size:15px;color:var(--ink-2);border-bottom:1px solid var(--line)}
+  .cf-a b{color:var(--ink);font-weight:500}
+  .cf-a button{flex:none}
+  .disc{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:14px}
+  @media (max-width:980px){
+    .demo{grid-template-columns:1fr}.dm-left{border-right:none;border-bottom:1px solid var(--line)}
+    .mcard{position:static;width:auto;margin:0;border-radius:0;border:none;border-top:1px solid var(--line);box-shadow:none}
+    #play{top:10px;right:10px;padding:7px 14px;font-size:12px}
+    .map-stats b{font-size:34px}
+    .wf-row{grid-template-columns:110px 1fr 48px}
+  }
+  @media (max-width:1180px){ .links{display:none} }
+  @media (max-width:700px){
+    .map-scroll{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .map-scroll::-webkit-scrollbar{display:none}
+    .map-scroll svg{width:860px;max-width:none}
+    .mk .c,.mk .r{r:9}
+    .mk text{font-size:16px}
+    #play{position:static;display:block;margin:12px auto 4px}
+    .stat{padding:20px 16px}
+    .stat .n{font-size:42px}
+    .pub{grid-template-columns:48px 1fr;gap:12px}
+    .cta .btn{font-size:13px;padding:10px 16px}
+    .rv{font-size:52px}
+    .wf-row{grid-template-columns:96px 1fr 44px;font-size:12.5px}
+    .cf-a{flex-direction:column;align-items:flex-start}
+  }
+  @media (max-width:520px){ #menuBtn kbd{display:none} .langs-sw button{padding:4px 6px} }
+
+  .contact{text-align:center;padding:130px 0}
+  .contact h2{font-size:clamp(48px,8vw,104px)}
+  .contact .mail{font-family:var(--serif);font-size:clamp(24px,3.4vw,40px);font-style:italic;text-decoration:none;border-bottom:2px solid var(--pulse)}
+  .contact .cta{justify-content:center;margin-top:36px}
+  footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .links a{display:none}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .portrait{max-width:220px;order:-1}
+    h1 br{display:none}
+    .badge{left:auto;right:-20px}
+    .two{grid-template-columns:1fr;gap:36px}
+    .quote{position:static}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .arc{grid-template-columns:1fr 1fr;gap:34px 0}
+    .arc::before{display:none}
+    .xp{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr}
+    section{padding:70px 0}
+    .ecg-labels{font-size:9.5px}
+    .ecg-labels span{padding-left:18%}
+  }
+  @media (max-width:520px){ .lv-row{grid-template-columns:1fr auto;gap:4px 10px} .lv-row .bar{grid-column:1/-1;order:3} .cook p{padding-right:0;padding-bottom:70px} }
+  @media (max-width:520px){ #theme{display:none} .logo span.txt{display:none} }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.ecg .trace{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot"></span><span class="txt">antonino angi</span></a>
+    <div class="links">
+      <a href="#about" data-i="nav.about"></a>
+      <a href="#live" data-i="nav.live"></a>
+      <a href="#gallery" data-i="nav.gallery"></a>
+      <a href="#experience" data-i="nav.exp"></a>
+      <a href="#publications" data-i="nav.pubs"></a>
+      <a href="#contact" data-i="nav.contact"></a>
+    </div>
+    <div class="tools">
+      <div class="langs-sw" id="langsw"></div>
+      <button id="menuBtn" aria-label="Menu"><span data-i="menu"></span><kbd>⌘K</kbd></button>
+      <button id="theme" aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="status"><i></i><span data-i="status"></span></span>
+        <h1 data-i="h1"></h1>
+        <p class="lede" data-i="lede"></p>
+        <div class="cta">
+          <a class="btn solid" href="#live" data-i="cta.live"></a>
+          <a class="btn" href="Antonino_Angi_CV.pdf" target="_blank" data-i="cta.cv"></a>
+          <a class="btn" href="https://www.linkedin.com/in/antonino-angi/" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=e8CkXQwAAAAJ" target="_blank">Google Scholar</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <div class="frame" id="frame">
+          <img src="photo.jpg" alt="Antonino Angi" onerror="this.parentNode.classList.add('noimg');this.remove()">
+          <div class="mono">AA</div>
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 46 18"><path d="M0 9 H12 l3 -2 l3 2 H22 l2 -8 l3 16 l2 -8 H46"/></svg>
+          <span>Barcelona</span>
+        </div>
+      </div>
+    </div>
+
+    <svg class="ecg" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="0" y1="75" x2="1200" y2="75"/>
+      <path class="trace" d="M0 75 H55 l10 -8 l10 8 H95 l8 6 l12 -62 l12 92 l10 -36 H200 l14 -14 l14 14 H300
+        H355 l10 -8 l10 8 H395 l8 6 l12 -62 l12 92 l10 -36 H500 l14 -14 l14 14 H600
+        H655 l10 -8 l10 8 H695 l8 6 l12 -62 l12 92 l10 -36 H800 l14 -14 l14 14 H900
+        H955 l10 -8 l10 8 H995 l8 6 l12 -70 l12 100 l10 -36 H1100 l14 -16 l14 16 H1200"/>
+    </svg>
+    <div class="ecg-labels"><span data-i="ecg1"></span><span data-i="ecg2"></span><span data-i="ecg3"></span><span data-i="ecg4"></span></div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="kicker" data-i="k.about"></div>
+    <div class="two">
+      <div class="prose reveal">
+        <h2 data-i="about.h"></h2>
+        <p data-i="about.p1"></p>
+        <p data-i="about.p2"></p>
+        <p data-i="about.p3"></p>
+      </div>
+      <div class="reveal">
+        <p class="quote">"Trust in clinical AI isn't a property of the model. It's built across the data, the model, and the people who use it."<small data-i="quote.src"></small></p>
+      </div>
+    </div>
+
+    <div class="stats-row"><div class="stats-h" data-i="stats.h"></div><div class="proj-links"><a href="https://www.ai4hf.com" target="_blank" rel="noopener" data-i="ai4hf.web"></a><a href="https://www.linkedin.com/showcase/ai4hf/posts/" target="_blank" rel="noopener">LinkedIn ↗</a></div></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="n" data-count="5.9" data-prefix="€" data-suffix="M">€5.9<span>M</span></div><div class="l" data-i="stat1"></div></div>
+      <div class="stat"><div class="n" data-count="15">15</div><div class="l" data-i="stat2"></div></div>
+      <div class="stat"><div class="n" data-count="12">12</div><div class="l" data-i="stat3"></div></div>
+      <div class="stat"><div class="n" data-count="173">173</div><div class="l" data-i="stat4"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="path">
+  <div class="wrap">
+    <div class="kicker" data-i="k.path"></div>
+    <h2 data-i="path.h"></h2>
+    <p class="sub" data-i="path.sub"></p>
+    <div class="arc reveal" id="arc"></div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="wrap">
+    <div class="kicker" data-i="k.map"></div>
+    <div class="map-top">
+      <div><h2 data-i="map.h" style="margin-bottom:10px"></h2><p class="sub" data-i="map.sub" style="margin:0"></p></div>
+      <div class="map-stats"><div><b id="nCities">9</b><span data-i="map.cities"></span></div><div><b id="nCountries">7</b><span data-i="map.countries"></span></div><div><b>2</b><span data-i="map.continents"></span></div></div>
+    </div>
+    <div class="map-wrap reveal">
+      <div class="map-scroll"><svg id="mapsvg" viewBox="0 0 1000 440" aria-label="Map"></svg></div>
+      <button class="btn solid" id="play" data-i="map.play"></button>
+      <div class="mcard" id="mcard"></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="kicker" data-i="k.demo"></div>
+    <h2 data-i="demo.h"></h2>
+    <p class="sub" data-i="demo.sub"></p>
+    <div class="demo reveal">
+      <div class="dm-left">
+        <div class="dm-head"><span data-i="demo.patient"></span><button class="chip" id="rnd" data-i="demo.random"></button></div>
+        <div id="sliders"></div>
+      </div>
+      <div class="dm-right">
+        <div class="risk"><span class="beat" id="beat"></span><div><div class="rl" data-i="demo.risk"></div><div class="rv" id="rv"></div><span class="rc" id="rc"></span></div></div>
+        <div class="wf-h" data-i="demo.shap"></div>
+        <div id="wf"></div>
+        <div class="cf"><div class="cf-q" id="cfq"></div><div id="cfa"></div></div>
+      </div>
+    </div>
+    <p class="disc" data-i="demo.disc"></p>
+  </div>
+</section>
+
+<section id="live">
+  <div class="wrap">
+    <div class="kicker" data-i="k.live"></div>
+    <h2 data-i="live.h"></h2>
+    <div class="filters" id="filters"></div>
+    <div class="log" id="log"></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="kicker" data-i="k.gallery"></div>
+    <h2 data-i="gallery.h"></h2>
+    <p class="sub" data-i="gallery.sub"></p>
+    <div class="gallery" id="gal"></div>
+  </div>
+</section>
+<div class="cmd" id="cmd"><div class="cmd-box">
+  <div class="cmd-in"><svg viewBox="0 0 22 14"><path d="M0 7 H6 l2 -2 l2 2 H12 l2 -6 l2 12 l2 -6 H22"/></svg><input id="cmdq" autocomplete="off" spellcheck="false"></div>
+  <div class="cmd-list" id="cmdl"></div>
+  <div class="cmd-ft"><span>↑ ↓&nbsp;&nbsp;&nbsp;↵&nbsp;&nbsp;&nbsp;esc</span><span>⌘K&nbsp;&nbsp;&nbsp;Ctrl K&nbsp;&nbsp;&nbsp;/</span></div>
+</div></div>
+<div class="lb" id="lb"><button class="x" aria-label="Close">✕</button><button class="pv" aria-label="Previous">←</button><button class="nx" aria-label="Next">→</button><img alt=""><p></p></div>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker" data-i="k.exp"></div>
+    <h2 data-i="exp.h"></h2>
+    <div id="xp"></div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="kicker" data-i="k.pubs"></div>
+    <h2 data-i="pubs.h"></h2>
+    <div class="filters" id="pubfilter" style="margin-bottom:24px"></div>
+    <ul class="pubs" id="pubs"></ul>
+    <div class="cta"><a class="btn" href="https://scholar.google.com/citations?user=e8CkXQwAAAAJ" target="_blank" data-i="pubs.all"></a></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker" data-i="k.skills"></div>
+    <h2 data-i="skills.h"></h2>
+    <div class="skills reveal">
+      <div class="sk"><h4>Machine learning</h4><div><span>PyTorch</span><span>SHAP / XAI</span><span>Contrastive XAI</span><span>Federated learning</span><span>Deep RL</span><span>LASSO logistic regression</span></div></div>
+      <div class="sk"><h4 data-i="sk.health"></h4><div><span>Clinical inference</span><span>Data harmonization</span><span>Common Data Model</span><span>EU AI Act</span><span>FUTURE-AI</span><span>Privacy-preserving learning</span></div></div>
+      <div class="sk"><h4 data-i="sk.gen"></h4><div><span>LLM fine-tuning</span><span>LangChain</span><span>Prompt engineering</span><span>Few-shot learning</span><span>Dataset building</span></div></div>
+      <div class="sk"><h4 data-i="sk.eng"></h4><div><span>Python</span><span>FastAPI</span><span>REST APIs</span><span>Docker</span><span>Kubernetes</span><span>End-to-end testing</span></div></div>
+      <div class="sk"><h4 data-i="sk.sys"></h4><div><span>Cloud-edge</span><span>GPU scheduling</span><span>P4</span><span>OpenFlow</span><span>SQL</span></div></div>
+      <div class="sk"><h4 data-i="sk.lead"></h4><div><span>Requirements engineering</span><span>Consortium coordination</span><span>Jira</span><span>MS Project</span><span>Mentoring</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="off">
+  <div class="wrap">
+    <div class="kicker" data-i="k.off"></div>
+    <h2 data-i="off.h"></h2>
+    <div class="off">
+      <div class="box reveal">
+        <h3 data-i="off.lang.t"></h3>
+        <p data-i="off.lang.p"></p>
+        <div class="lv" id="lv"></div>
+      </div>
+      <div class="box reveal">
+        <svg class="ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M50 4 C38 30 40 62 64 92"/><path d="M8 32 C34 36 62 30 88 18"/><path d="M14 76 C40 60 70 58 96 62"/></svg>
+        <h3 data-i="off.vb.t"></h3>
+        <p data-i="off.vb.p"></p>
+        <div class="vb-tags"><span data-i="off.vb.in"></span><span>Beach volley</span></div>
+      </div>
+      <div class="box reveal cook">
+        <svg class="pot" viewBox="0 0 120 120" aria-hidden="true"><path class="st" d="M42 38 C36 28 48 22 42 10"/><path class="st s2" d="M60 38 C54 28 66 22 60 10"/><path class="st s3" d="M78 38 C72 28 84 22 78 10"/><path class="bd" d="M22 50 H98 V86 Q98 102 82 102 H38 Q22 102 22 86 Z"/><path class="bd" d="M22 58 H10 M98 58 H110"/></svg>
+        <h3 data-i="off.cook.t"></h3>
+        <p data-i="off.cook.p"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="kicker" data-i="k.contact"></div>
+    <h2 data-i="contact.h"></h2>
+    <a class="mail" href="mailto:antoninoangi96@gmail.com">antoninoangi96@gmail.com</a>
+    <div class="cta">
+      <a class="btn" href="https://www.linkedin.com/in/antonino-angi/" target="_blank">LinkedIn</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=e8CkXQwAAAAJ" target="_blank">Google Scholar</a>
+      <a class="btn" href="Antonino_Angi_CV.pdf" target="_blank">CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr"></span> Antonino Angi, Barcelona</span><span id="updated"></span></div>
+</footer>
+
+<script>
+const LANGS = ["en","it","es","pt","ca"];
+const LOCALE = {en:"en-GB", it:"it-IT", es:"es-ES", pt:"pt-BR", ca:"ca-ES"};
+const LAST_UPDATED = "2026-11";
+
+const LOG = [
+  { date:"2026-11", type:"event", where:"ESC Digital & AI Summit, Basel",
+    link:"https://lnkd.in/p/exceGgnJ",
+    title:{ en:"Hackathon Grand Final: five projects, one jury",
+            it:"Finale dell'Hackathon: cinque progetti, una giuria",
+            es:"Gran Final del Hackathon: cinco proyectos, un jurado",
+            pt:"Grande Final do Hackathon: cinco projetos, um júri",
+            ca:"Gran Final del Hackathon: cinc projectes, un jurat" },
+    text:{ en:"After 48 hours, 25 participants presented five projects, from real-time operating-room time prediction to a virtual heart team and AI-powered clinical-trial matching. I co-organised the hackathon, interviewed the teams for ESC TV Digital & AI Studio and sat on the jury.",
+           it:"Dopo 48 ore, 25 partecipanti hanno presentato cinque progetti, dalla previsione in tempo reale dei tempi di sala operatoria a un heart team virtuale e al matching con i trial clinici basato sull'AI. Ho co-organizzato l'hackathon, intervistato i team per ESC TV Digital & AI Studio e fatto parte della giuria.",
+           es:"Tras 48 horas, 25 participantes presentaron cinco proyectos, desde la predicción en tiempo real del tiempo de quirófano hasta un heart team virtual y la búsqueda de ensayos clínicos con IA. Coorganicé el hackathon, entrevisté a los equipos para ESC TV Digital & AI Studio y formé parte del jurado.",
+           pt:"Após 48 horas, 25 participantes apresentaram cinco projetos, da previsão em tempo real da duração de cirurgias a um heart team virtual e à correspondência com ensaios clínicos baseada em IA. Coorganizei o hackathon, entrevistei as equipes para a ESC TV Digital & AI Studio e fiz parte do júri.",
+           ca:"Després de 48 hores, 25 participants van presentar cinc projectes, des de la predicció en temps real del temps de quiròfan fins a un heart team virtual i la cerca d'assajos clínics amb IA. Vaig coorganitzar el hackathon, vaig entrevistar els equips per a ESC TV Digital & AI Studio i vaig formar part del jurat." } },
+
+  { date:"2026-11", type:"post", where:"ESC Digital & AI Summit, Basel",
+    link:"https://lnkd.in/p/ecGjTKpR",
+    title:{ en:"What does it take to build AI that leaves no one behind?",
+            it:"Cosa serve per costruire un'AI che non lasci indietro nessuno?",
+            es:"¿Qué hace falta para crear una IA que no deje a nadie atrás?",
+            pt:"O que é preciso para criar uma IA que não deixe ninguém para trás?",
+            ca:"Què cal per crear una IA que no deixi ningú enrere?" },
+    text:{ en:"A recap of the symposium on inclusive AI: fairness across attributes, children who are not small adults, smartphone screening for taxi drivers in South Africa, and patients involved from the very start.",
+           it:"Il racconto del simposio sull'AI inclusiva: equità rispetto a più attributi, bambini che non sono piccoli adulti, screening via smartphone per i tassisti in Sudafrica e pazienti coinvolti fin dall'inizio.",
+           es:"Resumen del simposio sobre IA inclusiva: equidad respecto a distintos atributos, niños que no son adultos pequeños, cribado con smartphone para taxistas en Sudáfrica y pacientes implicados desde el principio.",
+           pt:"Resumo do simpósio sobre IA inclusiva: equidade em relação a vários atributos, crianças que não são pequenos adultos, triagem por smartphone para taxistas na África do Sul e pacientes envolvidos desde o início.",
+           ca:"Resum del simposi sobre IA inclusiva: equitat respecte a diversos atributs, infants que no són adults petits, cribratge amb mòbil per a taxistes a Sud-àfrica i pacients implicats des del principi." } },
+
+  { date:"2026-11", type:"post", where:"ESC Digital & AI Summit, Basel",
+    link:"https://lnkd.in/p/er4ZdJtN",
+    title:{ en:"The bias nobody looked for: altitude",
+            it:"Il bias che nessuno cercava: l'altitudine",
+            es:"El sesgo que nadie buscaba: la altitud",
+            pt:"O viés que ninguém procurava: a altitude",
+            ca:"El biaix que ningú no buscava: l'altitud" },
+    text:{ en:"In a project in Peru, local clinicians pointed out that the main source of bias was not ethnicity or sex, but altitude. A reminder that a model is only 'fair' with respect to what we thought of checking.",
+           it:"In un progetto in Perù, i clinici locali hanno fatto notare che la principale fonte di bias non era l'etnia né il sesso, ma l'altitudine. Un modello è 'equo' solo rispetto a ciò che abbiamo pensato di controllare.",
+           es:"En un proyecto en Perú, los clínicos locales señalaron que la principal fuente de sesgo no era la etnia ni el sexo, sino la altitud. Un modelo solo es 'justo' respecto a lo que se nos ocurrió comprobar.",
+           pt:"Em um projeto no Peru, os médicos locais apontaram que a principal fonte de viés não era a etnia nem o sexo, mas a altitude. Um modelo só é 'justo' em relação ao que pensamos verificar.",
+           ca:"En un projecte al Perú, els clínics locals van assenyalar que la principal font de biaix no era l'ètnia ni el sexe, sinó l'altitud. Un model només és 'just' respecte al que se'ns va acudir comprovar." } },
+
+  { date:"2026-11", type:"post", where:"ESC Digital & AI Summit, Basel",
+    link:"https://lnkd.in/p/e_mHWPvc",
+    title:{ en:"Can AI help us get more out of cardiac MRI?",
+            it:"L'AI può aiutarci a ottenere di più dalla risonanza cardiaca?",
+            es:"¿Puede la IA ayudarnos a sacar más partido a la resonancia cardíaca?",
+            pt:"A IA pode nos ajudar a aproveitar melhor a ressonância cardíaca?",
+            ca:"Pot la IA ajudar-nos a treure més profit de la ressonància cardíaca?" },
+    text:{ en:"Covered as ESC Social Media Ambassador: seven ePoster projects on AI for cardiac MRI, from 4D-flow segmentation to federated fine-tuning of foundation models across hospitals.",
+           it:"Raccontato come ESC Social Media Ambassador: sette progetti ePoster sull'AI per la risonanza cardiaca, dalla segmentazione 4D-flow al fine-tuning federato di foundation model tra ospedali.",
+           es:"Cubierto como ESC Social Media Ambassador: siete proyectos ePoster sobre IA en resonancia cardíaca, desde la segmentación 4D-flow hasta el fine-tuning federado de foundation models entre hospitales.",
+           pt:"Acompanhado como ESC Social Media Ambassador: sete projetos ePoster sobre IA em ressonância cardíaca, da segmentação 4D-flow ao fine-tuning federado de foundation models entre hospitais.",
+           ca:"Cobert com a ESC Social Media Ambassador: set projectes ePoster sobre IA en ressonància cardíaca, des de la segmentació 4D-flow fins al fine-tuning federat de foundation models entre hospitals." } },
+
+  { date:"2026-11", type:"event", where:"ESC Digital & AI Summit, Basel",
+    link:"https://lnkd.in/p/dxhjPw9F",
+    title:{ en:"Kicking off the first-ever ESC AI Summit Hackathon",
+            it:"Al via il primo Hackathon dell'ESC AI Summit",
+            es:"Arranca el primer Hackathon del ESC AI Summit",
+            pt:"Início do primeiro Hackathon do ESC AI Summit",
+            ca:"Arrenca el primer Hackathon de l'ESC AI Summit" },
+    text:{ en:"Co-organiser of the hackathon, chair of a moderated ePoster session, and one of the summit's Social Media Ambassadors.",
+           it:"Co-organizzatore dell'hackathon, chair di una sessione ePoster moderata e uno dei Social Media Ambassador del summit.",
+           es:"Coorganizador del hackathon, chair de una sesión moderada de ePosters y uno de los Social Media Ambassadors del summit.",
+           pt:"Coorganizador do hackathon, chair de uma sessão moderada de ePosters e um dos Social Media Ambassadors do summit.",
+           ca:"Coorganitzador del hackathon, chair d'una sessió moderada d'ePòsters i un dels Social Media Ambassadors del summit." } },
+
+  { date:"2026-08", type:"talk", where:"ESC Congress 2026, Munich",
+    link:"https://esc365.escardio.org/presentation/320938", linkLabel:"watch.talk",
+    title:{ en:"“A model that is 95% accurate, is it trustworthy?”",
+            it:"“Un modello accurato al 95% è affidabile?”",
+            es:"“Un modelo con un 95% de precisión, ¿es fiable?”",
+            pt:"“Um modelo com 95% de precisão é confiável?”",
+            ca:"“Un model amb un 95% de precisió, és fiable?”" },
+    text:{ en:"My talk in the AI4HF session on the AI frontier in heart failure. Short answer: not by itself. Trust is built across the data, the model and the people who use it.",
+           it:"Il mio talk nella sessione AI4HF sulla frontiera dell'AI nello scompenso cardiaco. Risposta breve: non da solo. La fiducia si costruisce sui dati, sul modello e sulle persone che lo usano.",
+           es:"Mi charla en la sesión de AI4HF sobre la frontera de la IA en la insuficiencia cardíaca. Respuesta corta: no por sí solo. La confianza se construye en los datos, el modelo y las personas que lo usan.",
+           pt:"Minha palestra na sessão do AI4HF sobre a fronteira da IA na insuficiência cardíaca. Resposta curta: não por si só. A confiança é construída nos dados, no modelo e nas pessoas que o usam.",
+           ca:"La meva xerrada a la sessió d'AI4HF sobre la frontera de la IA en la insuficiència cardíaca. Resposta curta: no per si sol. La confiança es construeix en les dades, el model i les persones que l'utilitzen." } },
+
+  { date:"2026-08", type:"talk", where:"ESC TV Connect, Munich",
+    link:"https://esc365.escardio.org/session/56588", linkLabel:"watch.session",
+    title:{ en:"Turning stakeholder voices into digital health solutions",
+            it:"Trasformare la voce degli stakeholder in soluzioni di sanità digitale",
+            es:"Convertir la voz de los stakeholders en soluciones de salud digital",
+            pt:"Transformar a voz dos stakeholders em soluções de saúde digital",
+            ca:"Convertir la veu dels stakeholders en solucions de salut digital" },
+    text:{ en:"Bringing the technical perspective: engagement only matters when it changes decisions, so patient and clinician input must become traceable requirements.",
+           it:"Ho portato la prospettiva tecnica: il coinvolgimento conta solo se cambia le decisioni, quindi l'input di pazienti e clinici deve diventare requisiti tracciabili.",
+           es:"Aporté la perspectiva técnica: la participación solo importa si cambia las decisiones, así que la aportación de pacientes y clínicos debe convertirse en requisitos trazables.",
+           pt:"Trouxe a perspectiva técnica: o envolvimento só importa quando muda decisões, por isso as contribuições de pacientes e médicos precisam se tornar requisitos rastreáveis.",
+           ca:"Vaig aportar la perspectiva tècnica: la participació només importa si canvia les decisions, així que l'aportació de pacients i clínics s'ha de convertir en requisits traçables." } },
+
+  { date:"2026-07", type:"research", where:"BMC Medical Informatics and Decision Making",
+    link:"https://link.springer.com/article/10.1186/s12911-026-03697-6", linkLabel:"read.paper",
+    title:{ en:"First systematic review of contrastive explainable AI in healthcare",
+            it:"La prima revisione sistematica sulla explainable AI contrastiva in sanità",
+            es:"Primera revisión sistemática de la IA explicable contrastiva en salud",
+            pt:"Primeira revisão sistemática de IA explicável contrastiva na saúde",
+            ca:"Primera revisió sistemàtica de la IA explicable contrastiva en salut" },
+    text:{ en:"Why this diagnosis rather than that one? Co-first and corresponding author of the first review dedicated to contrastive XAI in healthcare: only 18 studies applied it, a large open opportunity.",
+           it:"Perché questa diagnosi e non quell'altra? Co-primo autore e corresponding author della prima revisione dedicata alla XAI contrastiva in sanità: solo 18 studi la applicano, una grande opportunità ancora aperta.",
+           es:"¿Por qué este diagnóstico y no aquel? Coprimer autor y autor de correspondencia de la primera revisión dedicada a la XAI contrastiva en salud: solo 18 estudios la aplican, una gran oportunidad abierta.",
+           pt:"Por que este diagnóstico e não aquele? Primeiro autor (em conjunto) e autor correspondente da primeira revisão dedicada à XAI contrastiva na saúde: apenas 18 estudos a aplicam, uma grande oportunidade em aberto.",
+           ca:"Per què aquest diagnòstic i no aquell? Coprimer autor i autor de correspondència de la primera revisió dedicada a la XAI contrastiva en salut: només 18 estudis l'apliquen, una gran oportunitat oberta." } },
+
+  { date:"2026-06", type:"event", where:"MIE 2026, Genoa",
+    link:"https://lnkd.in/p/eFJaN6gP",
+    title:{ en:"Moderating a panel and running a live cXAI demo",
+            it:"Moderatore di un panel e una demo live di cXAI",
+            es:"Moderando un panel y una demo en directo de cXAI",
+            pt:"Moderando um painel e uma demo ao vivo de cXAI",
+            ca:"Moderant un panel i una demo en directe de cXAI" },
+    text:{ en:"Moderated the expert panel 'Trustworthy AI and Data Interoperability in Cardiology' (DataTools4Heart × AI4HF), and co-hosted a live demo of contrastive explanations on ECG and echocardiography data, to a full room.",
+           it:"Ho moderato il panel di esperti 'Trustworthy AI and Data Interoperability in Cardiology' (DataTools4Heart × AI4HF) e co-condotto una demo live di spiegazioni contrastive su dati ECG ed ecocardiografici, in una sala piena.",
+           es:"Moderé el panel de expertos 'Trustworthy AI and Data Interoperability in Cardiology' (DataTools4Heart × AI4HF) y codirigí una demo en directo de explicaciones contrastivas sobre datos de ECG y ecocardiografía, con la sala llena.",
+           pt:"Moderei o painel de especialistas 'Trustworthy AI and Data Interoperability in Cardiology' (DataTools4Heart × AI4HF) e co-apresentei uma demo ao vivo de explicações contrastivas sobre dados de ECG e ecocardiografia, com a sala cheia.",
+           ca:"Vaig moderar el panel d'experts 'Trustworthy AI and Data Interoperability in Cardiology' (DataTools4Heart × AI4HF) i vaig codirigir una demo en directe d'explicacions contrastives sobre dades d'ECG i ecocardiografia, amb la sala plena." } },
+
+  { date:"2025-11", type:"talk", where:"Building Bridges in Digital Health: Data, Policy & People",
+    link:"https://lnkd.in/p/eCjp2wJx",
+    title:{ en:"AI in health needs data. Federated learning protects it.",
+            it:"L'AI in sanità ha bisogno di dati. Il federated learning li protegge.",
+            es:"La IA en salud necesita datos. El federated learning los protege.",
+            pt:"A IA em saúde precisa de dados. O federated learning os protege.",
+            ca:"La IA en salut necessita dades. El federated learning les protegeix." },
+    text:{ en:"Speaker on the data & cybersecurity panel: why reliable AI needs large amounts of data, and how federated learning lets hospitals collaborate without sharing patient records, with AI4HF as the case study.",
+           it:"Relatore nel panel su dati e cybersecurity: perché un'AI affidabile ha bisogno di molti dati e come il federated learning permette agli ospedali di collaborare senza condividere i dati dei pazienti, con AI4HF come caso di studio.",
+           es:"Ponente en el panel sobre datos y ciberseguridad: por qué una IA fiable necesita muchos datos y cómo el federated learning permite a los hospitales colaborar sin compartir datos de pacientes, con AI4HF como caso de estudio.",
+           pt:"Palestrante no painel sobre dados e cibersegurança: por que uma IA confiável precisa de muitos dados e como o federated learning permite que hospitais colaborem sem compartilhar dados de pacientes, com o AI4HF como estudo de caso.",
+           ca:"Ponent al panel sobre dades i ciberseguretat: per què una IA fiable necessita moltes dades i com el federated learning permet als hospitals col·laborar sense compartir dades de pacients, amb AI4HF com a cas d'estudi." } },
+
+  { date:"2025-11", type:"role", where:"Politecnico di Torino, DAUIN PhD Day",
+    link:"https://lnkd.in/p/eHNV-QQE",
+    title:{ en:"Ph.D. Quality Award, 2nd place (third year)",
+            it:"Ph.D. Quality Award, 2° posto (terzo anno)",
+            es:"Ph.D. Quality Award, 2.º puesto (tercer año)",
+            pt:"Ph.D. Quality Award, 2º lugar (terceiro ano)",
+            ca:"Ph.D. Quality Award, 2n lloc (tercer any)" },
+    text:{ en:"Awarded at the DAUIN PhD Day of Politecnico di Torino for my achievements in the third year of my Ph.D.",
+           it:"Premiato al DAUIN PhD Day del Politecnico di Torino per i risultati del terzo anno di dottorato.",
+           es:"Premiado en el DAUIN PhD Day del Politecnico di Torino por los resultados del tercer año de doctorado.",
+           pt:"Premiado no DAUIN PhD Day do Politecnico di Torino pelos resultados do terceiro ano de doutorado.",
+           ca:"Premiat al DAUIN PhD Day del Politecnico di Torino pels resultats del tercer any de doctorat." } },
+
+  { date:"2025-05", type:"role", where:"Politecnico di Torino", link:"",
+    title:{ en:"Ph.D. defended, cum laude", it:"Dottorato discusso, cum laude", es:"Doctorado defendido, cum laude", pt:"Doutorado defendido, cum laude", ca:"Doctorat defensat, cum laude" },
+    text:{ en:"Thesis: 'Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks'. Along the way: a paper at ICDCS with Telefónica and one at ACL with IBM.",
+           it:"Tesi: 'Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks'. Lungo il percorso: un paper a ICDCS con Telefónica e uno ad ACL con IBM.",
+           es:"Tesis: 'Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks'. Por el camino: un paper en ICDCS con Telefónica y otro en ACL con IBM.",
+           pt:"Tese: 'Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks'. No caminho: um artigo no ICDCS com a Telefónica e outro na ACL com a IBM.",
+           ca:"Tesi: 'Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks'. Pel camí: un article a ICDCS amb Telefónica i un altre a ACL amb IBM." } },
+
+  { date:"2024-11", type:"role", where:"Politecnico di Torino, DAUIN PhD Day", link:"",
+    title:{ en:"Ph.D. Quality Award, 2nd place (second year)",
+            it:"Ph.D. Quality Award, 2° posto (secondo anno)",
+            es:"Ph.D. Quality Award, 2.º puesto (segundo año)",
+            pt:"Ph.D. Quality Award, 2º lugar (segundo ano)",
+            ca:"Ph.D. Quality Award, 2n lloc (segon any)" },
+    text:{ en:"Recognised by Politecnico di Torino for my achievements in the second year of my Ph.D.",
+           it:"Riconoscimento del Politecnico di Torino per i risultati del secondo anno di dottorato.",
+           es:"Reconocimiento del Politecnico di Torino por los resultados del segundo año de doctorado.",
+           pt:"Reconhecimento do Politecnico di Torino pelos resultados do segundo ano de doutorado.",
+           ca:"Reconeixement del Politecnico di Torino pels resultats del segon any de doctorat." } },
+
+  { date:"2023-09", type:"event", where:"ACM SIGCOMM 2023, New York", link:"https://lnkd.in/p/eNiJwk9N",
+    title:{ en:"IIoT-NETs workshop at ACM SIGCOMM",
+            it:"Workshop IIoT-NETs ad ACM SIGCOMM",
+            es:"Workshop IIoT-NETs en ACM SIGCOMM",
+            pt:"Workshop IIoT-NETs no ACM SIGCOMM",
+            ca:"Workshop IIoT-NETs a ACM SIGCOMM" },
+    text:{ en:"Part of the first workshop on network techniques for the Industrial IoT-to-cloud continuum, at SIGCOMM 2023 in New York City.",
+           it:"Ho partecipato al primo workshop sulle tecniche di rete per il continuum Industrial IoT-cloud, a SIGCOMM 2023 a New York.",
+           es:"Participé en el primer workshop sobre técnicas de red para el continuo Industrial IoT-cloud, en SIGCOMM 2023 en Nueva York.",
+           pt:"Participei do primeiro workshop sobre técnicas de rede para o contínuo Industrial IoT-nuvem, no SIGCOMM 2023 em Nova York.",
+           ca:"Vaig participar al primer workshop sobre tècniques de xarxa per al continu Industrial IoT-núvol, a SIGCOMM 2023 a Nova York." } },
+
+  { date:"2020-07", type:"research", where:"Aalto University, Erasmus, Helsinki", link:"https://lnkd.in/p/eZ-Wv-U2",
+    title:{ en:"Where healthcare AI started for me: #HIV on social media",
+            it:"Dove è iniziata la mia AI per la sanità: #HIV sui social",
+            es:"Donde empezó mi IA para la salud: #HIV en redes sociales",
+            pt:"Onde começou minha IA para a saúde: #HIV nas redes sociais",
+            ca:"On va començar la meva IA per a la salut: #HIV a les xarxes" },
+    text:{ en:"My Master's thesis at Aalto University used machine learning and NLP to mine social-media discussions about HIV for public-health insights. It later became a paper in Health and Technology.",
+           it:"La mia tesi magistrale all'Aalto University usava machine learning e NLP per analizzare le discussioni sull'HIV sui social media, a supporto della sanità pubblica. È poi diventata un articolo su Health and Technology.",
+           es:"Mi tesis de máster en la Aalto University usó machine learning y NLP para analizar conversaciones sobre el VIH en redes sociales con fines de salud pública. Después se convirtió en un artículo en Health and Technology.",
+           pt:"Minha dissertação de mestrado na Aalto University usou machine learning e NLP para analisar conversas sobre HIV nas redes sociais com foco em saúde pública. Depois virou um artigo na Health and Technology.",
+           ca:"La meva tesi de màster a la Aalto University va fer servir machine learning i NLP per analitzar converses sobre el VIH a les xarxes socials amb finalitats de salut pública. Després es va convertir en un article a Health and Technology." } }
+];
+
+const GALLERY = [
+  { src:"photos/basel-2026-1.jpg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"Hackathon Grand Final" },
+  { src:"photos/basel-2026-2.jpg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"BCN-AIM at the summit", tall:true },
+  { src:"photos/munich-2026-1.jpg", event:"ESC Congress, Munich", date:"2026-08", caption:"Talk in the AI4HF session" },
+  { src:"photos/munich-2026-2.jpg", event:"ESC Congress, Munich", date:"2026-08", caption:"ESC TV Connect session", tall:true },
+  { src:"photos/genoa-2026-1.jpg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Expert panel: DataTools4Heart × AI4HF" },
+  { src:"photos/genoa-2026-2.jpg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Live cXAI demo" }
+];
+
+const XP = [
+  { from:"2025-09", to:"now", org:"AI in Medicine Lab (BCN-AIM), University of Barcelona, Barcelona",
+    title:{ en:"Technical Coordinator (Postdoctoral Researcher)", it:"Technical Coordinator (Ricercatore Postdoc)", es:"Coordinador Técnico (Investigador Postdoctoral)", pt:"Coordenador Técnico (Pesquisador de Pós-Doutorado)", ca:"Coordinador Tècnic (Investigador Postdoctoral)" },
+    items:[
+      { en:"Built and deployed a clinical AI inference engine (FastAPI, Docker) for mortality prediction with SHAP explainability, validation and end-to-end testing.",
+        it:"Sviluppato e messo in produzione un motore di inferenza clinica (FastAPI, Docker) per la predizione della mortalità, con spiegabilità SHAP, validazione e test end-to-end.",
+        es:"Desarrollé y desplegué un motor de inferencia clínica (FastAPI, Docker) para predecir la mortalidad, con explicabilidad SHAP, validación y pruebas end-to-end.",
+        pt:"Desenvolvi e implementei um motor de inferência clínica (FastAPI, Docker) para previsão de mortalidade, com explicabilidade SHAP, validação e testes end-to-end.",
+        ca:"Vaig desenvolupar i desplegar un motor d'inferència clínica (FastAPI, Docker) per predir la mortalitat, amb explicabilitat SHAP, validació i proves end-to-end." },
+      { en:"Lead requirements engineering for a 173-requirement trustworthy-AI specification (ISO/IEC/IEEE 29148, FUTURE-AI, EU AI Act), published on Zenodo.",
+        it:"Guido la requirements engineering di una specifica di AI affidabile con 173 requisiti (ISO/IEC/IEEE 29148, FUTURE-AI, EU AI Act), pubblicata su Zenodo.",
+        es:"Lidero la ingeniería de requisitos de una especificación de IA fiable con 173 requisitos (ISO/IEC/IEEE 29148, FUTURE-AI, EU AI Act), publicada en Zenodo.",
+        pt:"Lidero a engenharia de requisitos de uma especificação de IA confiável com 173 requisitos (ISO/IEC/IEEE 29148, FUTURE-AI, EU AI Act), publicada no Zenodo.",
+        ca:"Lidero l'enginyeria de requisits d'una especificació d'IA fiable amb 173 requisits (ISO/IEC/IEEE 29148, FUTURE-AI, EU AI Act), publicada a Zenodo." },
+      { en:"Own the work package on data federation and privacy-preserving federated learning; delivered MS1, MS6 and D2.3 on schedule.",
+        it:"Responsabile del work package su federazione dei dati e federated learning privacy-preserving; consegnati MS1, MS6 e D2.3 nei tempi.",
+        es:"Responsable del work package de federación de datos y federated learning que preserva la privacidad; entregué MS1, MS6 y D2.3 a tiempo.",
+        pt:"Responsável pelo work package de federação de dados e federated learning com preservação da privacidade; entreguei MS1, MS6 e D2.3 dentro do prazo.",
+        ca:"Responsable del work package de federació de dades i federated learning que preserva la privadesa; vaig lliurar MS1, MS6 i D2.3 dins del termini." },
+      { en:"Coordinate 8 work packages and a 15-partner consortium across 12 countries, including Data Protection Agreements with clinical sites.",
+        it:"Coordino 8 work package e un consorzio di 15 partner in 12 paesi, inclusi i Data Protection Agreement con i centri clinici.",
+        es:"Coordino 8 work packages y un consorcio de 15 socios en 12 países, incluidos los Data Protection Agreements con los centros clínicos.",
+        pt:"Coordeno 8 work packages e um consórcio de 15 parceiros em 12 países, incluindo os Data Protection Agreements com os centros clínicos.",
+        ca:"Coordino 8 work packages i un consorci de 15 socis en 12 països, inclosos els Data Protection Agreements amb els centres clínics." } ] },
+
+  { from:"2024-08", to:"2024-10", org:"IBM AI Research, Dublin", title:{ en:"AI Research Scientist Intern" },
+    items:[
+      { en:"Fine-tuned and benchmarked four LLMs with few-shot prompting to find a cost-effective approach for the target workload.",
+        it:"Fine-tuning e benchmark di quattro LLM con few-shot prompting per individuare l'approccio più efficiente in termini di costi.",
+        es:"Fine-tuning y benchmarking de cuatro LLM con few-shot prompting para encontrar el enfoque más rentable.",
+        pt:"Fine-tuning e benchmarking de quatro LLMs com few-shot prompting para encontrar a abordagem mais eficiente em custo.",
+        ca:"Fine-tuning i benchmarking de quatre LLM amb few-shot prompting per trobar l'enfocament més rendible." },
+      { en:"Built a 10,000-example fine-tuning dataset and designed an LLM-based meta-orchestrator for cloud-to-edge infrastructure.",
+        it:"Creato un dataset di 10.000 esempi per il fine-tuning e progettato un meta-orchestratore basato su LLM per infrastrutture cloud-edge.",
+        es:"Creé un dataset de 10.000 ejemplos para fine-tuning y diseñé un meta-orquestador basado en LLM para infraestructuras cloud-edge.",
+        pt:"Criei um dataset de 10.000 exemplos para fine-tuning e projetei um meta-orquestrador baseado em LLM para infraestruturas cloud-edge.",
+        ca:"Vaig crear un dataset de 10.000 exemples per al fine-tuning i vaig dissenyar un meta-orquestrador basat en LLM per a infraestructures cloud-edge." } ] },
+
+  { from:"2024-01", to:"2024-07", org:"Telefónica, Barcelona", title:{ en:"AI Research Scientist Intern" },
+    items:[
+      { en:"Developed a deep RL scheduler for inference workloads across 3 GPU edge clusters; compared 7 policies at up to 1,000 queries/second.",
+        it:"Sviluppato uno scheduler basato su deep RL per carichi di inferenza su 3 cluster edge con GPU; confrontate 7 policy fino a 1.000 query/secondo.",
+        es:"Desarrollé un scheduler de deep RL para cargas de inferencia en 3 clústeres edge con GPU; comparé 7 políticas hasta 1.000 consultas/segundo.",
+        pt:"Desenvolvi um scheduler de deep RL para cargas de inferência em 3 clusters edge com GPU; comparei 7 políticas até 1.000 requisições/segundo.",
+        ca:"Vaig desenvolupar un scheduler de deep RL per a càrregues d'inferència en 3 clústers edge amb GPU; vaig comparar 7 polítiques fins a 1.000 consultes/segon." } ] },
+
+  { from:"2022-11", to:"2024-01", org:"Politecnico di Torino, Turin",
+    title:{ en:"Teaching Assistant & M.Sc. Thesis Supervisor", it:"Assistente alla didattica e co-relatore di tesi magistrali", es:"Profesor asistente y supervisor de TFM", pt:"Assistente de ensino e orientador de teses de mestrado", ca:"Professor assistent i supervisor de TFM" },
+    items:[
+      { en:"Four Master's networking courses (200+ students each); supervised 5 M.Sc. theses.",
+        it:"Quattro corsi magistrali di reti (oltre 200 studenti ciascuno); seguite 5 tesi magistrali.",
+        es:"Cuatro asignaturas de máster sobre redes (más de 200 estudiantes cada una); supervisé 5 TFM.",
+        pt:"Quatro disciplinas de mestrado em redes (mais de 200 alunos cada); orientei 5 teses de mestrado.",
+        ca:"Quatre assignatures de màster de xarxes (més de 200 estudiants cadascuna); vaig supervisar 5 TFM." } ] },
+
+  { from:"2022-01", to:"2022-07", org:"Saint Louis University, St. Louis, USA", title:{ en:"Research Scientist Intern" },
+    items:[
+      { en:"NLP for intent-based network management; programmed 9 switches with P4 and OpenFlow for in-network machine learning.",
+        it:"NLP per la gestione di intent-based networking; programmati 9 switch con P4 e OpenFlow per il machine learning in-network.",
+        es:"NLP para la gestión de redes intent-based; programé 9 switches con P4 y OpenFlow para machine learning in-network.",
+        pt:"NLP para gestão de redes intent-based; programei 9 switches com P4 e OpenFlow para machine learning in-network.",
+        ca:"NLP per a la gestió de xarxes intent-based; vaig programar 9 switches amb P4 i OpenFlow per a machine learning in-network." } ] },
+
+  { from:"2021-01", to:"2021-05", org:"ALTEC, Turin", title:{ en:"Database Management Engineer" },
+    items:[
+      { en:"SQL analysis of space-mission databases with over 1 billion rows, with ESA and INAF.",
+        it:"Analisi SQL di database di missioni spaziali con oltre 1 miliardo di righe, in collaborazione con ESA e INAF.",
+        es:"Análisis SQL de bases de datos de misiones espaciales con más de 1.000 millones de filas, con la ESA y el INAF.",
+        pt:"Análise SQL de bancos de dados de missões espaciais com mais de 1 bilhão de linhas, com a ESA e o INAF.",
+        ca:"Anàlisi SQL de bases de dades de missions espacials amb més de 1.000 milions de files, amb l'ESA i l'INAF." } ] },
+
+  { from:"2015", to:"2025",
+    org:{ en:"Politecnico di Torino, also M.Sc. (thesis at Aalto University) and B.Sc. in Computer Engineering", it:"Politecnico di Torino, anche Laurea Magistrale (tesi all'Aalto University) e Triennale in Ingegneria Informatica", es:"Politecnico di Torino, también Máster (tesis en la Aalto University) y Grado en Ingeniería Informática", pt:"Politecnico di Torino, também Mestrado (dissertação na Aalto University) e Graduação em Engenharia de Computação", ca:"Politecnico di Torino, també Màster (tesi a la Aalto University) i Grau en Enginyeria Informàtica" },
+    title:{ en:"Ph.D. in Computer & Control Engineering, cum laude", it:"Dottorato in Ingegneria Informatica e dei Sistemi, cum laude", es:"Doctorado en Ingeniería Informática y de Control, cum laude", pt:"Doutorado em Engenharia de Computação e de Controle, cum laude", ca:"Doctorat en Enginyeria Informàtica i de Control, cum laude" },
+    items:[ { en:"Ph.D. Quality Award, 2nd place, in 2024 and 2025.", it:"Ph.D. Quality Award, 2° posto, nel 2024 e nel 2025.", es:"Ph.D. Quality Award, 2.º puesto, en 2024 y 2025.", pt:"Ph.D. Quality Award, 2º lugar, em 2024 e 2025.", ca:"Ph.D. Quality Award, 2n lloc, el 2024 i el 2025." } ] }
+];
+
+const PATH = [
+  { yr:"2019 → 2020, Aalto (Erasmus)",
+    t:{ en:"Public-health NLP", it:"NLP per la sanità pubblica", es:"NLP para la salud pública", pt:"NLP para a saúde pública", ca:"NLP per a la salut pública" },
+    p:{ en:"Mining social media for HIV discussions: my first health-AI project.", it:"Analisi delle discussioni sull'HIV sui social: il mio primo progetto di AI per la sanità.", es:"Análisis de conversaciones sobre el VIH en redes sociales: mi primer proyecto de IA para la salud.", pt:"Análise de conversas sobre HIV nas redes sociais: meu primeiro projeto de IA para a saúde.", ca:"Anàlisi de converses sobre el VIH a les xarxes: el meu primer projecte d'IA per a la salut." } },
+  { yr:"2021, ALTEC",
+    t:{ en:"Data at scale", it:"Dati su larga scala", es:"Datos a gran escala", pt:"Dados em grande escala", ca:"Dades a gran escala" },
+    p:{ en:"SQL analysis of space-mission databases with over a billion rows, with ESA and INAF.", it:"Analisi SQL di database di missioni spaziali con oltre un miliardo di righe, con ESA e INAF.", es:"Análisis SQL de bases de datos de misiones espaciales con más de mil millones de filas, con la ESA y el INAF.", pt:"Análise SQL de bancos de dados de missões espaciais com mais de 1 bilhão de linhas, com a ESA e o INAF.", ca:"Anàlisi SQL de bases de dades de missions espacials amb més de mil milions de files, amb l'ESA i l'INAF." } },
+  { yr:"2021 → 2023, PoliTo & SLU",
+    t:{ en:"Intent-based networking" },
+    p:{ en:"NLP and in-network ML on P4 switches, and federated learning inside the network.", it:"NLP e ML in-network su switch P4, e federated learning dentro la rete.", es:"NLP y ML in-network en switches P4, y federated learning dentro de la red.", pt:"NLP e ML in-network em switches P4, e federated learning dentro da rede.", ca:"NLP i ML in-network en switches P4, i federated learning dins de la xarxa." } },
+  { yr:"2024, Telefónica",
+    t:{ en:"Deep reinforcement learning" },
+    p:{ en:"A DRL scheduler for inference workloads across three GPU edge clusters.", it:"Uno scheduler DRL per carichi di inferenza su tre cluster edge con GPU.", es:"Un scheduler DRL para cargas de inferencia en tres clústeres edge con GPU.", pt:"Um scheduler DRL para cargas de inferência em três clusters edge com GPU.", ca:"Un scheduler DRL per a càrregues d'inferència en tres clústers edge amb GPU." } },
+  { yr:"2024, IBM Research",
+    t:{ en:"LLMs & containers", it:"LLM e container", es:"LLM y contenedores", pt:"LLMs e contêineres", ca:"LLM i contenidors" },
+    p:{ en:"Fine-tuning LLMs to turn natural language into Kubernetes manifests.", it:"Fine-tuning di LLM per trasformare il linguaggio naturale in manifest Kubernetes.", es:"Fine-tuning de LLM para convertir lenguaje natural en manifiestos de Kubernetes.", pt:"Fine-tuning de LLMs para transformar linguagem natural em manifestos Kubernetes.", ca:"Fine-tuning de LLM per convertir llenguatge natural en manifests de Kubernetes." } },
+  { yr:"2025 → BCN-AIM",
+    t:{ en:"Healthcare AI", it:"AI per la sanità", es:"IA para la salud", pt:"IA para a saúde", ca:"IA per a la salut" },
+    p:{ en:"Clinical prediction, explainability, federated learning across hospitals, EU AI Act.", it:"Predizione clinica, spiegabilità, federated learning tra ospedali, EU AI Act.", es:"Predicción clínica, explicabilidad, federated learning entre hospitales, EU AI Act.", pt:"Previsão clínica, explicabilidade, federated learning entre hospitais, EU AI Act.", ca:"Predicció clínica, explicabilitat, federated learning entre hospitals, EU AI Act." } }
+];
+
+const PUBS = [
+  { y:2026, area:"health", t:"Contrastive explainable AI in healthcare: a systematic review", a:"S. Pe*, A. Angi*, C. Izquierdo, E. Parimbelli, M. Boonstra, F. Asselbergs, K. Lekadir", v:"BMC Medical Informatics and Decision Making, *co-first authors", url:"https://lnkd.in/d7h3R5PC" },,
+  { y:2026, area:"llm", t:"BRAT: An Intent-to-Kubernetes Translation via LLM Fine-Tuning", a:"A. Angi, L. Nedoshivina, A. Sacco, S. Braghin, M. Purcell", v:"2026", url:"" },
+  { y:2025, area:"llm", t:"A Perspective on LLM Data Generation with Few-shot Examples: from Intent to Kubernetes Manifest", a:"A. Angi, L. Nedoshivina, A. Sacco, S. Braghin, M. Purcell", v:"Conference proceedings, 2025", url:"" },
+  { y:2025, area:"llm", t:"LLNet: An Intent-Driven Approach to Instructing Softwarized Network Devices Using a Small Language Model", a:"A. Angi, A. Sacco, G. Marchetto, et al.", v:"IEEE Transactions on Network and Service Management, 22(4)", url:"" },
+  { y:2025, area:"networks", t:"Integrating Artificial Intelligence Techniques for the Management of Softwarized Networks", a:"A. Angi", v:"Ph.D. thesis, Politecnico di Torino", url:"" },
+  { y:2024, area:"networks", t:"NAIL: A Network Management Architecture for Deploying Intent into Programmable Switches", a:"A. Angi, A. Sacco, F. Esposito, G. Marchetto, A. Clemm", v:"2024", url:"" },
+  { y:2024, area:"networks", t:"ROAR: Routing Packets in P4 Switches With Multi-Agent Decisions Logic", a:"A. Angi, A. Sacco, F. Esposito, G. Marchetto", v:"2024", url:"" },
+  { y:2023, area:"networks", t:"P4FL: An Architecture for Federating Learning with In-Network Processing", a:"A. Sacco, A. Angi, G. Marchetto, F. Esposito", v:"IEEE Access, vol. 11", url:"" },
+  { y:2023, area:"networks", t:"HINT: Supporting Congestion Control Decisions with P4-driven In-Band Network Telemetry", a:"A. Sacco, A. Angi, F. Esposito, G. Marchetto", v:"2023", url:"" },
+  { y:2022, area:"networks", t:"NLP4: An Architecture for Intent-Driven Data Plane Programmability", a:"A. Angi, A. Sacco, F. Esposito, G. Marchetto, A. Clemm", v:"2022", url:"" },
+  { y:2021, area:"health", t:"Characterizing HIV discussions and engagement on Twitter", a:"M. Aqdas, A. Angi, M. L. Khan, M. Nieminen", v:"Health and Technology, vol. 11", url:"" }
+];
+
+const PLACES = {
+  sicily:{lon:12.44,lat:37.8, born:true, cc:"IT", city:{en:"Sicily",it:"Sicilia",es:"Sicilia",pt:"Sicília",ca:"Sicília"}, yrs:"1996",
+    d:{en:"Where it all started: born in Sicily in 1996. Back home in Marsala for a few months in 2020, during Covid-19.",it:"Dove tutto è iniziato: sono nato in Sicilia nel 1996. Sono tornato a Marsala per qualche mese nel 2020, durante il Covid-19.",es:"Donde empezó todo: nací en Sicilia en 1996. Volví a Marsala unos meses en 2020, durante la Covid-19.",pt:"Onde tudo começou: nasci na Sicília em 1996. Voltei para Marsala por alguns meses em 2020, durante a Covid-19.",ca:"On tot va començar: vaig néixer a Sicília el 1996. Vaig tornar a Marsala uns mesos el 2020, durant la Covid-19."}},
+  turin:{lon:7.69,lat:45.07, cc:"IT", city:{en:"Turin",it:"Torino",es:"Turín",pt:"Turim",ca:"Torí"}, yrs:"2015 → 2024",
+    d:{en:"B.Sc., M.Sc. and Ph.D. at Politecnico di Torino, teaching networking courses, and big data at ALTEC.",it:"Laurea triennale, magistrale e dottorato al Politecnico di Torino, didattica nei corsi di reti e big data in ALTEC.",es:"Grado, máster y doctorado en el Politecnico di Torino, docencia en asignaturas de redes y big data en ALTEC.",pt:"Graduação, mestrado e doutorado no Politecnico di Torino, aulas de redes e big data na ALTEC.",ca:"Grau, màster i doctorat al Politecnico di Torino, docència en assignatures de xarxes i big data a ALTEC."}},
+  helsinki:{lon:24.83,lat:60.18, cc:"FI", city:{en:"Helsinki"}, yrs:"2019 → 2020",
+    d:{en:"Erasmus year at Aalto University, and my Master's thesis: NLP on social-media discussions about HIV.",it:"Anno di Erasmus all'Aalto University e tesi magistrale: NLP sulle discussioni sull'HIV nei social.",es:"Año de Erasmus en la Aalto University y tesis de máster: NLP sobre conversaciones acerca del VIH en redes sociales.",pt:"Ano de Erasmus na Aalto University e dissertação de mestrado: NLP em conversas sobre HIV nas redes sociais.",ca:"Any d'Erasmus a la Aalto University i tesi de màster: NLP sobre converses sobre el VIH a les xarxes socials."}},
+  stlouis:{lon:-90.2,lat:38.63, cc:"US", city:{en:"St. Louis"}, yrs:"2022",
+    d:{en:"Research intern at Saint Louis University: NLP for intent-based networking and P4 switches.",it:"Research intern alla Saint Louis University: NLP per intent-based networking e switch P4.",es:"Research intern en la Saint Louis University: NLP para intent-based networking y switches P4.",pt:"Research intern na Saint Louis University: NLP para intent-based networking e switches P4.",ca:"Research intern a la Saint Louis University: NLP per a intent-based networking i switches P4."}},
+  barcelona:{lon:2.17,lat:41.39, cc:"ES", home:true, city:{en:"Barcelona",it:"Barcellona"}, yrs:"2024 → ",
+    d:{en:"Telefónica (deep RL for GPU edge clusters), then BCN-AIM at the University of Barcelona.",it:"Telefónica (deep RL per cluster edge con GPU), poi BCN-AIM all'Università di Barcellona.",es:"Telefónica (deep RL para clústeres edge con GPU) y después BCN-AIM en la Universidad de Barcelona.",pt:"Telefónica (deep RL para clusters edge com GPU) e depois o BCN-AIM na Universidade de Barcelona.",ca:"Telefónica (deep RL per a clústers edge amb GPU) i després BCN-AIM a la Universitat de Barcelona."}},
+  dublin:{lon:-6.26,lat:53.35, cc:"IE", city:{en:"Dublin",it:"Dublino",es:"Dublín",ca:"Dublín"}, yrs:"2024",
+    d:{en:"IBM Research: fine-tuning LLMs to turn intents into Kubernetes manifests.",it:"IBM Research: fine-tuning di LLM per trasformare intenti in manifest Kubernetes.",es:"IBM Research: fine-tuning de LLM para convertir intenciones en manifiestos de Kubernetes.",pt:"IBM Research: fine-tuning de LLMs para transformar intenções em manifestos Kubernetes.",ca:"IBM Research: fine-tuning de LLM per convertir intencions en manifests de Kubernetes."}}
+};
+const JOURNEY = [
+  { k:"sicily", yrs:"1996", born:true,
+    d:{en:"Where it all started: born in Sicily in 1996.",it:"Dove tutto è iniziato: sono nato in Sicilia nel 1996.",es:"Donde empezó todo: nací en Sicilia en 1996.",pt:"Onde tudo começou: nasci na Sicília em 1996.",ca:"On tot va començar: vaig néixer a Sicília el 1996."}},
+  { k:"turin", yrs:"2015 → 2019",
+    d:{en:"Moved to Turin for my B.Sc. and M.Sc. in Computer Engineering at Politecnico di Torino.",it:"Mi trasferisco a Torino per la laurea triennale e magistrale in Ingegneria Informatica al Politecnico di Torino.",es:"Me mudo a Turín para el grado y el máster en Ingeniería Informática en el Politecnico di Torino.",pt:"Me mudei para Turim para a graduação e o mestrado em Engenharia de Computação no Politecnico di Torino.",ca:"Em trasllado a Torí per al grau i el màster en Enginyeria Informàtica al Politecnico di Torino."}},
+  { k:"helsinki", yrs:"2019 → 2020",
+    d:{en:"Erasmus year at Aalto University, where I wrote my Master's thesis on NLP for HIV discussions on social media.",it:"Anno di Erasmus all'Aalto University, dove ho scritto la tesi magistrale sull'NLP applicato alle discussioni sull'HIV nei social.",es:"Año de Erasmus en la Aalto University, donde escribí mi tesis de máster sobre NLP aplicado a conversaciones sobre el VIH en redes sociales.",pt:"Ano de Erasmus na Aalto University, onde escrevi minha dissertação de mestrado sobre NLP aplicado a conversas sobre HIV nas redes sociais.",ca:"Any d'Erasmus a la Aalto University, on vaig escriure la tesi de màster sobre NLP aplicat a converses sobre el VIH a les xarxes socials."}},
+  { k:"sicily", yrs:"2020",
+    d:{en:"Back home in Marsala when Covid-19 hit. I finished my Master's remotely and got ready for the next step.",it:"Di nuovo a casa, a Marsala, con l'arrivo del Covid-19. Ho concluso la magistrale a distanza e mi sono preparato al passo successivo.",es:"De vuelta en casa, en Marsala, con la llegada de la Covid-19. Terminé el máster a distancia y me preparé para el siguiente paso.",pt:"De volta para casa, em Marsala, com a chegada da Covid-19. Terminei o mestrado a distância e me preparei para o próximo passo.",ca:"De nou a casa, a Marsala, amb l'arribada de la Covid-19. Vaig acabar el màster a distància i em vaig preparar per al pas següent."}},
+  { k:"turin", yrs:"2021 → 2022",
+    d:{en:"Back in Turin: my first job at ALTEC, analysing space-mission data with ESA and INAF, and the start of my Ph.D.",it:"Di nuovo a Torino: il primo lavoro in ALTEC, analizzando dati di missioni spaziali con ESA e INAF, e l'inizio del dottorato.",es:"De vuelta en Turín: mi primer trabajo en ALTEC, analizando datos de misiones espaciales con la ESA y el INAF, y el inicio del doctorado.",pt:"De volta a Turim: meu primeiro emprego na ALTEC, analisando dados de missões espaciais com a ESA e o INAF, e o início do doutorado.",ca:"De nou a Torí: la meva primera feina a ALTEC, analitzant dades de missions espacials amb l'ESA i l'INAF, i l'inici del doctorat."}},
+  { k:"stlouis", yrs:"2022",
+    d:{en:"Research visitor at Saint Louis University: NLP for intent-based networking and P4 switches.",it:"Research visitor alla Saint Louis University: NLP per intent-based networking e switch P4.",es:"Research visitor en la Saint Louis University: NLP para intent-based networking y switches P4.",pt:"Research visitor na Saint Louis University: NLP para intent-based networking e switches P4.",ca:"Research visitor a la Saint Louis University: NLP per a intent-based networking i switches P4."}},
+  { k:"turin", yrs:"2023 → 2024",
+    d:{en:"Back in Turin to teach Master's networking courses and supervise M.Sc. theses.",it:"Di nuovo a Torino per insegnare nei corsi magistrali di reti e seguire tesi magistrali.",es:"De vuelta en Turín para dar clases en asignaturas de máster sobre redes y supervisar TFM.",pt:"De volta a Turim para dar aulas em disciplinas de mestrado em redes e orientar dissertações.",ca:"De nou a Torí per fer classes en assignatures de màster de xarxes i supervisar TFM."}},
+  { k:"barcelona", yrs:"2024",
+    d:{en:"First time in Barcelona: research internship at Telefónica on deep RL for GPU edge clusters.",it:"La prima volta a Barcellona: research internship in Telefónica sul deep RL per cluster edge con GPU.",es:"Primera vez en Barcelona: research internship en Telefónica sobre deep RL para clústeres edge con GPU.",pt:"Primeira vez em Barcelona: research internship na Telefónica sobre deep RL para clusters edge com GPU.",ca:"Primera vegada a Barcelona: research internship a Telefónica sobre deep RL per a clústers edge amb GPU."}},
+  { k:"dublin", yrs:"2024",
+    d:{en:"Research internship at IBM Research: fine-tuning LLMs to turn intents into Kubernetes manifests.",it:"Research internship in IBM Research: fine-tuning di LLM per trasformare intenti in manifest Kubernetes.",es:"Research internship en IBM Research: fine-tuning de LLM para convertir intenciones en manifiestos de Kubernetes.",pt:"Research internship na IBM Research: fine-tuning de LLMs para transformar intenções em manifestos Kubernetes.",ca:"Research internship a IBM Research: fine-tuning de LLM per convertir intencions en manifests de Kubernetes."}},
+  { k:"barcelona", yrs:"2025 → ", home:true,
+    d:{en:"Back to Barcelona to join BCN-AIM at the University of Barcelona as Technical Coordinator of AI4HF.",it:"Torno a Barcellona per entrare in BCN-AIM all'Università di Barcellona come Technical Coordinator di AI4HF.",es:"Vuelvo a Barcelona para incorporarme a BCN-AIM en la Universidad de Barcelona como Coordinador Técnico de AI4HF.",pt:"Volto para Barcelona para entrar no BCN-AIM da Universidade de Barcelona como Coordenador Técnico do AI4HF.",ca:"Torno a Barcelona per incorporar-me a BCN-AIM a la Universitat de Barcelona com a Coordinador Tècnic d'AI4HF."}}
+];
+const MAP_DOTS = "0.1 0.2 0.4 0.5 0.6 0.7 0.8 0.b 0.c 0.d 0.h 0.i 0.j 0.k 0.l 0.m 0.n 0.o 0.z 0.10 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.1a 0.1b 0.1c 0.1d 0.2d 0.2e 0.2f 0.2g 0.2h 0.2i 0.2j 0.2k 0.2l 0.2m 0.2n 0.2o 0.2p 0.2q 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.a 1.b 1.c 1.d 1.l 1.m 1.n 1.o 1.p 1.q 1.y 1.z 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.1a 1.1b 1.1c 1.2c 1.2d 1.2e 1.2f 1.2g 1.2h 1.2i 1.2j 1.2k 1.2l 1.2m 1.2n 1.2o 1.2p 1.2q 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.a 2.j 2.k 2.l 2.m 2.q 2.r 2.y 2.z 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 2.18 2.19 2.1a 2.1p 2.2b 2.2c 2.2d 2.2e 2.2f 2.2g 2.2h 2.2i 2.2j 2.2k 2.2l 2.2m 2.2n 2.2o 2.2p 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.h 3.j 3.k 3.l 3.m 3.n 3.z 3.10 3.11 3.12 3.13 3.14 3.15 3.16 3.17 3.18 3.1l 3.1m 3.1n 3.1o 3.1p 3.1q 3.2a 3.2b 3.2c 3.2d 3.2e 3.2f 3.2g 3.2k 3.2l 3.2m 3.2n 3.2o 3.2p 3.2q 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.a 4.b 4.c 4.d 4.h 4.k 4.l 4.m 4.n 4.o 4.p 4.z 4.10 4.11 4.12 4.13 4.14 4.15 4.16 4.17 4.1l 4.1m 4.1n 4.1o 4.1p 4.1q 4.29 4.2a 4.2b 4.2c 4.2d 4.2e 4.2f 4.2g 4.2j 4.2k 4.2l 4.2m 4.2n 4.2o 4.2p 4.2q 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.b 5.h 5.l 5.m 5.o 5.p 5.10 5.11 5.12 5.13 5.14 5.15 5.16 5.1n 5.27 5.28 5.29 5.2a 5.2b 5.2c 5.2d 5.2e 5.2f 5.2i 5.2j 5.2k 5.2l 5.2m 5.2n 5.2o 5.2p 5.2q 6.0 6.1 6.2 6.3 6.4 6.5 6.c 6.n 6.o 6.11 6.12 6.13 6.14 6.15 6.26 6.27 6.28 6.29 6.2a 6.2b 6.2c 6.2d 6.2e 6.2h 6.2i 6.2j 6.2k 6.2l 6.2m 6.2n 6.2o 6.2p 6.2q 7.0 7.1 7.2 7.3 7.4 7.h 7.i 7.j 7.k 7.12 7.13 7.14 7.15 7.25 7.26 7.27 7.28 7.29 7.2a 7.2b 7.2c 7.2d 7.2h 7.2i 7.2j 7.2k 7.2l 7.2m 7.2n 7.2o 7.2p 7.2q 8.0 8.1 8.2 8.3 8.4 8.h 8.i 8.j 8.k 8.l 8.m 8.12 8.13 8.14 8.15 8.25 8.26 8.27 8.28 8.29 8.2a 8.2b 8.2c 8.2d 8.2h 8.2i 8.2j 8.2k 8.2l 8.2m 8.2n 8.2o 8.2p 8.2q 9.0 9.1 9.2 9.3 9.h 9.i 9.j 9.k 9.l 9.m 9.q 9.15 9.26 9.27 9.28 9.29 9.2a 9.2b 9.2c 9.2d 9.2e 9.2n 9.2o 9.2p 9.2q a.0 a.1 a.2 a.3 a.g a.h a.i a.j a.k a.l a.m a.p a.q a.25 a.26 a.27 a.2a a.2b a.2c a.2d a.2j a.2k a.2l a.2m a.2n a.2o a.2p a.2q b.0 b.1 b.2 b.3 b.4 b.5 b.h b.i b.j b.k b.l b.m b.n b.o b.p b.q b.1w b.1x b.1y b.26 b.2a b.2b b.2c b.2d b.2j b.2k b.2l b.2m b.2n b.2o b.2p b.2q c.0 c.1 c.2 c.3 c.4 c.5 c.i c.j c.k c.l c.m c.n c.o c.p c.q c.r c.1x c.1y c.1z c.28 c.2a c.2b c.2c c.2h c.2j c.2k c.2l c.2m c.2n c.2o c.2p c.2q d.0 d.1 d.2 d.3 d.4 d.5 d.6 d.7 d.8 d.i d.j d.k d.l d.m d.n d.o d.p d.q d.r d.1x d.1y d.27 d.28 d.2b d.2c d.2h d.2i d.2j d.2k d.2l d.2m d.2n d.2o d.2p d.2q e.0 e.1 e.2 e.3 e.4 e.5 e.6 e.7 e.8 e.9 e.a e.h e.i e.j e.k e.l e.m e.n e.o e.p e.q e.r e.s e.1y e.1z e.2h e.2i e.2j e.2k e.2l e.2m e.2n e.2o e.2p e.2q f.0 f.1 f.2 f.3 f.4 f.5 f.6 f.7 f.8 f.9 f.a f.b f.c f.f f.g f.h f.i f.j f.k f.l f.m f.n f.o f.p f.q f.r f.s f.t f.u f.1v f.1w f.1z f.20 f.28 f.29 f.2d f.2e f.2g f.2h f.2i f.2j f.2k f.2l f.2m f.2n f.2o f.2p f.2q g.0 g.1 g.2 g.3 g.4 g.5 g.6 g.7 g.8 g.9 g.a g.b g.c g.g g.h g.i g.j g.k g.l g.m g.n g.o g.p g.q g.r g.s g.u g.1u g.1v g.1w g.1z g.20 g.28 g.29 g.2a g.2b g.2c g.2d g.2e g.2f g.2g g.2h g.2i g.2j g.2k g.2l g.2m g.2n g.2o g.2p g.2q h.0 h.1 h.2 h.3 h.4 h.5 h.6 h.7 h.8 h.9 h.a h.b h.c h.d h.g h.h h.i h.j h.k h.l h.m h.n h.o h.p h.q h.r h.s h.t h.u h.v h.w h.1u h.1v h.1w h.1y h.1z h.20 h.21 h.22 h.25 h.26 h.27 h.28 h.29 h.2a h.2b h.2c h.2d h.2e h.2f h.2g h.2h h.2i h.2j h.2k h.2l h.2m h.2n h.2o h.2p h.2q i.0 i.1 i.2 i.3 i.4 i.5 i.6 i.7 i.8 i.9 i.a i.b i.c i.d i.e i.g i.h i.i i.j i.k i.l i.m i.n i.o i.p i.q i.r i.s i.t i.u i.v i.1u i.1y i.1z i.20 i.21 i.24 i.25 i.26 i.27 i.28 i.29 i.2a i.2b i.2c i.2d i.2e i.2f i.2g i.2h i.2i i.2j i.2k i.2l i.2m i.2n i.2o i.2p i.2q j.0 j.1 j.2 j.3 j.4 j.5 j.6 j.7 j.8 j.9 j.a j.b j.c j.d j.e j.f j.g j.h j.i j.j j.k j.l j.m j.n j.o j.p j.q j.r j.s j.t j.w j.1y j.1z j.20 j.21 j.23 j.24 j.25 j.26 j.27 j.28 j.29 j.2a j.2b j.2c j.2d j.2e j.2f j.2g j.2h j.2i j.2j j.2k j.2l j.2m j.2n j.2o j.2p j.2q k.0 k.1 k.2 k.3 k.4 k.5 k.6 k.7 k.8 k.9 k.a k.b k.c k.d k.e k.f k.g k.h k.i k.j k.k k.l k.m k.n k.o k.v k.22 k.23 k.24 k.25 k.26 k.27 k.28 k.29 k.2a k.2b k.2c k.2d k.2e k.2f k.2g k.2h k.2i k.2j k.2k k.2l k.2m k.2n k.2o k.2p k.2q l.0 l.1 l.2 l.3 l.4 l.5 l.6 l.7 l.8 l.9 l.a l.b l.c l.d l.e l.f l.g l.h l.i l.j l.k l.l l.m l.n l.p l.v l.w l.x l.20 l.21 l.22 l.23 l.24 l.25 l.26 l.27 l.28 l.29 l.2a l.2b l.2c l.2d l.2e l.2f l.2g l.2h l.2i l.2j l.2k l.2l l.2m l.2n l.2o l.2p l.2q m.0 m.1 m.2 m.3 m.4 m.5 m.6 m.7 m.8 m.9 m.a m.b m.c m.d m.e m.f m.g m.h m.i m.j m.k m.l m.n m.o m.p m.u m.v m.w m.x m.1y m.1z m.20 m.21 m.22 m.23 m.24 m.25 m.26 m.27 m.28 m.29 m.2a m.2b m.2c m.2d m.2e m.2f m.2g m.2h m.2i m.2j m.2k m.2l m.2m m.2n m.2o m.2p m.2q n.0 n.1 n.2 n.3 n.4 n.5 n.6 n.7 n.8 n.9 n.a n.b n.c n.d n.e n.f n.g n.h n.i n.j n.k n.l n.m n.n n.o n.p n.y n.20 n.21 n.22 n.23 n.24 n.25 n.26 n.27 n.28 n.29 n.2a n.2b n.2c n.2d n.2e n.2f n.2g n.2h n.2i n.2j n.2k n.2l n.2m n.2n n.2o n.2p n.2q o.0 o.1 o.2 o.3 o.4 o.5 o.6 o.7 o.8 o.9 o.a o.b o.c o.d o.e o.f o.g o.h o.i o.j o.k o.l o.m o.n o.o o.p o.r o.20 o.21 o.22 o.23 o.24 o.25 o.26 o.27 o.28 o.29 o.2a o.2b o.2c o.2d o.2e o.2f o.2g o.2h o.2i o.2j o.2k o.2l o.2m o.2n o.2p o.2q p.0 p.1 p.2 p.3 p.4 p.5 p.6 p.7 p.8 p.9 p.a p.b p.c p.d p.e p.f p.g p.h p.i p.k p.l p.m p.n p.o p.p p.q p.r p.s p.21 p.22 p.23 p.24 p.25 p.26 p.27 p.28 p.29 p.2a p.2b p.2c p.2d p.2e p.2f p.2g p.2h p.2i p.2j p.2k p.2l p.2m p.2p p.2q q.0 q.1 q.2 q.3 q.4 q.5 q.6 q.7 q.8 q.9 q.a q.b q.c q.d q.e q.f q.g q.h q.i q.j q.k q.l q.m q.n q.p q.q q.21 q.22 q.23 q.24 q.25 q.26 q.27 q.28 q.29 q.2c q.2d q.2e q.2f q.2g q.2h q.2i q.2j q.2k q.2l r.0 r.1 r.2 r.3 r.4 r.5 r.6 r.7 r.8 r.9 r.a r.b r.c r.d r.e r.f r.g r.h r.i r.j r.k r.l r.p r.20 r.21 r.22 r.23 r.24 r.25 r.26 r.29 r.2a r.2d r.2e r.2f r.2g r.2h r.2i r.2j r.2k r.2l s.0 s.1 s.2 s.3 s.4 s.5 s.6 s.7 s.8 s.9 s.a s.b s.c s.d s.e s.f s.g s.h s.i s.j s.k s.l s.1v s.1w s.1x s.1y s.1z s.20 s.21 s.22 s.23 s.29 s.2a s.2b s.2e s.2f s.2g s.2h s.2i s.2j s.2k s.2l t.0 t.1 t.2 t.3 t.4 t.5 t.6 t.7 t.8 t.9 t.a t.b t.c t.d t.e t.f t.g t.h t.i t.j t.k t.l t.1v t.1w t.1x t.1y t.1z t.20 t.21 t.22 t.23 t.2a t.2b t.2c t.2f t.2g t.2h t.2i t.2j t.2k t.2l t.2p t.2q u.0 u.1 u.2 u.3 u.4 u.5 u.6 u.7 u.8 u.9 u.a u.b u.c u.d u.e u.f u.g u.h u.i u.j u.k u.1v u.1w u.1x u.1y u.1z u.20 u.21 u.2c u.2d u.2g u.2h u.2i u.2j u.2k u.2l u.2n u.2o u.2p u.2q v.0 v.1 v.2 v.3 v.4 v.5 v.6 v.7 v.8 v.9 v.a v.b v.c v.d v.e v.f v.g v.h v.i v.1v v.1w v.1x v.1y v.1z v.20 v.21 v.2c v.2d v.2e v.2g v.2h v.2l v.2m v.2n v.2o v.2p v.2q w.0 w.1 w.2 w.3 w.4 w.5 w.6 w.7 w.8 w.9 w.a w.b w.c w.d w.e w.f w.g w.h w.1v w.1w w.1x w.1y w.1z w.20 w.2d w.2g w.2h w.2k w.2l w.2m w.2n w.2o w.2p w.2q x.0 x.1 x.2 x.3 x.4 x.5 x.6 x.7 x.8 x.9 x.a x.b x.c x.d x.e x.f x.g x.h x.i x.1v x.1w x.1x x.1y x.1z x.20 x.2i x.2l x.2m x.2n x.2o x.2p x.2q y.0 y.1 y.2 y.3 y.4 y.5 y.6 y.7 y.8 y.9 y.a y.b y.c y.d y.e y.f y.g y.1v y.1w y.1x y.1y y.1z y.2b y.2h y.2l y.2m y.2n y.2o y.2p y.2q z.0 z.1 z.2 z.3 z.4 z.5 z.6 z.7 z.8 z.9 z.a z.b z.c z.d z.e z.f z.g z.h z.1x z.22 z.23 z.24 z.25 z.26 z.27 z.28 z.2n z.2p 10.0 10.1 10.2 10.3 10.4 10.5 10.6 10.7 10.8 10.9 10.a 10.b 10.c 10.d 10.e 10.f 10.g 10.h 10.1x 10.21 10.22 10.23 10.24 10.25 10.26 10.27 10.28 10.2q 11.0 11.1 11.2 11.3 11.4 11.5 11.6 11.7 11.8 11.9 11.a 11.b 11.c 11.d 11.e 11.f 11.g 11.1x 11.1y 11.1z 11.20 11.21 11.22 11.23 11.24 11.25 11.26 11.27 11.28 11.2p 12.0 12.1 12.2 12.3 12.4 12.5 12.6 12.7 12.8 12.9 12.a 12.b 12.c 12.d 12.e 12.f 12.1w 12.1x 12.1y 12.1z 12.20 12.21 12.22 12.23 12.24 12.25 12.26 12.27 12.28 13.0 13.1 13.2 13.3 13.4 13.5 13.6 13.7 13.8 13.9 13.a 13.b 13.c 13.d 13.e 13.1v 13.1w 13.1x 13.1y 13.1z 13.20 13.21 13.22 13.23 13.24 13.25 13.26 13.27 13.28 13.29 13.2h 14.0 14.1 14.2 14.3 14.4 14.5 14.6 14.7 14.8 14.9 14.a 14.b 14.c 14.d 14.1v 14.1w 14.1x 14.1y 14.1z 14.20 14.21 14.22 14.23 14.24 14.25 14.26 14.27 14.28 14.29 14.2a 14.2b 14.2c 14.2g 14.2h 14.2i 15.0 15.1 15.2 15.3 15.4 15.5 15.6 15.7 15.8 15.9 15.a 15.b 15.c 15.d 15.1u 15.1v 15.1w 15.1x 15.1y 15.1z 15.20 15.21 15.22 15.23 15.24 15.25 15.26 15.27 15.28 15.29 15.2a 15.2b 15.2c 15.2d 15.2g 15.2h 15.2i 15.2j 15.2k 15.2l 15.2n 15.2o 15.2p 15.2q 16.0 16.1 16.2 16.3 16.4 16.5 16.6 16.7 16.b 16.c 16.d 16.1u 16.1v 16.1w 16.1x 16.1y 16.1z 16.20 16.21 16.22 16.23 16.24 16.25 16.26 16.27 16.28 16.29 16.2a 16.2b 16.2c 16.2d 16.2e 16.2f 16.2g 16.2h 16.2i 16.2j 16.2k 16.2l 16.2m 16.2n 16.2o 16.2p 16.2q";
+
+const B0 = -1.99, THR = 0.20;
+const FEATS = [
+  { k:"age",  min:40,  max:95,  step:1,   base:65,  coef:0.045, unit:"years" },
+  { k:"lvef", min:15,  max:70,  step:1,   base:45,  coef:-0.06, unit:"%" },
+  { k:"sbp",  min:85,  max:180, step:1,   base:125, coef:-0.02, unit:" mmHg" },
+  { k:"crea", min:0.6, max:3.0, step:0.1, base:1.1, coef:0.9,   unit:" mg/dL" },
+  { k:"smoke", bin:true, base:0, coef:0.6 }
+];
+const patient = { age:70, lvef:38, sbp:118, crea:1.3, smoke:0 };
+
+const SPOKEN = [
+  { n:{en:"Italian",it:"Italiano",es:"Italiano",pt:"Italiano",ca:"Italià"}, lvl:{en:"native",it:"madrelingua",es:"nativo",pt:"nativo",ca:"nadiu"}, w:100 },
+  { n:{en:"English",it:"Inglese",es:"Inglés",pt:"Inglês",ca:"Anglès"}, lvl:"C1", w:85 },
+  { n:{en:"Spanish",it:"Spagnolo",es:"Español",pt:"Espanhol",ca:"Castellà"}, lvl:"C1", w:85 },
+  { n:{en:"Portuguese (BR)",it:"Portoghese (BR)",es:"Portugués (BR)",pt:"Português (BR)",ca:"Portuguès (BR)"}, lvl:"B2", w:68 },
+  { n:{en:"Catalan",it:"Catalano",es:"Catalán",pt:"Catalão",ca:"Català"}, lvl:{en:"A2, learning",it:"A2, in corso",es:"A2, aprendiendo",pt:"A2, aprendendo",ca:"A2, aprenent"}, w:36, learning:true }
+];
+
+const T = {
+  "nav.about":{en:"about",it:"chi sono",es:"sobre mí",pt:"sobre mim",ca:"sobre mi"},
+  "nav.live":{en:"live log",it:"novità",es:"novedades",pt:"novidades",ca:"novetats"},
+  "nav.gallery":{en:"gallery",it:"galleria",es:"galería",pt:"galeria",ca:"galeria"},
+  "nav.exp":{en:"experience",it:"esperienza",es:"experiencia",pt:"experiência",ca:"experiència"},
+  "nav.pubs":{en:"publications",it:"pubblicazioni",es:"publicaciones",pt:"publicações",ca:"publicacions"},
+  "nav.contact":{en:"contact",it:"contatti",es:"contacto",pt:"contato",ca:"contacte"},
+  "theme.dark":{en:"◐ dark",it:"◐ scuro",es:"◐ oscuro",pt:"◐ escuro",ca:"◐ fosc"},
+  "theme.light":{en:"◑ light",it:"◑ chiaro",es:"◑ claro",pt:"◑ claro",ca:"◑ clar"},
+  "status":{en:"Now: Technical Coordinator, AI4HF, University of Barcelona",it:"Ora: Technical Coordinator, AI4HF, Università di Barcellona",es:"Ahora: Coordinador Técnico, AI4HF, Universidad de Barcelona",pt:"Agora: Coordenador Técnico, AI4HF, Universidade de Barcelona",ca:"Ara: Coordinador Tècnic, AI4HF, Universitat de Barcelona"},
+  "h1":{en:"Antonino Angi <br>builds AI that <br>healthcare can <em>trust.</em>",
+        it:"Antonino Angi <br>sviluppa AI di cui <br>la sanità può <em>fidarsi.</em>",
+        es:"Antonino Angi <br>desarrolla IA en la que <br>la sanidad puede <em>confiar.</em>",
+        pt:"Antonino Angi <br>desenvolve IA em que <br>a saúde pode <em>confiar.</em>",
+        ca:"Antonino Angi <br>desenvolupa IA en què <br>la sanitat pot <em>confiar.</em>"},
+  "lede":{en:"AI Research Scientist, Ph.D. (cum laude), focused on <b>healthcare AI and medtech</b>. I've applied AI across very different fields, from <b>intent-based networking</b> and <b>deep reinforcement learning</b> to <b>LLMs</b>, <b>cloud-edge containers</b> and <b>federated learning</b>, and I now bring that toolbox to medicine.",
+          it:"AI Research Scientist, Ph.D. (cum laude), con focus su <b>AI per la sanità e medtech</b>. Ho applicato l'AI in campi molto diversi, dall'<b>intent-based networking</b> e dal <b>deep reinforcement learning</b> agli <b>LLM</b>, ai <b>container cloud-edge</b> e al <b>federated learning</b>, e oggi porto questi strumenti in medicina.",
+          es:"AI Research Scientist, Ph.D. (cum laude), centrado en la <b>IA para la salud y el medtech</b>. He aplicado la IA en campos muy distintos, desde el <b>intent-based networking</b> y el <b>deep reinforcement learning</b> hasta los <b>LLM</b>, los <b>contenedores cloud-edge</b> y el <b>federated learning</b>, y hoy llevo esas herramientas a la medicina.",
+          pt:"AI Research Scientist, Ph.D. (cum laude), focado em <b>IA para a saúde e medtech</b>. Apliquei IA em áreas muito diferentes, do <b>intent-based networking</b> e do <b>deep reinforcement learning</b> aos <b>LLMs</b>, <b>contêineres cloud-edge</b> e <b>federated learning</b>, e hoje levo essas ferramentas para a medicina.",
+          ca:"AI Research Scientist, Ph.D. (cum laude), centrat en la <b>IA per a la salut i el medtech</b>. He aplicat la IA en camps molt diferents, des de l'<b>intent-based networking</b> i el <b>deep reinforcement learning</b> fins als <b>LLM</b>, els <b>contenidors cloud-edge</b> i el <b>federated learning</b>, i avui porto aquestes eines a la medicina."},
+  "cta.live":{en:"See what I'm up to →",it:"Cosa sto facendo →",es:"En qué ando →",pt:"O que tenho feito →",ca:"Què estic fent →"},
+  "cta.cv":{en:"Download CV",it:"Scarica il CV",es:"Descargar CV",pt:"Baixar CV",ca:"Descarregar CV"},
+  "ecg1":{en:"Networks",it:"Reti",es:"Redes",pt:"Redes",ca:"Xarxes"},
+  "ecg2":{en:"Reinforcement learning"},
+  "ecg3":{en:"LLMs & containers",it:"LLM e container",es:"LLM y contenedores",pt:"LLMs e contêineres",ca:"LLM i contenidors"},
+  "ecg4":{en:"Healthcare AI",it:"AI per la sanità",es:"IA para la salud",pt:"IA para a saúde",ca:"IA per a la salut"},
+
+  "k.about":{en:"About",it:"Chi sono",es:"Sobre mí",pt:"Sobre mim",ca:"Sobre mi"},
+  "about.h":{en:"Accuracy is <em>not</em> the same as trust.",it:"Accuratezza <em>non</em> vuol dire fiducia.",es:"Precisión <em>no</em> es lo mismo que confianza.",pt:"Precisão <em>não</em> é o mesmo que confiança.",ca:"Precisió <em>no</em> és el mateix que confiança."},
+  "about.p1":{en:"My main interest is <b>healthcare AI</b>: models that work outside the paper, on real patients, in real hospitals, under real regulation. I'm a postdoctoral researcher at the <b>Artificial Intelligence in Medicine Lab (BCN-AIM), University of Barcelona</b>, where I'm Technical Coordinator of <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, a Horizon Europe project on trustworthy AI for cardiology with clinical partners in Europe, Africa and the Americas.",
+    it:"Il mio interesse principale è l'<b>AI per la sanità</b>: modelli che funzionano fuori dal paper, su pazienti reali, in ospedali reali, con regole reali. Sono ricercatore postdoc all'<b>Artificial Intelligence in Medicine Lab (BCN-AIM) dell'Università di Barcellona</b>, dove sono Technical Coordinator di <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un progetto Horizon Europe sull'AI affidabile in cardiologia con partner clinici in Europa, Africa e America.",
+    es:"Mi interés principal es la <b>IA para la salud</b>: modelos que funcionan fuera del paper, con pacientes reales, en hospitales reales y bajo una regulación real. Soy investigador postdoctoral en el <b>Artificial Intelligence in Medicine Lab (BCN-AIM) de la Universidad de Barcelona</b>, donde soy Coordinador Técnico de <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un proyecto Horizon Europe sobre IA fiable en cardiología con socios clínicos en Europa, África y América.",
+    pt:"Meu principal interesse é a <b>IA para a saúde</b>: modelos que funcionam fora do paper, com pacientes reais, em hospitais reais e sob regulação real. Sou pesquisador de pós-doutorado no <b>Artificial Intelligence in Medicine Lab (BCN-AIM) da Universidade de Barcelona</b>, onde sou Coordenador Técnico do <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, um projeto Horizon Europe sobre IA confiável em cardiologia com parceiros clínicos na Europa, África e América.",
+    ca:"El meu interès principal és la <b>IA per a la salut</b>: models que funcionen fora del paper, amb pacients reals, en hospitals reals i sota una regulació real. Soc investigador postdoctoral a l'<b>Artificial Intelligence in Medicine Lab (BCN-AIM) de la Universitat de Barcelona</b>, on soc Coordinador Tècnic d'<a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un projecte Horizon Europe sobre IA fiable en cardiologia amb socis clínics a Europa, l'Àfrica i Amèrica."},
+  "about.p2":{en:"Day to day, I sit between research, hospitals, lawyers and engineers. I build clinical inference services (mortality prediction with SHAP explanations, served through FastAPI and Docker), lead the requirements engineering behind a 173-requirement trustworthy-AI specification aligned with the <b>EU AI Act</b> and <b>FUTURE-AI</b>, work on <b>explainable AI</b>, and own our work on privacy-preserving federated learning.",
+    it:"Ogni giorno lavoro tra ricerca, ospedali, giuristi e ingegneri. Sviluppo servizi di inferenza clinica (predizione della mortalità con spiegazioni SHAP, servita con FastAPI e Docker), guido la requirements engineering di una specifica di AI affidabile da 173 requisiti allineata all'<b>EU AI Act</b> e a <b>FUTURE-AI</b>, lavoro sulla <b>explainable AI</b> e sono responsabile del nostro lavoro sul federated learning privacy-preserving.",
+    es:"En el día a día trabajo entre investigación, hospitales, juristas e ingenieros. Desarrollo servicios de inferencia clínica (predicción de mortalidad con explicaciones SHAP, servida con FastAPI y Docker), lidero la ingeniería de requisitos de una especificación de IA fiable de 173 requisitos alineada con el <b>EU AI Act</b> y <b>FUTURE-AI</b>, trabajo en <b>IA explicable</b> y soy responsable de nuestro trabajo en federated learning que preserva la privacidad.",
+    pt:"No dia a dia trabalho entre pesquisa, hospitais, juristas e engenheiros. Desenvolvo serviços de inferência clínica (previsão de mortalidade com explicações SHAP, servida com FastAPI e Docker), lidero a engenharia de requisitos de uma especificação de IA confiável com 173 requisitos alinhada com o <b>EU AI Act</b> e o <b>FUTURE-AI</b>, trabalho em <b>IA explicável</b> e sou responsável pelo nosso trabalho em federated learning com preservação da privacidade.",
+    ca:"Al dia a dia treballo entre recerca, hospitals, juristes i enginyers. Desenvolupo serveis d'inferència clínica (predicció de mortalitat amb explicacions SHAP, servida amb FastAPI i Docker), lidero l'enginyeria de requisits d'una especificació d'IA fiable de 173 requisits alineada amb l'<b>EU AI Act</b> i <b>FUTURE-AI</b>, treballo en <b>IA explicable</b> i soc responsable de la nostra feina en federated learning que preserva la privadesa."},
+  "about.p3":{en:"My path started in networks: my Ph.D. at <b>Politecnico di Torino</b> was on intent-based networking (IBN), using AI to turn high-level intents into network configurations. Along the way I fine-tuned LLMs for Kubernetes at <b>IBM Research</b>, trained deep RL schedulers for GPU edge clusters at <b>Telefónica</b> and programmed P4 switches at <b>Saint Louis University</b>. What I enjoyed most was seeing AI solve concrete problems for people, so I chose to focus on the field where I feel that most closely: medicine. I bring with me what networks taught me: thinking in systems, and caring about reliability when things have to work in the real world.",
+    it:"Il mio percorso è partito dalle reti: durante il dottorato al <b>Politecnico di Torino</b> mi sono occupato di intent-based networking (IBN), usando l'AI per tradurre intenti di alto livello in configurazioni di rete. Nel frattempo ho fatto fine-tuning di LLM per Kubernetes in <b>IBM Research</b>, addestrato scheduler deep RL per cluster edge con GPU in <b>Telefónica</b> e programmato switch P4 alla <b>Saint Louis University</b>. Quello che mi appassionava di più era vedere l'AI risolvere problemi concreti per le persone, così ho scelto di concentrarmi sul campo in cui lo sento più vicino: la medicina. Porto con me ciò che le reti mi hanno insegnato: ragionare per sistemi e curare l'affidabilità quando le cose devono funzionare nel mondo reale.",
+    es:"Mi camino empezó en las redes: en mi doctorado en el <b>Politecnico di Torino</b> trabajé en intent-based networking (IBN), usando la IA para traducir intenciones de alto nivel en configuraciones de red. Por el camino hice fine-tuning de LLM para Kubernetes en <b>IBM Research</b>, entrené schedulers de deep RL para clústeres edge con GPU en <b>Telefónica</b> y programé switches P4 en la <b>Saint Louis University</b>. Lo que más me apasionaba era ver la IA resolver problemas concretos para las personas, así que decidí centrarme en el campo donde lo siento más cerca: la medicina. Me llevo lo que aprendí en las redes: pensar en sistemas y cuidar la fiabilidad cuando las cosas tienen que funcionar en el mundo real.",
+    pt:"Meu caminho começou nas redes: no doutorado no <b>Politecnico di Torino</b> trabalhei com intent-based networking (IBN), usando IA para traduzir intenções de alto nível em configurações de rede. No caminho, fiz fine-tuning de LLMs para Kubernetes na <b>IBM Research</b>, treinei schedulers de deep RL para clusters edge com GPU na <b>Telefónica</b> e programei switches P4 na <b>Saint Louis University</b>. O que mais me empolgava era ver a IA resolver problemas concretos para as pessoas, então escolhi me concentrar na área em que sinto isso mais de perto: a medicina. Trago comigo o que as redes me ensinaram: pensar em sistemas e cuidar da confiabilidade quando as coisas precisam funcionar no mundo real.",
+    ca:"El meu camí va començar a les xarxes: al doctorat al <b>Politecnico di Torino</b> vaig treballar en intent-based networking (IBN), fent servir la IA per traduir intencions d'alt nivell en configuracions de xarxa. Pel camí vaig fer fine-tuning de LLM per a Kubernetes a <b>IBM Research</b>, vaig entrenar schedulers de deep RL per a clústers edge amb GPU a <b>Telefónica</b> i vaig programar switches P4 a la <b>Saint Louis University</b>. El que més m'apassionava era veure la IA resoldre problemes concrets per a les persones, així que vaig decidir centrar-me en el camp on ho sento més a prop: la medicina. M'emporto el que em van ensenyar les xarxes: pensar en sistemes i tenir cura de la fiabilitat quan les coses han de funcionar al món real."},
+  "quote.src":{en:"From my talk at ESC Congress 2026, Munich",it:"Dal mio talk all'ESC Congress 2026, Monaco di Baviera",es:"De mi charla en el ESC Congress 2026, Múnich",pt:"Da minha palestra no ESC Congress 2026, Munique",ca:"De la meva xerrada a l'ESC Congress 2026, Munic"},
+  "stats.h":{en:"Current project: AI4HF",it:"Progetto attuale: AI4HF",es:"Proyecto actual: AI4HF",pt:"Projeto atual: AI4HF",ca:"Projecte actual: AI4HF"},
+  "ai4hf.web":{en:"Project website ↗",it:"Sito del progetto ↗",es:"Web del proyecto ↗",pt:"Site do projeto ↗",ca:"Web del projecte ↗"},
+  "stat1":{en:"Horizon Europe programme",it:"Programma Horizon Europe",es:"Programa Horizon Europe",pt:"Programa Horizon Europe",ca:"Programa Horizon Europe"},
+  "stat2":{en:"Consortium partners",it:"Partner del consorzio",es:"Socios del consorcio",pt:"Parceiros do consórcio",ca:"Socis del consorci"},
+  "stat3":{en:"Countries",it:"Paesi",es:"Países",pt:"Países",ca:"Països"},
+  "stat4":{en:"Trustworthy-AI requirements",it:"Requisiti di AI affidabile",es:"Requisitos de IA fiable",pt:"Requisitos de IA confiável",ca:"Requisits d'IA fiable"},
+
+  "k.path":{en:"The path",it:"Il percorso",es:"El camino",pt:"A trajetória",ca:"El camí"},
+  "path.h":{en:"From packets <em>to patients.</em>",it:"Dai pacchetti <em>ai pazienti.</em>",es:"De los paquetes <em>a los pacientes.</em>",pt:"Dos pacotes <em>aos pacientes.</em>",ca:"Dels paquets <em>als pacients.</em>"},
+  "path.sub":{en:"Different fields, one thread: making AI reliable enough to hand it real responsibility. It started with health, and it came back to health.",it:"Campi diversi, un unico filo: rendere l'AI abbastanza affidabile da affidarle responsabilità reali. È iniziato con la sanità, ed è tornato alla sanità.",es:"Campos distintos, un mismo hilo: hacer que la IA sea lo bastante fiable como para confiarle responsabilidades reales. Empezó con la salud y volvió a la salud.",pt:"Áreas diferentes, um mesmo fio: tornar a IA confiável o suficiente para receber responsabilidades reais. Começou com a saúde e voltou para a saúde.",ca:"Camps diferents, un mateix fil: fer que la IA sigui prou fiable per confiar-li responsabilitats reals. Va començar amb la salut i ha tornat a la salut."},
+
+  "k.live":{en:"Live log",it:"Novità",es:"Novedades",pt:"Novidades",ca:"Novetats"},
+  "live.h":{en:"What I've been <em>up to.</em>",it:"Cosa sto <em>facendo.</em>",es:"En qué <em>ando.</em>",pt:"O que tenho <em>feito.</em>",ca:"Què he estat <em>fent.</em>"},
+  "f.all":{en:"All",it:"Tutto",es:"Todo",pt:"Tudo",ca:"Tot"},
+  "f.talk":{en:"Talks",it:"Talk",es:"Charlas",pt:"Palestras",ca:"Xerrades"},
+  "f.event":{en:"Events",it:"Eventi",es:"Eventos",pt:"Eventos",ca:"Esdeveniments"},
+  "f.research":{en:"Research",it:"Ricerca",es:"Investigación",pt:"Pesquisa",ca:"Recerca"},
+  "f.post":{en:"Posts",it:"Post",es:"Posts",pt:"Posts",ca:"Posts"},
+  "f.role":{en:"Milestones",it:"Traguardi",es:"Hitos",pt:"Marcos",ca:"Fites"},
+  "t.talk":{en:"Talk",it:"Talk",es:"Charla",pt:"Palestra",ca:"Xerrada"},
+  "t.event":{en:"Event",it:"Evento",es:"Evento",pt:"Evento",ca:"Esdeveniment"},
+  "t.research":{en:"Research",it:"Ricerca",es:"Investigación",pt:"Pesquisa",ca:"Recerca"},
+  "t.post":{en:"Post"},
+  "t.role":{en:"Milestone",it:"Traguardo",es:"Hito",pt:"Marco",ca:"Fita"},
+  "read.li":{en:"Read on LinkedIn",it:"Leggi su LinkedIn",es:"Leer en LinkedIn",pt:"Ler no LinkedIn",ca:"Llegir a LinkedIn"},
+  "watch.talk":{en:"Watch the talk",it:"Guarda il talk",es:"Ver la charla",pt:"Ver a palestra",ca:"Veure la xerrada"},
+  "watch.session":{en:"Watch the session",it:"Guarda la sessione",es:"Ver la sesión",pt:"Ver a sessão",ca:"Veure la sessió"},
+  "read.paper":{en:"Read the paper (open access)",it:"Leggi l'articolo (open access)",es:"Leer el artículo (acceso abierto)",pt:"Ler o artigo (acesso aberto)",ca:"Llegir l'article (accés obert)"},
+
+  "k.gallery":{en:"Gallery",it:"Galleria",es:"Galería",pt:"Galeria",ca:"Galeria"},
+  "gallery.h":{en:"Conferences, <em>in pictures.</em>",it:"Le conferenze, <em>in foto.</em>",es:"Congresos, <em>en fotos.</em>",pt:"Congressos, <em>em fotos.</em>",ca:"Congressos, <em>en fotos.</em>"},
+  "gallery.sub":{en:"Some moments from the conferences and events I've taken part in.",it:"Alcuni momenti dalle conferenze e dagli eventi a cui ho partecipato.",es:"Algunos momentos de los congresos y eventos en los que he participado.",pt:"Alguns momentos dos congressos e eventos dos quais participei.",ca:"Alguns moments dels congressos i esdeveniments en què he participat."},
+
+  "k.exp":{en:"Experience",it:"Esperienza",es:"Experiencia",pt:"Experiência",ca:"Experiència"},
+  "exp.h":{en:"Where I've <em>worked.</em>",it:"Dove ho <em>lavorato.</em>",es:"Dónde he <em>trabajado.</em>",pt:"Onde <em>trabalhei.</em>",ca:"On he <em>treballat.</em>"},
+  "now":{en:"now",it:"oggi",es:"hoy",pt:"hoje",ca:"avui"},
+
+  "k.pubs":{en:"Publications",it:"Pubblicazioni",es:"Publicaciones",pt:"Publicações",ca:"Publicacions"},
+  "pubs.h":{en:"Selected <em>papers.</em>",it:"Pubblicazioni <em>selezionate.</em>",es:"Publicaciones <em>seleccionadas.</em>",pt:"Publicações <em>selecionadas.</em>",ca:"Publicacions <em>seleccionades.</em>"},
+  "pubs.all":{en:"Full list on Google Scholar →",it:"Elenco completo su Google Scholar →",es:"Lista completa en Google Scholar →",pt:"Lista completa no Google Scholar →",ca:"Llista completa a Google Scholar →"},
+  "a.all":{en:"All",it:"Tutte",es:"Todas",pt:"Todas",ca:"Totes"},
+  "a.health":{en:"Healthcare AI",it:"AI per la sanità",es:"IA para la salud",pt:"IA para a saúde",ca:"IA per a la salut"},
+  "a.llm":{en:"LLMs",it:"LLM",es:"LLM",pt:"LLMs",ca:"LLM"},
+  "a.networks":{en:"Networks",it:"Reti",es:"Redes",pt:"Redes",ca:"Xarxes"},
+
+  "k.skills":{en:"Toolkit",it:"Strumenti",es:"Herramientas",pt:"Ferramentas",ca:"Eines"},
+  "skills.h":{en:"What I <em>work with.</em>",it:"Con cosa <em>lavoro.</em>",es:"Con qué <em>trabajo.</em>",pt:"Com o que eu <em>trabalho.</em>",ca:"Amb què <em>treballo.</em>"},
+  "sk.health":{en:"Healthcare AI",it:"AI per la sanità",es:"IA para la salud",pt:"IA para a saúde",ca:"IA per a la salut"},
+  "sk.gen":{en:"Generative AI",it:"AI generativa",es:"IA generativa",pt:"IA generativa",ca:"IA generativa"},
+  "sk.eng":{en:"Engineering",it:"Ingegneria",es:"Ingeniería",pt:"Engenharia",ca:"Enginyeria"},
+  "sk.sys":{en:"Systems",it:"Sistemi",es:"Sistemas",pt:"Sistemas",ca:"Sistemes"},
+  "sk.lead":{en:"Leadership",it:"Leadership",es:"Liderazgo",pt:"Liderança",ca:"Lideratge"},
+  "spoken":{en:"Italian (native), English (C1), Spanish (C1), Brazilian Portuguese (B2), Catalan (A2)",it:"Italiano (madrelingua), Inglese (C1), Spagnolo (C1), Portoghese brasiliano (B2), Catalano (A2)",es:"Italiano (nativo), Inglés (C1), Español (C1), Portugués brasileño (B2), Catalán (A2)",pt:"Italiano (nativo), Inglês (C1), Espanhol (C1), Português brasileiro (B2), Catalão (A2)",ca:"Italià (nadiu), Anglès (C1), Castellà (C1), Portuguès brasiler (B2), Català (A2)"},
+
+  "k.off":{en:"Outside the lab",it:"Fuori dal lab",es:"Fuera del lab",pt:"Fora do lab",ca:"Fora del lab"},
+  "off.h":{en:"When I'm <em>OOO.</em>",it:"Quando sono <em>fuori ufficio.</em>",es:"Cuando estoy <em>fuera de la oficina.</em>",pt:"Quando estou <em>fora do escritório.</em>",ca:"Quan soc <em>fora de l'oficina.</em>"},
+  "off.lang.t":{en:"Languages, collected",it:"Collezionista di lingue",es:"Coleccionista de idiomas",pt:"Colecionador de idiomas",ca:"Col·leccionista d'idiomes"},
+  "off.lang.p":{en:"I love learning languages, which is why this site speaks five of them. I'm currently studying Catalan at Barcelona's CPNL and keep improving my Brazilian Portuguese with Preply.",
+    it:"Adoro imparare le lingue, ed è per questo che questo sito ne parla cinque. Sto studiando catalano al CPNL di Barcellona e continuo a migliorare il mio portoghese brasiliano con Preply.",
+    es:"Me encanta aprender idiomas, por eso esta web habla cinco. Ahora estudio catalán en el CPNL de Barcelona y sigo mejorando mi portugués brasileño con Preply.",
+    pt:"Adoro aprender idiomas, por isso este site fala cinco. Estou estudando catalão no CPNL de Barcelona e continuo aprimorando meu português brasileiro com o Preply.",
+    ca:"M'encanta aprendre idiomes, per això aquest web en parla cinc. Ara estudio català al CPNL de Barcelona i continuo millorant el meu portuguès brasiler amb Preply."},
+  "off.vb.t":{en:"Volleyball, indoor and on the sand",it:"Pallavolo, indoor e sulla sabbia",es:"Voleibol, en pista y en la arena",pt:"Vôlei, na quadra e na areia",ca:"Voleibol, a pista i a la sorra"},
+  "off.vb.p":{en:"Whenever I can, I'm on a volleyball court, indoor or on the beach. Same lesson as a 15-partner consortium: nobody wins a rally alone.",
+    it:"Appena posso sono su un campo da pallavolo, indoor o in spiaggia. Stessa lezione di un consorzio con 15 partner: nessuno vince uno scambio da solo.",
+    es:"Siempre que puedo estoy en una pista de voleibol, en pabellón o en la playa. La misma lección que un consorcio de 15 socios: nadie gana un punto solo.",
+    pt:"Sempre que posso, estou jogando vôlei, na quadra ou na praia. A mesma lição de um consórcio de 15 parceiros: ninguém ganha um ponto sozinho.",
+    ca:"Sempre que puc soc a una pista de voleibol, a cobert o a la platja. La mateixa lliçó que un consorci de 15 socis: ningú no guanya un punt sol."},
+  "off.cook.t":{en:"Cooking",it:"Cucina",es:"Cocina",pt:"Cozinha",ca:"Cuina"},
+  "off.cook.p":{en:"Cooking is how I switch off after a long day, and with Sicilian roots, food is something I take seriously.",it:"Cucinare è il mio modo di staccare dopo una lunga giornata, e con radici siciliane il cibo è una cosa seria.",es:"Cocinar es mi forma de desconectar después de un día largo y, con raíces sicilianas, la comida es algo que me tomo en serio.",pt:"Cozinhar é o meu jeito de desligar depois de um dia longo e, com raízes sicilianas, comida é coisa séria.",ca:"Cuinar és la meva manera de desconnectar després d'un dia llarg i, amb arrels sicilianes, el menjar és una cosa seriosa."},
+  "off.vb.in":{en:"Indoor",it:"Indoor",es:"Pista cubierta",pt:"Quadra",ca:"Pista coberta"},
+  "menu":{en:"Menu",it:"Menu",es:"Menú",pt:"Menu",ca:"Menú"},
+  "cmd.ph":{en:"Jump to a section, or type a command…",it:"Vai a una sezione o scrivi un comando…",es:"Ve a una sección o escribe un comando…",pt:"Vá para uma seção ou digite um comando…",ca:"Vés a una secció o escriu una ordre…"},
+  "cmd.sec":{en:"Sections",it:"Sezioni",es:"Secciones",pt:"Seções",ca:"Seccions"},
+  "cmd.act":{en:"Actions",it:"Azioni",es:"Acciones",pt:"Ações",ca:"Accions"},
+  "cmd.lang":{en:"Language",it:"Lingua",es:"Idioma",pt:"Idioma",ca:"Idioma"},
+  "cmd.theme":{en:"Toggle dark mode",it:"Cambia tema chiaro/scuro",es:"Cambiar modo oscuro",pt:"Alternar modo escuro",ca:"Canviar mode fosc"},
+  "cmd.mail":{en:"Copy my email",it:"Copia la mia email",es:"Copiar mi email",pt:"Copiar meu e-mail",ca:"Copiar el meu correu"},
+  "cmd.copied":{en:"Copied ✓",it:"Copiata ✓",es:"Copiado ✓",pt:"Copiado ✓",ca:"Copiat ✓"},
+  "cmd.li":{en:"Open LinkedIn",it:"Apri LinkedIn",es:"Abrir LinkedIn",pt:"Abrir LinkedIn",ca:"Obrir LinkedIn"},
+  "cmd.gs":{en:"Open Google Scholar",it:"Apri Google Scholar",es:"Abrir Google Scholar",pt:"Abrir Google Scholar",ca:"Obrir Google Scholar"},
+  "cmd.journey":{en:"Play the journey on the map",it:"Avvia il viaggio sulla mappa",es:"Reproducir el viaje en el mapa",pt:"Reproduzir a jornada no mapa",ca:"Reproduir el viatge al mapa"},
+  "cmd.rnd":{en:"Generate a random patient in the demo",it:"Genera un paziente casuale nella demo",es:"Generar un paciente aleatorio en la demo",pt:"Gerar um paciente aleatório na demo",ca:"Generar un pacient aleatori a la demo"},
+  "nav.path":{en:"the path",it:"il percorso",es:"el camino",pt:"a trajetória",ca:"el camí"},
+  "nav.map":{en:"where I've lived",it:"dove ho vissuto",es:"dónde he vivido",pt:"onde eu morei",ca:"on he viscut"},
+  "nav.demo":{en:"explainable AI demo",it:"demo di AI spiegabile",es:"demo de IA explicable",pt:"demo de IA explicável",ca:"demo d'IA explicable"},
+  "nav.skills":{en:"toolkit",it:"strumenti",es:"herramientas",pt:"ferramentas",ca:"eines"},
+  "nav.off":{en:"outside the lab",it:"fuori dal lab",es:"fuera del lab",pt:"fora do lab",ca:"fora del lab"},
+
+  "k.map":{en:"Map",it:"Mappa",es:"Mapa",pt:"Mapa",ca:"Mapa"},
+  "map.h":{en:"Where I've <em>lived.</em>",it:"Dove ho <em>vissuto.</em>",es:"Dónde he <em>vivido.</em>",pt:"Onde eu <em>morei.</em>",ca:"On he <em>viscut.</em>"},
+  "map.sub":{en:"Click a dot, or press play to follow the journey.",it:"Clicca un punto, oppure premi play per seguire il viaggio.",es:"Haz clic en un punto o pulsa play para seguir el viaje.",pt:"Clique em um ponto ou aperte play para acompanhar a jornada.",ca:"Fes clic en un punt o prem play per seguir el viatge."},
+  "map.cities":{en:"cities",it:"città",es:"ciudades",pt:"cidades",ca:"ciutats"},
+  "map.countries":{en:"countries",it:"paesi",es:"países",pt:"países",ca:"països"},
+  "map.continents":{en:"continents",it:"continenti",es:"continentes",pt:"continentes",ca:"continents"},
+  "map.play":{en:"▶ Play the journey",it:"▶ Avvia il viaggio",es:"▶ Reproducir el viaje",pt:"▶ Ver a jornada",ca:"▶ Reprodueix el viatge"},
+  "map.born":{en:"born here",it:"qui sono nato",es:"aquí nací",pt:"nasci aqui",ca:"aquí vaig néixer"},
+  "map.home":{en:"home base",it:"la mia base",es:"mi base",pt:"minha base",ca:"la meva base"},
+
+  "k.demo":{en:"Try it",it:"Provalo",es:"Pruébalo",pt:"Experimente",ca:"Prova-ho"},
+  "demo.h":{en:"Why this, <em>rather than that?</em>",it:"Perché questo, <em>e non quello?</em>",es:"¿Por qué esto <em>y no aquello?</em>",pt:"Por que isto <em>e não aquilo?</em>",ca:"Per què això <em>i no allò?</em>"},
+  "demo.sub":{en:"My research is about explaining AI decisions. Play with this toy risk model: move the sliders, watch how each feature pushes the prediction, then look at the contrastive question, the topic of my systematic review.",
+    it:"La mia ricerca riguarda la spiegazione delle decisioni dell'AI. Gioca con questo modello di rischio giocattolo: muovi i cursori, guarda come ogni variabile spinge la predizione e poi guarda la domanda contrastiva, il tema della mia revisione sistematica.",
+    es:"Mi investigación trata de explicar las decisiones de la IA. Juega con este modelo de riesgo de juguete: mueve los controles, mira cómo cada variable empuja la predicción y luego mira la pregunta contrastiva, el tema de mi revisión sistemática.",
+    pt:"Minha pesquisa é sobre explicar as decisões da IA. Brinque com este modelo de risco de brinquedo: mova os controles, veja como cada variável empurra a previsão e depois veja a pergunta contrastiva, o tema da minha revisão sistemática.",
+    ca:"La meva recerca tracta d'explicar les decisions de la IA. Juga amb aquest model de risc de joguina: mou els controls, mira com cada variable empeny la predicció i després mira la pregunta contrastiva, el tema de la meva revisió sistemàtica."},
+  "demo.disc":{en:"⚠ Toy model with invented coefficients, for illustration only. Not a clinical tool.",it:"⚠ Modello giocattolo con coefficienti inventati, solo a scopo illustrativo. Non è uno strumento clinico.",es:"⚠ Modelo de juguete con coeficientes inventados, solo con fines ilustrativos. No es una herramienta clínica.",pt:"⚠ Modelo de brinquedo com coeficientes inventados, apenas para ilustração. Não é uma ferramenta clínica.",ca:"⚠ Model de joguina amb coeficients inventats, només il·lustratiu. No és una eina clínica."},
+  "demo.patient":{en:"Patient",it:"Paziente",es:"Paciente",pt:"Paciente",ca:"Pacient"},
+  "demo.random":{en:"🎲 Random patient",it:"🎲 Paziente casuale",es:"🎲 Paciente aleatorio",pt:"🎲 Paciente aleatório",ca:"🎲 Pacient aleatori"},
+  "demo.risk":{en:"Predicted 1-year risk",it:"Rischio previsto a 1 anno",es:"Riesgo previsto a 1 año",pt:"Risco previsto em 1 ano",ca:"Risc previst a 1 any"},
+  "demo.hi":{en:"high risk",it:"rischio alto",es:"riesgo alto",pt:"risco alto",ca:"risc alt"},
+  "demo.lo":{en:"low risk",it:"rischio basso",es:"riesgo bajo",pt:"risco baixo",ca:"risc baix"},
+  "demo.shap":{en:"What pushed the prediction (SHAP-style)",it:"Cosa ha spinto la predizione (stile SHAP)",es:"Qué empujó la predicción (estilo SHAP)",pt:"O que empurrou a previsão (estilo SHAP)",ca:"Què ha empès la predicció (estil SHAP)"},
+  "demo.whyhi":{en:"Why <b>high</b> rather than <b>low</b> risk?",it:"Perché rischio <b>alto</b> e non <b>basso</b>?",es:"¿Por qué riesgo <b>alto</b> y no <b>bajo</b>?",pt:"Por que risco <b>alto</b> e não <b>baixo</b>?",ca:"Per què risc <b>alt</b> i no <b>baix</b>?"},
+  "demo.whylo":{en:"Why <b>low</b> rather than <b>high</b> risk?",it:"Perché rischio <b>basso</b> e non <b>alto</b>?",es:"¿Por qué riesgo <b>bajo</b> y no <b>alto</b>?",pt:"Por que risco <b>baixo</b> e não <b>alto</b>?",ca:"Per què risc <b>baix</b> i no <b>alt</b>?"},
+  "demo.cf":{en:"If <b>{f}</b> were <b>{n}</b> instead of {o}, the model would say <b>{r}</b>.",it:"Se <b>{f}</b> fosse <b>{n}</b> invece di {o}, il modello direbbe <b>{r}</b>.",es:"Si <b>{f}</b> fuera <b>{n}</b> en lugar de {o}, el modelo diría <b>{r}</b>.",pt:"Se <b>{f}</b> fosse <b>{n}</b> em vez de {o}, o modelo diria <b>{r}</b>.",ca:"Si <b>{f}</b> fos <b>{n}</b> en lloc de {o}, el model diria <b>{r}</b>."},
+  "demo.none":{en:"No single change would flip it: it takes several factors together.",it:"Nessun singolo cambiamento basta: servono più fattori insieme.",es:"Ningún cambio por sí solo basta: hacen falta varios factores juntos.",pt:"Nenhuma mudança isolada basta: são necessários vários fatores juntos.",ca:"Cap canvi per si sol no n'hi ha prou: calen diversos factors alhora."},
+  "demo.try":{en:"Try it →",it:"Prova →",es:"Pruébalo →",pt:"Testar →",ca:"Prova-ho →"},
+  "demo.yes":{en:"yes",it:"sì",es:"sí",pt:"sim",ca:"sí"},
+  "demo.no":{en:"no",it:"no",es:"no",pt:"não",ca:"no"},
+  "u.years":{en:"years",it:"anni",es:"años",pt:"anos",ca:"anys"},
+  "f.age":{en:"Age",it:"Età",es:"Edad",pt:"Idade",ca:"Edat"},
+  "f.lvef":{en:"Ejection fraction",it:"Frazione di eiezione",es:"Fracción de eyección",pt:"Fração de ejeção",ca:"Fracció d'ejecció"},
+  "f.sbp":{en:"Systolic pressure",it:"Pressione sistolica",es:"Presión sistólica",pt:"Pressão sistólica",ca:"Pressió sistòlica"},
+  "f.crea":{en:"Creatinine",it:"Creatinina",es:"Creatinina",pt:"Creatinina",ca:"Creatinina"},
+  "f.smoke":{en:"Smoker",it:"Fumatore",es:"Fumador",pt:"Fumante",ca:"Fumador"},
+  "k.contact":{en:"Contact",it:"Contatti",es:"Contacto",pt:"Contato",ca:"Contacte"},
+  "contact.h":{en:"Let's <em>talk.</em>",it:"Parliamo<em>ne.</em>",es:"<em>Hablemos.</em>",pt:"Vamos <em>conversar.</em>",ca:"Parlem<em>-ne.</em>"},
+  "updated":{en:"Last updated",it:"Ultimo aggiornamento",es:"Última actualización",pt:"Última atualização",ca:"Darrera actualització"}
+};
+
+let lang = "en", logFilter = "all", pubFilter = "all", galIdx = 0;
+const $ = s => document.querySelector(s);
+const L = o => typeof o === "string" ? o : (o && (o[lang] ?? o.en)) ?? "";
+const t = k => L(T[k]);
+const fmtDate = d => /^\d{4}$/.test(d) ? d : d==="now" ? t("now") :
+  new Intl.DateTimeFormat(LOCALE[lang]||lang,{month:"short",year:"numeric"}).format(new Date(d+"-01T12:00:00"));
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} }), {threshold:.1});
+
+function renderLog(){
+  $("#filters").innerHTML = ["all","talk","event","research","post","role"].map(k=>`<button class="chip${k===logFilter?" on":""}" data-f="${k}">${t("f."+k)}</button>`).join("");
+  $("#log").innerHTML = LOG.map(e => `
+    <article class="entry${logFilter!=="all"&&e.type!==logFilter?" hide":""}" data-type="${e.type}">
+      <div class="card">
+        <div class="meta"><span class="tag">${t("t."+e.type)}</span><span>${fmtDate(e.date)}</span><span>${e.where}</span></div>
+        <h3>${L(e.title)}</h3><p>${L(e.text)}</p>
+        ${e.link?`<a class="more" href="${e.link}" target="_blank">${t(e.linkLabel||"read.li")} →</a>`:""}
+      </div></article>`).join("");
+}
+function renderSpoken(){
+  $("#lv").innerHTML = SPOKEN.map(x=>`<div class="lv-row${x.learning?" learning":""}"><span>${L(x.n)}</span><div class="bar"><i style="--w:${x.w}%"></i></div><span class="lvl">${L(x.lvl)}</span></div>`).join("");
+}
+function renderPath(){
+  $("#arc").innerHTML = PATH.map((s,i)=>`<div class="step"><div class="node">0${i+1}</div><span class="yr">${s.yr}</span><h3>${L(s.t)}</h3><p>${L(s.p)}</p></div>`).join("");
+}
+function renderXP(){
+  $("#xp").innerHTML = XP.map(x=>`
+    <div class="xp"><div class="when">${fmtDate(x.from)} → ${fmtDate(x.to)}</div><div>
+      <h3>${L(x.title)}</h3><div class="org">${L(x.org)}</div>
+      <ul>${x.items.map(i=>`<li>${L(i)}</li>`).join("")}</ul></div></div>`).join("");
+}
+function renderPubs(){
+  $("#pubfilter").innerHTML = ["all","health","llm","networks"].map(k=>`<button class="chip${k===pubFilter?" on":""}" data-f="${k}">${t("a."+k)}</button>`).join("");
+  $("#pubs").innerHTML = PUBS.filter(p=>pubFilter==="all"||p.area===pubFilter).map(p=>`
+    <li class="pub"><div class="y">${p.y}</div><div>
+      <div class="t">${p.url?`<a href="${p.url}" target="_blank">${p.t} ↗</a>`:p.t}</div>
+      <div class="a">${p.a.replace(/A\. Angi\*?/g,m=>`<u>${m}</u>`)}</div>
+      <div class="v">${p.v}</div></div></li>`).join("");
+}
+function renderGallery(){
+  $("#gal").innerHTML = GALLERY.map((g,i)=>`
+    <figure class="shot" data-i="${i}" title="${g.src}">
+      <img src="${g.src}" alt="${L(g.caption)}" loading="lazy" onerror="this.outerHTML='<div class=&quot;ph${g.tall?" tall":""}&quot;>${g.event.split(",")[0].trim()}</div>'">
+      <figcaption><b>${g.event}, ${fmtDate(g.date)}</b>${L(g.caption)}</figcaption>
+    </figure>`).join("");
+}
+function openLB(i){
+  galIdx = (i+GALLERY.length)%GALLERY.length; const g = GALLERY[galIdx];
+  const lb=$("#lb"); lb.querySelector("img").src=g.src; lb.querySelector("p").textContent=`${g.event}, ${fmtDate(g.date)}. ${L(g.caption)}`;
+  lb.classList.add("open");
+}
+
+buildMap();
+function setLang(l){
+  lang = LANGS.includes(l)?l:"en"; document.documentElement.lang = LOCALE[lang]||lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{ if(T[el.dataset.i]) el.innerHTML = t(el.dataset.i); });
+  $("#langsw").innerHTML = LANGS.map(x=>`<button class="${x===lang?"on":""}" data-l="${x}">${x.toUpperCase()}</button>`).join("");
+  $("#theme").textContent = t(document.documentElement.dataset.theme==="dark"?"theme.light":"theme.dark");
+  $("#updated").textContent = `${t("updated")}: ${fmtDate(LAST_UPDATED)}`;
+  renderSpoken(); renderPath(); renderLog(); labelMap(); renderSliders(); updateDemo(); if($("#cmd").classList.contains("open")) buildCmd(); renderXP(); renderPubs(); renderGallery();
+  try{localStorage.setItem("lang",lang)}catch(e){}
+}
+
+$("#langsw").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) setLang(b.dataset.l);});
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; logFilter=b.dataset.f; renderLog();});
+$("#pubfilter").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; pubFilter=b.dataset.f; renderPubs();});
+$("#gal").addEventListener("click",e=>{const f=e.target.closest(".shot"); if(f && f.querySelector("img")) openLB(+f.dataset.i);});
+$("#lb").addEventListener("click",e=>{
+  if(e.target.classList.contains("pv")) return openLB(galIdx-1);
+  if(e.target.classList.contains("nx")) return openLB(galIdx+1);
+  if(e.target.tagName!=="IMG") $("#lb").classList.remove("open");
+});
+document.addEventListener("keydown",e=>{ if(!$("#lb").classList.contains("open")) return;
+  if(e.key==="Escape") $("#lb").classList.remove("open"); if(e.key==="ArrowLeft") openLB(galIdx-1); if(e.key==="ArrowRight") openLB(galIdx+1); });
+
+function setTheme(th){ document.documentElement.dataset.theme=th; $("#theme").textContent=t(th==="dark"?"theme.light":"theme.dark"); try{localStorage.setItem("theme",th)}catch(e){} }
+$("#theme").onclick = () => setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+
+function proj(lon,lat){ return [ (lon+100)/135*1000, (68-lat)*11.29 ]; }
+function buildMap(){
+  const ls=0.9/Math.cos(49*Math.PI/180), sx=ls/135*1000, sy=0.9*11.29;
+  const dots = MAP_DOTS.split(" ").map(p=>{const [r,c]=p.split(".").map(v=>parseInt(v,36)); return `<circle class="d" cx="${(c*sx).toFixed(1)}" cy="${(r*sy).toFixed(1)}" r="2.7"/>`;}).join("");
+  const segs = JOURNEY.slice(1).map((st,i)=>{ const a=PLACES[JOURNEY[i].k], b=PLACES[st.k]; const [x1,y1]=proj(a.lon,a.lat), [x2,y2]=proj(b.lon,b.lat);
+    const mx=(x1+x2)/2, my=(y1+y2)/2 - Math.hypot(x2-x1,y2-y1)*0.28 - 8;
+    return `<path class="seg" d="M${x1.toFixed(1)} ${y1.toFixed(1)} Q${mx.toFixed(1)} ${my.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}"/>`; }).join("");
+  const mks = Object.entries(PLACES).map(([k,p])=>{ const [x,y]=proj(p.lon,p.lat);
+    return `<g class="mk${p.home?" home":""}${p.born?" born":""}" data-k="${k}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><circle class="r" r="7"/><circle class="c" r="7"/><circle r="16" fill="transparent"/><text x="12" y="-10"></text></g>`; }).join("");
+  $("#nCities").textContent = Object.keys(PLACES).length;
+  $("#nCountries").textContent = new Set(Object.values(PLACES).map(p=>p.cc)).size;
+  $("#mapsvg").innerHTML = `<g>${dots}</g><g>${segs}</g><g>${mks}</g>`;
+  document.querySelectorAll(".seg").forEach(p=>{const len=p.getTotalLength(); p.style.strokeDasharray=len; p.style.strokeDashoffset=len;});
+  $("#mapsvg").addEventListener("click",e=>{const g=e.target.closest(".mk"); if(g){stopJourney(); showPlace(g.dataset.k);}});
+}
+let curPlace="barcelona", jt=[];
+function labelMap(){ document.querySelectorAll(".mk").forEach(g=>g.querySelector("text").textContent=L(PLACES[g.dataset.k].city)); showPlace(curPlace,true); }
+function showPlace(k,instant,stop){
+  curPlace=k; const p=PLACES[k], c=$("#mcard");
+  document.querySelectorAll(".mk").forEach(g=>g.classList.toggle("on",g.dataset.k===k));
+  const src=stop||p, home=stop?stop.home:p.home, born=stop?stop.born:p.born;
+  const fill=()=>{ c.innerHTML=`<div class="yr">${src.yrs}${home?t("now")+", "+t("map.home"):""}${born?", "+t("map.born"):""}</div><h4>${L(p.city)}</h4><p>${L(src.d)}</p>`; c.classList.remove("swap"); };
+  const sc=document.querySelector('.map-scroll');
+  if(sc && sc.scrollWidth>sc.clientWidth+4){ const x=proj(p.lon,p.lat)[0]/1000*sc.scrollWidth; sc.scrollTo({left:x-sc.clientWidth/2, behavior:instant?'auto':'smooth'}); }
+  if(instant) return fill();
+  c.classList.add("swap"); setTimeout(fill,200);
+}
+function stopJourney(){ jt.forEach(clearTimeout); jt=[]; }
+function playJourney(){
+  stopJourney(); const segs=[...document.querySelectorAll(".seg")];
+  segs.forEach(p=>{p.style.transition="none"; p.style.strokeDashoffset=p.getTotalLength();});
+  document.getElementById("map").scrollIntoView({behavior:"smooth",block:"start"});
+  showPlace(JOURNEY[0].k,false,JOURNEY[0]);
+  segs.forEach((p,i)=>{
+    jt.push(setTimeout(()=>{ p.style.transition="stroke-dashoffset 1.8s ease-in-out"; p.style.strokeDashoffset=0; },900+i*3200));
+    jt.push(setTimeout(()=>showPlace(JOURNEY[i+1].k,false,JOURNEY[i+1]),900+i*3200+1800));
+  });
+}
+$("#play").addEventListener("click",playJourney);
+
+const sig = z => 1/(1+Math.exp(-z)), logit = p => Math.log(p/(1-p));
+const fmtV = (f,v) => f.bin ? t(v?"demo.yes":"demo.no") : (f.k==="crea"? v.toFixed(1) : Math.round(v)) + (f.unit==="years" ? " "+t("u.years") : f.unit);
+function renderSliders(){
+  $("#sliders").innerHTML = FEATS.map(f => f.bin
+    ? `<div class="sl tg"><span>${t("f."+f.k)}</span><button class="sw${patient[f.k]?" on":""}" data-k="${f.k}" aria-label="${t("f."+f.k)}"></button></div>`
+    : `<div class="sl"><label><span>${t("f."+f.k)}</span><output id="o-${f.k}">${fmtV(f,patient[f.k])}</output></label><input type="range" data-k="${f.k}" min="${f.min}" max="${f.max}" step="${f.step}" value="${patient[f.k]}"></div>`).join("");
+}
+$("#sliders").addEventListener("input",e=>{ const k=e.target.dataset.k; if(!k) return; patient[k]=parseFloat(e.target.value); $("#o-"+k).textContent=fmtV(FEATS.find(f=>f.k===k),patient[k]); updateDemo(); });
+$("#sliders").addEventListener("click",e=>{ const b=e.target.closest(".sw"); if(!b) return; patient[b.dataset.k]^=1; b.classList.toggle("on"); updateDemo(); });
+function updateDemo(){
+  const phi = FEATS.map(f=>({f, v:f.coef*(patient[f.k]-f.base)}));
+  const z = B0 + phi.reduce((a,b)=>a+b.v,0), p = sig(z), hi = p>=THR;
+  $("#rv").textContent = Math.round(p*100)+"%";
+  $("#rc").className = "rc "+(hi?"hi":"lo"); $("#rc").textContent = t(hi?"demo.hi":"demo.lo");
+  $("#beat").style.setProperty("--bpm",(60/(55+p*110)).toFixed(2)+"s");
+  const mx = Math.max(1.2,...phi.map(x=>Math.abs(x.v)));
+  $("#wf").innerHTML = [...phi].sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).map(x=>
+    `<div class="wf-row"><span>${t("f."+x.f.k)}</span><div class="wf-bar"><i class="${x.v>=0?"up":"dn"}" style="width:${(Math.abs(x.v)/mx*50).toFixed(1)}%"></i></div><span class="v">${x.v>=0?"+":"−"}${Math.abs(x.v).toFixed(2)}</span></div>`).join("");
+  $("#cfq").innerHTML = t(hi?"demo.whyhi":"demo.whylo");
+  const need = logit(THR) - z + (hi?-0.02:0.02), cfs=[];
+  FEATS.forEach(f=>{
+    if(f.bin){ const nv=patient[f.k]?0:1, dz=f.coef*(nv-patient[f.k]); if(Math.sign(dz)===Math.sign(need) && Math.abs(dz)>=Math.abs(need)) cfs.push({f,nv,cost:.5}); return; }
+    const d=need/f.coef; let nv=patient[f.k]+d;
+    nv = f.step<1 ? (d>0?Math.ceil(nv*10)/10:Math.floor(nv*10)/10) : (d>0?Math.ceil(nv):Math.floor(nv));
+    if(nv>=f.min && nv<=f.max) cfs.push({f,nv,cost:Math.abs(nv-patient[f.k])/(f.max-f.min)});
+  });
+  cfs.sort((a,b)=>a.cost-b.cost);
+  $("#cfa").innerHTML = cfs.length
+    ? cfs.slice(0,2).map(c=>`<div class="cf-a"><span>${t("demo.cf").replace("{f}",t("f."+c.f.k).toLowerCase()).replace("{n}",fmtV(c.f,c.nv)).replace("{o}",fmtV(c.f,patient[c.f.k])).replace("{r}",t(hi?"demo.lo":"demo.hi"))}</span><button class="chip" data-k="${c.f.k}" data-v="${c.nv}">${t("demo.try")}</button></div>`).join("")
+    : `<div class="cf-a"><span>${t("demo.none")}</span></div>`;
+}
+function animateTo(k,v){
+  const f=FEATS.find(x=>x.k===k);
+  if(f.bin){ patient[k]=v; renderSliders(); return updateDemo(); }
+  const from=patient[k], t0=performance.now(), el=document.querySelector(`input[data-k="${k}"]`);
+  const step=now=>{ const q=Math.min((now-t0)/650,1), e=1-Math.pow(1-q,3); patient[k] = q<1 ? from+(v-from)*e : v;
+    el.value=patient[k]; $("#o-"+k).textContent=fmtV(f,patient[k]); updateDemo(); if(q<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+$("#cfa").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) animateTo(b.dataset.k,parseFloat(b.dataset.v));});
+function randomPatient(){
+  FEATS.forEach(f=>{ if(f.bin){ patient[f.k]=Math.random()<.3?1:0; return; }
+    let v=Math.round((f.min+Math.random()*(f.max-f.min))/f.step)*f.step; patient[f.k]= f.step<1 ? +v.toFixed(1) : v; });
+  renderSliders(); updateDemo();
+}
+$("#rnd").addEventListener("click",randomPatient);
+
+const SECTIONS=[["about","nav.about"],["path","nav.path"],["map","nav.map"],["demo","nav.demo"],["live","nav.live"],["gallery","nav.gallery"],["experience","nav.exp"],["publications","nav.pubs"],["skills","nav.skills"],["off","nav.off"],["contact","nav.contact"]];
+const LNAMES={en:"English",it:"Italiano",es:"Español",pt:"Português (BR)",ca:"Català"};
+let cmdItems=[], cmdSel=0;
+const norm = x => x.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const go = id => document.getElementById(id).scrollIntoView({behavior:"smooth"});
+function buildCmd(){
+  const q=norm($("#cmdq").value.trim());
+  const all=[
+    ...SECTIONS.map(([id,k],i)=>({g:"cmd.sec",label:t(k),n:String(i+1).padStart(2,"0"),run:()=>go(id)})),
+    {g:"cmd.act",label:t("cmd.journey"),n:"▶",run:playJourney},
+    {g:"cmd.act",label:t("cmd.rnd"),n:"🎲",run:()=>{randomPatient(); go("demo");}},
+    {g:"cmd.act",label:t("cmd.theme"),n:"◐",keep:true,run:()=>$("#theme").click()},
+    {g:"cmd.act",label:t("cmd.mail"),n:"@",keep:true,run:el=>{ try{navigator.clipboard.writeText("antoninoangi96@gmail.com")}catch(e){} if(el) el.querySelector(".n").textContent=t("cmd.copied"); }},
+    {g:"cmd.act",label:t("cta.cv"),n:"PDF",run:()=>window.open("Antonino_Angi_CV.pdf","_blank")},
+    {g:"cmd.act",label:t("cmd.li"),n:"↗",run:()=>window.open("https://www.linkedin.com/in/antonino-angi/","_blank")},
+    {g:"cmd.act",label:t("cmd.gs"),n:"↗",run:()=>window.open("https://scholar.google.com/citations?user=e8CkXQwAAAAJ","_blank")},
+    ...LANGS.map(l=>({g:"cmd.lang",label:LNAMES[l],n:l===lang?"●":l.toUpperCase(),keep:true,run:()=>setLang(l)}))
+  ];
+  cmdItems = all.filter(x=>!q || norm(x.label).includes(q) || norm(t(x.g)).includes(q));
+  cmdSel = Math.min(cmdSel, Math.max(cmdItems.length-1,0)); let last="";
+  $("#cmdl").innerHTML = cmdItems.map((x,i)=>{ const h = x.g!==last ? `<div class="cmd-g">${t(x.g)}</div>` : ""; last=x.g;
+    return h+`<div class="cmd-it${i===cmdSel?" sel":""}" data-n="${i}"><span>${x.label}</span><span class="n">${x.n}</span></div>`; }).join("");
+  $("#cmdq").placeholder=t("cmd.ph");
+}
+function markSel(){ document.querySelectorAll(".cmd-it").forEach(n=>n.classList.toggle("sel",+n.dataset.n===cmdSel)); document.querySelector(".cmd-it.sel")?.scrollIntoView({block:"nearest"}); }
+function runCmd(i){ const x=cmdItems[i]; if(!x) return; const el=document.querySelector(`.cmd-it[data-n="${i}"]`); if(!x.keep) closeCmd(); x.run(el); }
+function openCmd(){ $("#cmd").classList.add("open"); $("#cmdq").value=""; cmdSel=0; buildCmd(); if(matchMedia("(hover:hover)").matches) setTimeout(()=>$("#cmdq").focus(),20); }
+function closeCmd(){ $("#cmd").classList.remove("open"); }
+$("#menuBtn").addEventListener("click",openCmd);
+$("#cmd").addEventListener("click",e=>{ const it=e.target.closest(".cmd-it"); if(it) return runCmd(+it.dataset.n); if(e.target.id==="cmd") closeCmd(); });
+$("#cmd").addEventListener("mousemove",e=>{ const it=e.target.closest(".cmd-it"); if(it && +it.dataset.n!==cmdSel){ cmdSel=+it.dataset.n; document.querySelectorAll(".cmd-it").forEach(n=>n.classList.toggle("sel",+n.dataset.n===cmdSel)); } });
+$("#cmdq").addEventListener("input",()=>{ cmdSel=0; buildCmd(); });
+document.addEventListener("keydown",e=>{
+  const open=$("#cmd").classList.contains("open");
+  if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k"){ e.preventDefault(); return open?closeCmd():openCmd(); }
+  if(!open && e.key==="/" && !/input|textarea/i.test(document.activeElement.tagName)){ e.preventDefault(); return openCmd(); }
+  if(!open || !cmdItems.length) return;
+  if(e.key==="Escape") closeCmd();
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){ e.preventDefault(); cmdSel=(cmdSel+(e.key==="ArrowDown"?1:-1)+cmdItems.length)%cmdItems.length; markSel(); }
+  if(e.key==="Enter"){ e.preventDefault(); runCmd(cmdSel); }
+});
+if(!/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent)) document.querySelector("#menuBtn kbd").textContent="Ctrl K";
+
+console.log("%c──╮╭──╯╰──╮╭── ♥\n%cHi! If you're reading the console, we'd probably get along.\nantoninoangi96@gmail.com","color:#E5484D;font:16px monospace","font:13px sans-serif");
+
+let savedTheme=null, savedLang=null; try{savedTheme=localStorage.getItem("theme"); savedLang=localStorage.getItem("lang")}catch(e){}
+document.documentElement.dataset.theme = savedTheme || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+setLang(new URLSearchParams(location.search).get("lang") || savedLang || (navigator.language||"en").slice(0,2));
+$("#yr").textContent = new Date().getFullYear();
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+const co = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return; co.unobserve(e.target);
+  const el=e.target, end=parseFloat(el.dataset.count), dec=String(end).includes(".")?1:0, pre=el.dataset.prefix||"", suf=el.dataset.suffix||""; let t0=null;
+  const step = ts => { t0??=ts; const k=Math.min((ts-t0)/1400,1), v=(end*(1-Math.pow(1-k,3))).toFixed(dec);
+    el.innerHTML = pre+v+(suf?`<span>${suf}</span>`:""); if(k<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}), {threshold:.5});
+document.querySelectorAll("[data-count]").forEach(el=>co.observe(el));
+</script>
+</body>
+</html>
