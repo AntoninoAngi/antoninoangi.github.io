@@ -31,8 +31,7 @@
   nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
   .logo{font-family:var(--mono);font-size:14px;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
-  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--pulse);animation:beat 1.2s infinite}
-  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.5)}30%{transform:scale(1)}45%{transform:scale(1.3)}}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--pulse)}
   .links{display:flex;gap:22px;align-items:center}
   .links a{font-family:var(--mono);font-size:13px;text-decoration:none;color:var(--ink-2);text-transform:lowercase}
   .links a:hover{color:var(--pulse)}
@@ -66,14 +65,7 @@
   .badge svg{width:46px;height:18px}
   .badge path{fill:none;stroke:var(--pulse);stroke-width:2;stroke-linejoin:round}
 
-  .ecg{width:100%;height:140px;margin-top:60px;display:block}
-  .ecg path{fill:none;stroke:var(--pulse);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-  .ecg .trace{stroke-dasharray:2800;stroke-dashoffset:2800;animation:draw 3.4s ease-out forwards}
-  .ecg line{stroke:var(--line);stroke-width:1}
   @keyframes draw{to{stroke-dashoffset:0}}
-  .ecg-labels{display:grid;grid-template-columns:repeat(4,1fr);font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
-  .ecg-labels span{padding-left:29%}
-  .ecg-labels span:last-child{color:var(--pulse)}
 
   section{padding:100px 0;border-top:1px solid var(--line)}
   body{counter-reset:sec}
@@ -253,7 +245,6 @@
   .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--paper);transition:.2s}
   .sw.on{background:var(--pulse)}.sw.on::after{left:23px}
   .risk{display:flex;align-items:center;gap:18px;margin-bottom:22px}
-  .beat{width:18px;height:18px;border-radius:50%;background:var(--pulse);flex:none;animation:beat var(--bpm,1s) infinite}
   .rl{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
   .rv{font-family:var(--serif);font-size:64px;line-height:1}
   .rc{display:inline-block;margin-top:4px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:2px 10px;border-radius:20px}
@@ -324,12 +315,17 @@
     .xp{grid-template-columns:1fr}
     .skills{grid-template-columns:1fr}
     section{padding:70px 0}
-    .ecg-labels{font-size:9.5px}
-    .ecg-labels span{padding-left:18%}
   }
   @media (max-width:520px){ .lv-row{grid-template-columns:1fr auto;gap:4px 10px} .lv-row .bar{grid-column:1/-1;order:3} .cook p{padding-right:0;padding-bottom:70px} }
   @media (max-width:520px){ #theme{display:none} .logo span.txt{display:none} }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.ecg .trace{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  footer .made{margin-top:8px;font-size:11.5px;opacity:.85}
+  .howbtn{margin-left:8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);font-family:var(--mono);font-size:11px;line-height:1;cursor:pointer;vertical-align:middle;transition:.2s}
+  .howbtn:hover,.howbtn[aria-expanded=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .how{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:-6px 0 22px;font-size:14.5px;color:var(--ink-2)}
+  .how b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
+  .how p{margin-bottom:10px}
+  .how code{display:block;font-family:var(--mono);font-size:12.5px;color:var(--pulse);overflow-x:auto;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -379,14 +375,6 @@
       </div>
     </div>
 
-    <svg class="ecg" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
-      <line x1="0" y1="75" x2="1200" y2="75"/>
-      <path class="trace" d="M0 75 H55 l10 -8 l10 8 H95 l8 6 l12 -62 l12 92 l10 -36 H200 l14 -14 l14 14 H300
-        H355 l10 -8 l10 8 H395 l8 6 l12 -62 l12 92 l10 -36 H500 l14 -14 l14 14 H600
-        H655 l10 -8 l10 8 H695 l8 6 l12 -62 l12 92 l10 -36 H800 l14 -14 l14 14 H900
-        H955 l10 -8 l10 8 H995 l8 6 l12 -70 l12 100 l10 -36 H1100 l14 -16 l14 16 H1200"/>
-    </svg>
-    <div class="ecg-labels"><span data-i="ecg1"></span><span data-i="ecg2"></span><span data-i="ecg3"></span><span data-i="ecg4"></span></div>
   </div>
 </header>
 
@@ -401,7 +389,7 @@
         <p data-i="about.p3"></p>
       </div>
       <div class="reveal">
-        <p class="quote">"Trust in clinical AI isn't a property of the model. It's built across the data, the model, and the people who use it."<small data-i="quote.src"></small></p>
+        <p class="quote">"Accuracy is a property of the model. Trust is a property of the relationship between the model and the people who must act on it."<small data-i="quote.src"></small></p>
       </div>
     </div>
 
@@ -450,7 +438,8 @@
         <div id="sliders"></div>
       </div>
       <div class="dm-right">
-        <div class="risk"><span class="beat" id="beat"></span><div><div class="rl" data-i="demo.risk"></div><div class="rv" id="rv"></div><span class="rc" id="rc"></span></div></div>
+        <div class="risk"><div><div class="rl"><span data-i="demo.risk"></span><button class="howbtn" id="howbtn" aria-expanded="false" aria-controls="how">?</button></div><div class="rv" id="rv"></div><span class="rc" id="rc"></span></div></div>
+        <div class="how" id="how" hidden><b data-i="demo.how.t"></b><p data-i="demo.how.p"></p><code>p = 1 / (1 + e<sup>−z</sup>),  z = β₀ + Σ βᵢ (xᵢ − x̄ᵢ)</code></div>
         <div class="wf-h" data-i="demo.shap"></div>
         <div id="wf"></div>
         <div class="cf"><div class="cf-q" id="cfq"></div><div id="cfa"></div></div>
@@ -478,7 +467,7 @@
   </div>
 </section>
 <div class="cmd" id="cmd"><div class="cmd-box">
-  <div class="cmd-in"><svg viewBox="0 0 22 14"><path d="M0 7 H6 l2 -2 l2 2 H12 l2 -6 l2 12 l2 -6 H22"/></svg><input id="cmdq" autocomplete="off" spellcheck="false"></div>
+  <div class="cmd-in"><svg viewBox="0 0 22 22" style="width:18px;height:18px"><circle cx="9" cy="9" r="6.5"/><path d="M14 14 L20 20"/></svg><input id="cmdq" autocomplete="off" spellcheck="false"></div>
   <div class="cmd-list" id="cmdl"></div>
   <div class="cmd-ft"><span>↑ ↓&nbsp;&nbsp;&nbsp;↵&nbsp;&nbsp;&nbsp;esc</span><span>⌘K&nbsp;&nbsp;&nbsp;Ctrl K&nbsp;&nbsp;&nbsp;/</span></div>
 </div></div>
@@ -557,6 +546,7 @@
 
 <footer>
   <div class="wrap"><span>© <span id="yr"></span> Antonino Angi, Barcelona</span><span id="updated"></span></div>
+  <div class="wrap made"><span data-i="made"></span></div>
 </footer>
 
 <script>
@@ -637,11 +627,11 @@ const LOG = [
             es:"“Un modelo con un 95% de precisión, ¿es fiable?”",
             pt:"“Um modelo com 95% de precisão é confiável?”",
             ca:"“Un model amb un 95% de precisió, és fiable?”" },
-    text:{ en:"My talk in the AI4HF session on the AI frontier in heart failure. Short answer: not by itself. Trust is built across the data, the model and the people who use it.",
-           it:"Il mio talk nella sessione AI4HF sulla frontiera dell'AI nello scompenso cardiaco. Risposta breve: non da solo. La fiducia si costruisce sui dati, sul modello e sulle persone che lo usano.",
-           es:"Mi charla en la sesión de AI4HF sobre la frontera de la IA en la insuficiencia cardíaca. Respuesta corta: no por sí solo. La confianza se construye en los datos, el modelo y las personas que lo usan.",
-           pt:"Minha palestra na sessão do AI4HF sobre a fronteira da IA na insuficiência cardíaca. Resposta curta: não por si só. A confiança é construída nos dados, no modelo e nas pessoas que o usam.",
-           ca:"La meva xerrada a la sessió d'AI4HF sobre la frontera de la IA en la insuficiència cardíaca. Resposta curta: no per si sol. La confiança es construeix en les dades, el model i les persones que l'utilitzen." } },
+    text:{ en:"My talk in the AI4HF session on the AI frontier in heart failure. Short answer: not by itself. Trust has to be earned again every day the system is in use.",
+           it:"Il mio talk nella sessione AI4HF sulla frontiera dell'AI nello scompenso cardiaco. Risposta breve: non da solo. La fiducia va guadagnata di nuovo ogni giorno in cui il sistema è in uso.",
+           es:"Mi charla en la sesión de AI4HF sobre la frontera de la IA en la insuficiencia cardíaca. Respuesta corta: no por sí solo. La confianza hay que ganarla de nuevo cada día que el sistema está en uso.",
+           pt:"Minha palestra na sessão do AI4HF sobre a fronteira da IA na insuficiência cardíaca. Resposta curta: não por si só. A confiança precisa ser conquistada de novo a cada dia em que o sistema está em uso.",
+           ca:"La meva xerrada a la sessió d'AI4HF sobre la frontera de la IA en la insuficiència cardíaca. Resposta curta: no per si sol. La confiança s'ha de guanyar de nou cada dia que el sistema és en ús." } },
 
   { date:"2026-08", type:"talk", where:"ESC TV Connect, Munich",
     link:"https://esc365.escardio.org/session/56588", linkLabel:"watch.session",
@@ -754,17 +744,17 @@ const LOG = [
 ];
 
 const GALLERY = [
-  { src:"photos/basel-2026-1.jpeg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"Hackathon Grand Final" },
-  { src:"photos/basel-2026-2.jpeg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"BCN-AIM at the summit", tall:true },
-  { src:"photos/munich-2026-1.jpeg", event:"ESC Congress, Munich", date:"2026-08", caption:"Talk in the AI4HF session" },
-  { src:"photos/munich-2026-2.jpeg", event:"ESC Congress, Munich", date:"2026-08", caption:"ESC TV Connect session", tall:true },
-  { src:"photos/genoa-2026-1.jpeg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Expert panel: DataTools4Heart × AI4HF" },
-  { src:"photos/genoa-2026-2.jpeg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Live cXAI demo" }
+  { src:"photos/basel-2026-1.jpg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"Hackathon Grand Final" },
+  { src:"photos/basel-2026-2.jpg", event:"ESC Digital & AI Summit, Basel", date:"2026-11", caption:"BCN-AIM at the summit", tall:true },
+  { src:"photos/munich-2026-1.jpg", event:"ESC Congress, Munich", date:"2026-08", caption:"Talk in the AI4HF session" },
+  { src:"photos/munich-2026-2.jpg", event:"ESC Congress, Munich", date:"2026-08", caption:"ESC TV Connect session", tall:true },
+  { src:"photos/genoa-2026-1.jpg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Expert panel: DataTools4Heart × AI4HF" },
+  { src:"photos/genoa-2026-2.jpg", event:"MIE 2026, Genoa", date:"2026-06", caption:"Live cXAI demo" }
 ];
 
 const XP = [
   { from:"2025-09", to:"now", org:"AI in Medicine Lab (BCN-AIM), University of Barcelona, Barcelona",
-    title:{ en:"Technical Coordinator (Postdoctoral Researcher)", it:"Technical Coordinator (Ricercatore Postdoc)", es:"Coordinador Técnico (Investigador Postdoctoral)", pt:"Coordenador Técnico (Pesquisador de Pós-Doutorado)", ca:"Coordinador Tècnic (Investigador Postdoctoral)" },
+    title:{ en:"Postdoctoral Researcher, Technical Coordinator of AI4HF", it:"Ricercatore postdoc, Technical Coordinator di AI4HF", es:"Investigador postdoctoral, Coordinador Técnico de AI4HF", pt:"Pesquisador de pós-doutorado, Coordenador Técnico do AI4HF", ca:"Investigador postdoctoral, Coordinador Tècnic d'AI4HF" },
     items:[
       { en:"Built and deployed a clinical AI inference engine (FastAPI, Docker) for mortality prediction with SHAP explainability, validation and end-to-end testing.",
         it:"Sviluppato e messo in produzione un motore di inferenza clinica (FastAPI, Docker) per la predizione della mortalità, con spiegabilità SHAP, validazione e test end-to-end.",
@@ -861,7 +851,7 @@ const PATH = [
 ];
 
 const PUBS = [
-  { y:2026, area:"health", t:"Contrastive explainable AI in healthcare: a systematic review", a:"S. Pe*, A. Angi*, C. Izquierdo, E. Parimbelli, M. Boonstra, F. Asselbergs, K. Lekadir", v:"BMC Medical Informatics and Decision Making, *co-first authors", url:"" },,
+  { y:2026, area:"health", t:"Contrastive explainable AI in healthcare: a systematic review", a:"S. Pe*, A. Angi*, C. Izquierdo, E. Parimbelli, M. Boonstra, F. Asselbergs, K. Lekadir", v:"BMC Medical Informatics and Decision Making, *co-first authors", url:"https://link.springer.com/article/10.1186/s12911-026-03697-6" },,
   { y:2026, area:"llm", t:"BRAT: An Intent-to-Kubernetes Translation via LLM Fine-Tuning", a:"A. Angi, L. Nedoshivina, A. Sacco, S. Braghin, M. Purcell", v:"2026", url:"" },
   { y:2025, area:"llm", t:"A Perspective on LLM Data Generation with Few-shot Examples: from Intent to Kubernetes Manifest", a:"A. Angi, L. Nedoshivina, A. Sacco, S. Braghin, M. Purcell", v:"Conference proceedings, 2025", url:"" },
   { y:2025, area:"llm", t:"LLNet: An Intent-Driven Approach to Instructing Softwarized Network Devices Using a Small Language Model", a:"A. Angi, A. Sacco, G. Marchetto, et al.", v:"IEEE Transactions on Network and Service Management, 22(4)", url:"" },
@@ -908,19 +898,19 @@ const JOURNEY = [
   { k:"dublin", yrs:"2024",
     d:{en:"Research internship at IBM Research: fine-tuning LLMs to turn intents into Kubernetes manifests.",it:"Research internship in IBM Research: fine-tuning di LLM per trasformare intenti in manifest Kubernetes.",es:"Research internship en IBM Research: fine-tuning de LLM para convertir intenciones en manifiestos de Kubernetes.",pt:"Research internship na IBM Research: fine-tuning de LLMs para transformar intenções em manifestos Kubernetes.",ca:"Research internship a IBM Research: fine-tuning de LLM per convertir intencions en manifests de Kubernetes."}},
   { k:"barcelona", yrs:"2025 → ", home:true,
-    d:{en:"Back to Barcelona to join BCN-AIM at the University of Barcelona as Technical Coordinator of AI4HF.",it:"Torno a Barcellona per entrare in BCN-AIM all'Università di Barcellona come Technical Coordinator di AI4HF.",es:"Vuelvo a Barcelona para incorporarme a BCN-AIM en la Universidad de Barcelona como Coordinador Técnico de AI4HF.",pt:"Volto para Barcelona para entrar no BCN-AIM da Universidade de Barcelona como Coordenador Técnico do AI4HF.",ca:"Torno a Barcelona per incorporar-me a BCN-AIM a la Universitat de Barcelona com a Coordinador Tècnic d'AI4HF."}}
+    d:{en:"Back to Barcelona to join BCN-AIM at the University of Barcelona as a postdoctoral researcher and Technical Coordinator of AI4HF.",it:"Torno a Barcellona per entrare in BCN-AIM all'Università di Barcellona come ricercatore postdoc e Technical Coordinator di AI4HF.",es:"Vuelvo a Barcelona para incorporarme a BCN-AIM en la Universidad de Barcelona como investigador postdoctoral y Coordinador Técnico de AI4HF.",pt:"Volto para Barcelona para entrar no BCN-AIM da Universidade de Barcelona como pesquisador de pós-doutorado e Coordenador Técnico do AI4HF.",ca:"Torno a Barcelona per incorporar-me a BCN-AIM a la Universitat de Barcelona com a investigador postdoctoral i Coordinador Tècnic d'AI4HF."}}
 ];
 const MAP_DOTS = "0.1 0.2 0.4 0.5 0.6 0.7 0.8 0.b 0.c 0.d 0.h 0.i 0.j 0.k 0.l 0.m 0.n 0.o 0.z 0.10 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.1a 0.1b 0.1c 0.1d 0.2d 0.2e 0.2f 0.2g 0.2h 0.2i 0.2j 0.2k 0.2l 0.2m 0.2n 0.2o 0.2p 0.2q 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.a 1.b 1.c 1.d 1.l 1.m 1.n 1.o 1.p 1.q 1.y 1.z 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.1a 1.1b 1.1c 1.2c 1.2d 1.2e 1.2f 1.2g 1.2h 1.2i 1.2j 1.2k 1.2l 1.2m 1.2n 1.2o 1.2p 1.2q 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.a 2.j 2.k 2.l 2.m 2.q 2.r 2.y 2.z 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 2.18 2.19 2.1a 2.1p 2.2b 2.2c 2.2d 2.2e 2.2f 2.2g 2.2h 2.2i 2.2j 2.2k 2.2l 2.2m 2.2n 2.2o 2.2p 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.h 3.j 3.k 3.l 3.m 3.n 3.z 3.10 3.11 3.12 3.13 3.14 3.15 3.16 3.17 3.18 3.1l 3.1m 3.1n 3.1o 3.1p 3.1q 3.2a 3.2b 3.2c 3.2d 3.2e 3.2f 3.2g 3.2k 3.2l 3.2m 3.2n 3.2o 3.2p 3.2q 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.a 4.b 4.c 4.d 4.h 4.k 4.l 4.m 4.n 4.o 4.p 4.z 4.10 4.11 4.12 4.13 4.14 4.15 4.16 4.17 4.1l 4.1m 4.1n 4.1o 4.1p 4.1q 4.29 4.2a 4.2b 4.2c 4.2d 4.2e 4.2f 4.2g 4.2j 4.2k 4.2l 4.2m 4.2n 4.2o 4.2p 4.2q 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.b 5.h 5.l 5.m 5.o 5.p 5.10 5.11 5.12 5.13 5.14 5.15 5.16 5.1n 5.27 5.28 5.29 5.2a 5.2b 5.2c 5.2d 5.2e 5.2f 5.2i 5.2j 5.2k 5.2l 5.2m 5.2n 5.2o 5.2p 5.2q 6.0 6.1 6.2 6.3 6.4 6.5 6.c 6.n 6.o 6.11 6.12 6.13 6.14 6.15 6.26 6.27 6.28 6.29 6.2a 6.2b 6.2c 6.2d 6.2e 6.2h 6.2i 6.2j 6.2k 6.2l 6.2m 6.2n 6.2o 6.2p 6.2q 7.0 7.1 7.2 7.3 7.4 7.h 7.i 7.j 7.k 7.12 7.13 7.14 7.15 7.25 7.26 7.27 7.28 7.29 7.2a 7.2b 7.2c 7.2d 7.2h 7.2i 7.2j 7.2k 7.2l 7.2m 7.2n 7.2o 7.2p 7.2q 8.0 8.1 8.2 8.3 8.4 8.h 8.i 8.j 8.k 8.l 8.m 8.12 8.13 8.14 8.15 8.25 8.26 8.27 8.28 8.29 8.2a 8.2b 8.2c 8.2d 8.2h 8.2i 8.2j 8.2k 8.2l 8.2m 8.2n 8.2o 8.2p 8.2q 9.0 9.1 9.2 9.3 9.h 9.i 9.j 9.k 9.l 9.m 9.q 9.15 9.26 9.27 9.28 9.29 9.2a 9.2b 9.2c 9.2d 9.2e 9.2n 9.2o 9.2p 9.2q a.0 a.1 a.2 a.3 a.g a.h a.i a.j a.k a.l a.m a.p a.q a.25 a.26 a.27 a.2a a.2b a.2c a.2d a.2j a.2k a.2l a.2m a.2n a.2o a.2p a.2q b.0 b.1 b.2 b.3 b.4 b.5 b.h b.i b.j b.k b.l b.m b.n b.o b.p b.q b.1w b.1x b.1y b.26 b.2a b.2b b.2c b.2d b.2j b.2k b.2l b.2m b.2n b.2o b.2p b.2q c.0 c.1 c.2 c.3 c.4 c.5 c.i c.j c.k c.l c.m c.n c.o c.p c.q c.r c.1x c.1y c.1z c.28 c.2a c.2b c.2c c.2h c.2j c.2k c.2l c.2m c.2n c.2o c.2p c.2q d.0 d.1 d.2 d.3 d.4 d.5 d.6 d.7 d.8 d.i d.j d.k d.l d.m d.n d.o d.p d.q d.r d.1x d.1y d.27 d.28 d.2b d.2c d.2h d.2i d.2j d.2k d.2l d.2m d.2n d.2o d.2p d.2q e.0 e.1 e.2 e.3 e.4 e.5 e.6 e.7 e.8 e.9 e.a e.h e.i e.j e.k e.l e.m e.n e.o e.p e.q e.r e.s e.1y e.1z e.2h e.2i e.2j e.2k e.2l e.2m e.2n e.2o e.2p e.2q f.0 f.1 f.2 f.3 f.4 f.5 f.6 f.7 f.8 f.9 f.a f.b f.c f.f f.g f.h f.i f.j f.k f.l f.m f.n f.o f.p f.q f.r f.s f.t f.u f.1v f.1w f.1z f.20 f.28 f.29 f.2d f.2e f.2g f.2h f.2i f.2j f.2k f.2l f.2m f.2n f.2o f.2p f.2q g.0 g.1 g.2 g.3 g.4 g.5 g.6 g.7 g.8 g.9 g.a g.b g.c g.g g.h g.i g.j g.k g.l g.m g.n g.o g.p g.q g.r g.s g.u g.1u g.1v g.1w g.1z g.20 g.28 g.29 g.2a g.2b g.2c g.2d g.2e g.2f g.2g g.2h g.2i g.2j g.2k g.2l g.2m g.2n g.2o g.2p g.2q h.0 h.1 h.2 h.3 h.4 h.5 h.6 h.7 h.8 h.9 h.a h.b h.c h.d h.g h.h h.i h.j h.k h.l h.m h.n h.o h.p h.q h.r h.s h.t h.u h.v h.w h.1u h.1v h.1w h.1y h.1z h.20 h.21 h.22 h.25 h.26 h.27 h.28 h.29 h.2a h.2b h.2c h.2d h.2e h.2f h.2g h.2h h.2i h.2j h.2k h.2l h.2m h.2n h.2o h.2p h.2q i.0 i.1 i.2 i.3 i.4 i.5 i.6 i.7 i.8 i.9 i.a i.b i.c i.d i.e i.g i.h i.i i.j i.k i.l i.m i.n i.o i.p i.q i.r i.s i.t i.u i.v i.1u i.1y i.1z i.20 i.21 i.24 i.25 i.26 i.27 i.28 i.29 i.2a i.2b i.2c i.2d i.2e i.2f i.2g i.2h i.2i i.2j i.2k i.2l i.2m i.2n i.2o i.2p i.2q j.0 j.1 j.2 j.3 j.4 j.5 j.6 j.7 j.8 j.9 j.a j.b j.c j.d j.e j.f j.g j.h j.i j.j j.k j.l j.m j.n j.o j.p j.q j.r j.s j.t j.w j.1y j.1z j.20 j.21 j.23 j.24 j.25 j.26 j.27 j.28 j.29 j.2a j.2b j.2c j.2d j.2e j.2f j.2g j.2h j.2i j.2j j.2k j.2l j.2m j.2n j.2o j.2p j.2q k.0 k.1 k.2 k.3 k.4 k.5 k.6 k.7 k.8 k.9 k.a k.b k.c k.d k.e k.f k.g k.h k.i k.j k.k k.l k.m k.n k.o k.v k.22 k.23 k.24 k.25 k.26 k.27 k.28 k.29 k.2a k.2b k.2c k.2d k.2e k.2f k.2g k.2h k.2i k.2j k.2k k.2l k.2m k.2n k.2o k.2p k.2q l.0 l.1 l.2 l.3 l.4 l.5 l.6 l.7 l.8 l.9 l.a l.b l.c l.d l.e l.f l.g l.h l.i l.j l.k l.l l.m l.n l.p l.v l.w l.x l.20 l.21 l.22 l.23 l.24 l.25 l.26 l.27 l.28 l.29 l.2a l.2b l.2c l.2d l.2e l.2f l.2g l.2h l.2i l.2j l.2k l.2l l.2m l.2n l.2o l.2p l.2q m.0 m.1 m.2 m.3 m.4 m.5 m.6 m.7 m.8 m.9 m.a m.b m.c m.d m.e m.f m.g m.h m.i m.j m.k m.l m.n m.o m.p m.u m.v m.w m.x m.1y m.1z m.20 m.21 m.22 m.23 m.24 m.25 m.26 m.27 m.28 m.29 m.2a m.2b m.2c m.2d m.2e m.2f m.2g m.2h m.2i m.2j m.2k m.2l m.2m m.2n m.2o m.2p m.2q n.0 n.1 n.2 n.3 n.4 n.5 n.6 n.7 n.8 n.9 n.a n.b n.c n.d n.e n.f n.g n.h n.i n.j n.k n.l n.m n.n n.o n.p n.y n.20 n.21 n.22 n.23 n.24 n.25 n.26 n.27 n.28 n.29 n.2a n.2b n.2c n.2d n.2e n.2f n.2g n.2h n.2i n.2j n.2k n.2l n.2m n.2n n.2o n.2p n.2q o.0 o.1 o.2 o.3 o.4 o.5 o.6 o.7 o.8 o.9 o.a o.b o.c o.d o.e o.f o.g o.h o.i o.j o.k o.l o.m o.n o.o o.p o.r o.20 o.21 o.22 o.23 o.24 o.25 o.26 o.27 o.28 o.29 o.2a o.2b o.2c o.2d o.2e o.2f o.2g o.2h o.2i o.2j o.2k o.2l o.2m o.2n o.2p o.2q p.0 p.1 p.2 p.3 p.4 p.5 p.6 p.7 p.8 p.9 p.a p.b p.c p.d p.e p.f p.g p.h p.i p.k p.l p.m p.n p.o p.p p.q p.r p.s p.21 p.22 p.23 p.24 p.25 p.26 p.27 p.28 p.29 p.2a p.2b p.2c p.2d p.2e p.2f p.2g p.2h p.2i p.2j p.2k p.2l p.2m p.2p p.2q q.0 q.1 q.2 q.3 q.4 q.5 q.6 q.7 q.8 q.9 q.a q.b q.c q.d q.e q.f q.g q.h q.i q.j q.k q.l q.m q.n q.p q.q q.21 q.22 q.23 q.24 q.25 q.26 q.27 q.28 q.29 q.2c q.2d q.2e q.2f q.2g q.2h q.2i q.2j q.2k q.2l r.0 r.1 r.2 r.3 r.4 r.5 r.6 r.7 r.8 r.9 r.a r.b r.c r.d r.e r.f r.g r.h r.i r.j r.k r.l r.p r.20 r.21 r.22 r.23 r.24 r.25 r.26 r.29 r.2a r.2d r.2e r.2f r.2g r.2h r.2i r.2j r.2k r.2l s.0 s.1 s.2 s.3 s.4 s.5 s.6 s.7 s.8 s.9 s.a s.b s.c s.d s.e s.f s.g s.h s.i s.j s.k s.l s.1v s.1w s.1x s.1y s.1z s.20 s.21 s.22 s.23 s.29 s.2a s.2b s.2e s.2f s.2g s.2h s.2i s.2j s.2k s.2l t.0 t.1 t.2 t.3 t.4 t.5 t.6 t.7 t.8 t.9 t.a t.b t.c t.d t.e t.f t.g t.h t.i t.j t.k t.l t.1v t.1w t.1x t.1y t.1z t.20 t.21 t.22 t.23 t.2a t.2b t.2c t.2f t.2g t.2h t.2i t.2j t.2k t.2l t.2p t.2q u.0 u.1 u.2 u.3 u.4 u.5 u.6 u.7 u.8 u.9 u.a u.b u.c u.d u.e u.f u.g u.h u.i u.j u.k u.1v u.1w u.1x u.1y u.1z u.20 u.21 u.2c u.2d u.2g u.2h u.2i u.2j u.2k u.2l u.2n u.2o u.2p u.2q v.0 v.1 v.2 v.3 v.4 v.5 v.6 v.7 v.8 v.9 v.a v.b v.c v.d v.e v.f v.g v.h v.i v.1v v.1w v.1x v.1y v.1z v.20 v.21 v.2c v.2d v.2e v.2g v.2h v.2l v.2m v.2n v.2o v.2p v.2q w.0 w.1 w.2 w.3 w.4 w.5 w.6 w.7 w.8 w.9 w.a w.b w.c w.d w.e w.f w.g w.h w.1v w.1w w.1x w.1y w.1z w.20 w.2d w.2g w.2h w.2k w.2l w.2m w.2n w.2o w.2p w.2q x.0 x.1 x.2 x.3 x.4 x.5 x.6 x.7 x.8 x.9 x.a x.b x.c x.d x.e x.f x.g x.h x.i x.1v x.1w x.1x x.1y x.1z x.20 x.2i x.2l x.2m x.2n x.2o x.2p x.2q y.0 y.1 y.2 y.3 y.4 y.5 y.6 y.7 y.8 y.9 y.a y.b y.c y.d y.e y.f y.g y.1v y.1w y.1x y.1y y.1z y.2b y.2h y.2l y.2m y.2n y.2o y.2p y.2q z.0 z.1 z.2 z.3 z.4 z.5 z.6 z.7 z.8 z.9 z.a z.b z.c z.d z.e z.f z.g z.h z.1x z.22 z.23 z.24 z.25 z.26 z.27 z.28 z.2n z.2p 10.0 10.1 10.2 10.3 10.4 10.5 10.6 10.7 10.8 10.9 10.a 10.b 10.c 10.d 10.e 10.f 10.g 10.h 10.1x 10.21 10.22 10.23 10.24 10.25 10.26 10.27 10.28 10.2q 11.0 11.1 11.2 11.3 11.4 11.5 11.6 11.7 11.8 11.9 11.a 11.b 11.c 11.d 11.e 11.f 11.g 11.1x 11.1y 11.1z 11.20 11.21 11.22 11.23 11.24 11.25 11.26 11.27 11.28 11.2p 12.0 12.1 12.2 12.3 12.4 12.5 12.6 12.7 12.8 12.9 12.a 12.b 12.c 12.d 12.e 12.f 12.1w 12.1x 12.1y 12.1z 12.20 12.21 12.22 12.23 12.24 12.25 12.26 12.27 12.28 13.0 13.1 13.2 13.3 13.4 13.5 13.6 13.7 13.8 13.9 13.a 13.b 13.c 13.d 13.e 13.1v 13.1w 13.1x 13.1y 13.1z 13.20 13.21 13.22 13.23 13.24 13.25 13.26 13.27 13.28 13.29 13.2h 14.0 14.1 14.2 14.3 14.4 14.5 14.6 14.7 14.8 14.9 14.a 14.b 14.c 14.d 14.1v 14.1w 14.1x 14.1y 14.1z 14.20 14.21 14.22 14.23 14.24 14.25 14.26 14.27 14.28 14.29 14.2a 14.2b 14.2c 14.2g 14.2h 14.2i 15.0 15.1 15.2 15.3 15.4 15.5 15.6 15.7 15.8 15.9 15.a 15.b 15.c 15.d 15.1u 15.1v 15.1w 15.1x 15.1y 15.1z 15.20 15.21 15.22 15.23 15.24 15.25 15.26 15.27 15.28 15.29 15.2a 15.2b 15.2c 15.2d 15.2g 15.2h 15.2i 15.2j 15.2k 15.2l 15.2n 15.2o 15.2p 15.2q 16.0 16.1 16.2 16.3 16.4 16.5 16.6 16.7 16.b 16.c 16.d 16.1u 16.1v 16.1w 16.1x 16.1y 16.1z 16.20 16.21 16.22 16.23 16.24 16.25 16.26 16.27 16.28 16.29 16.2a 16.2b 16.2c 16.2d 16.2e 16.2f 16.2g 16.2h 16.2i 16.2j 16.2k 16.2l 16.2m 16.2n 16.2o 16.2p 16.2q";
 
-const B0 = -1.99, THR = 0.20;
+const B0 = -2.2, THR = 0.50;
 const FEATS = [
-  { k:"age",  min:40,  max:95,  step:1,   base:65,  coef:0.045, unit:"years" },
-  { k:"lvef", min:15,  max:70,  step:1,   base:45,  coef:-0.06, unit:"%" },
-  { k:"sbp",  min:85,  max:180, step:1,   base:125, coef:-0.02, unit:" mmHg" },
-  { k:"crea", min:0.6, max:3.0, step:0.1, base:1.1, coef:0.9,   unit:" mg/dL" },
-  { k:"smoke", bin:true, base:0, coef:0.6 }
+  { k:"age",  min:18,  max:95,  step:1,   base:60,  coef:0.02,  unit:"years" },
+  { k:"spo2", min:80,  max:100, step:1,   base:95,  coef:-0.18, unit:"%" },
+  { k:"rr",   min:10,  max:40,  step:1,   base:18,  coef:0.12,  unit:" /min" },
+  { k:"sbp",  min:70,  max:180, step:1,   base:120, coef:-0.02, unit:" mmHg" },
+  { k:"lac",  min:0.5, max:8,   step:0.1, base:1.5, coef:0.45,  unit:" mmol/L" }
 ];
-const patient = { age:70, lvef:38, sbp:118, crea:1.3, smoke:0 };
+const patient = { age:67, spo2:91, rr:24, sbp:104, lac:2.4 };
 
 const SPOKEN = [
   { n:{en:"Italian",it:"Italiano",es:"Italiano",pt:"Italiano",ca:"Italià"}, lvl:{en:"native",it:"madrelingua",es:"nativo",pt:"nativo",ca:"nadiu"}, w:100 },
@@ -939,7 +929,7 @@ const T = {
   "nav.contact":{en:"contact",it:"contatti",es:"contacto",pt:"contato",ca:"contacte"},
   "theme.dark":{en:"◐ dark",it:"◐ scuro",es:"◐ oscuro",pt:"◐ escuro",ca:"◐ fosc"},
   "theme.light":{en:"◑ light",it:"◑ chiaro",es:"◑ claro",pt:"◑ claro",ca:"◑ clar"},
-  "status":{en:"Now: Technical Coordinator, AI4HF, University of Barcelona",it:"Ora: Technical Coordinator, AI4HF, Università di Barcellona",es:"Ahora: Coordinador Técnico, AI4HF, Universidad de Barcelona",pt:"Agora: Coordenador Técnico, AI4HF, Universidade de Barcelona",ca:"Ara: Coordinador Tècnic, AI4HF, Universitat de Barcelona"},
+  "status":{en:"Now: Postdoc and Technical Coordinator of AI4HF, University of Barcelona",it:"Ora: Postdoc e Technical Coordinator di AI4HF, Università di Barcellona",es:"Ahora: Postdoc y Coordinador Técnico de AI4HF, Universidad de Barcelona",pt:"Agora: Pós-doc e Coordenador Técnico do AI4HF, Universidade de Barcelona",ca:"Ara: Postdoc i Coordinador Tècnic d'AI4HF, Universitat de Barcelona"},
   "h1":{en:"Antonino Angi <br>builds AI that <br>healthcare can <em>trust.</em>",
         it:"Antonino Angi <br>sviluppa AI di cui <br>la sanità può <em>fidarsi.</em>",
         es:"Antonino Angi <br>desarrolla IA en la que <br>la sanidad puede <em>confiar.</em>",
@@ -952,23 +942,19 @@ const T = {
           ca:"AI Research Scientist, Ph.D. (cum laude), centrat en la <b>IA per a la salut i el medtech</b>. He aplicat la IA en camps molt diferents, des de l'<b>intent-based networking</b> i el <b>deep reinforcement learning</b> fins als <b>LLM</b>, els <b>contenidors cloud-edge</b> i el <b>federated learning</b>, i avui porto aquestes eines a la medicina."},
   "cta.live":{en:"See what I'm up to →",it:"Cosa sto facendo →",es:"En qué ando →",pt:"O que tenho feito →",ca:"Què estic fent →"},
   "cta.cv":{en:"Download CV",it:"Scarica il CV",es:"Descargar CV",pt:"Baixar CV",ca:"Descarregar CV"},
-  "ecg1":{en:"Networks",it:"Reti",es:"Redes",pt:"Redes",ca:"Xarxes"},
-  "ecg2":{en:"Reinforcement learning"},
-  "ecg3":{en:"LLMs & containers",it:"LLM e container",es:"LLM y contenedores",pt:"LLMs e contêineres",ca:"LLM i contenidors"},
-  "ecg4":{en:"Healthcare AI",it:"AI per la sanità",es:"IA para la salud",pt:"IA para a saúde",ca:"IA per a la salut"},
 
   "k.about":{en:"About",it:"Chi sono",es:"Sobre mí",pt:"Sobre mim",ca:"Sobre mi"},
   "about.h":{en:"Accuracy is <em>not</em> the same as trust.",it:"Accuratezza <em>non</em> vuol dire fiducia.",es:"Precisión <em>no</em> es lo mismo que confianza.",pt:"Precisão <em>não</em> é o mesmo que confiança.",ca:"Precisió <em>no</em> és el mateix que confiança."},
-  "about.p1":{en:"My main interest is <b>healthcare AI</b>: models that work outside the paper, on real patients, in real hospitals, under real regulation. I'm a postdoctoral researcher at the <b>Artificial Intelligence in Medicine Lab (BCN-AIM), University of Barcelona</b>, where I'm Technical Coordinator of <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, a Horizon Europe project on trustworthy AI for cardiology with clinical partners in Europe, Africa and the Americas.",
-    it:"Il mio interesse principale è l'<b>AI per la sanità</b>: modelli che funzionano fuori dal paper, su pazienti reali, in ospedali reali, con regole reali. Sono ricercatore postdoc all'<b>Artificial Intelligence in Medicine Lab (BCN-AIM) dell'Università di Barcellona</b>, dove sono Technical Coordinator di <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un progetto Horizon Europe sull'AI affidabile in cardiologia con partner clinici in Europa, Africa e America.",
-    es:"Mi interés principal es la <b>IA para la salud</b>: modelos que funcionan fuera del paper, con pacientes reales, en hospitales reales y bajo una regulación real. Soy investigador postdoctoral en el <b>Artificial Intelligence in Medicine Lab (BCN-AIM) de la Universidad de Barcelona</b>, donde soy Coordinador Técnico de <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un proyecto Horizon Europe sobre IA fiable en cardiología con socios clínicos en Europa, África y América.",
-    pt:"Meu principal interesse é a <b>IA para a saúde</b>: modelos que funcionam fora do paper, com pacientes reais, em hospitais reais e sob regulação real. Sou pesquisador de pós-doutorado no <b>Artificial Intelligence in Medicine Lab (BCN-AIM) da Universidade de Barcelona</b>, onde sou Coordenador Técnico do <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, um projeto Horizon Europe sobre IA confiável em cardiologia com parceiros clínicos na Europa, África e América.",
-    ca:"El meu interès principal és la <b>IA per a la salut</b>: models que funcionen fora del paper, amb pacients reals, en hospitals reals i sota una regulació real. Soc investigador postdoctoral a l'<b>Artificial Intelligence in Medicine Lab (BCN-AIM) de la Universitat de Barcelona</b>, on soc Coordinador Tècnic d'<a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un projecte Horizon Europe sobre IA fiable en cardiologia amb socis clínics a Europa, l'Àfrica i Amèrica."},
-  "about.p2":{en:"Day to day, I sit between research, hospitals and engineers. I build clinical inference services (mortality prediction with SHAP explanations, served through FastAPI and Docker), lead the requirements engineering behind a 173-requirement trustworthy-AI specification aligned with the <b>EU AI Act</b> and <b>FUTURE-AI</b>, work on <b>explainable AI</b>, and own our work on privacy-preserving federated learning.",
-    it:"Ogni giorno lavoro tra ricerca, ospedali, giuristi e ingegneri. Sviluppo servizi di inferenza clinica (predizione della mortalità con spiegazioni SHAP, servita con FastAPI e Docker), guido la requirements engineering di una specifica di AI affidabile da 173 requisiti allineata all'<b>EU AI Act</b> e a <b>FUTURE-AI</b>, lavoro sulla <b>explainable AI</b> e sono responsabile del nostro lavoro sul federated learning privacy-preserving.",
-    es:"En el día a día trabajo entre investigación, hospitales e ingenieros. Desarrollo servicios de inferencia clínica (predicción de mortalidad con explicaciones SHAP, servida con FastAPI y Docker), lidero la ingeniería de requisitos de una especificación de IA fiable de 173 requisitos alineada con el <b>EU AI Act</b> y <b>FUTURE-AI</b>, trabajo en <b>IA explicable</b> y soy responsable de nuestro trabajo en federated learning que preserva la privacidad.",
-    pt:"No dia a dia trabalho entre pesquisa, hospitais e engenheiros. Desenvolvo serviços de inferência clínica (previsão de mortalidade com explicações SHAP, servida com FastAPI e Docker), lidero a engenharia de requisitos de uma especificação de IA confiável com 173 requisitos alinhada com o <b>EU AI Act</b> e o <b>FUTURE-AI</b>, trabalho em <b>IA explicável</b> e sou responsável pelo nosso trabalho em federated learning com preservação da privacidade.",
-    ca:"Al dia a dia treballo entre recerca, hospitals i enginyers. Desenvolupo serveis d'inferència clínica (predicció de mortalitat amb explicacions SHAP, servida amb FastAPI i Docker), lidero l'enginyeria de requisits d'una especificació d'IA fiable de 173 requisits alineada amb l'<b>EU AI Act</b> i <b>FUTURE-AI</b>, treballo en <b>IA explicable</b> i soc responsable de la nostra feina en federated learning que preserva la privadesa."},
+  "about.p1":{en:"My main interest is <b>healthcare AI</b>: models that work outside the paper, on real patients, in real hospitals, under real regulation. I am a <b>Postdoctoral Researcher</b> at the <a class='p' href='https://bcn-aim.org' target='_blank' rel='noopener'>Artificial Intelligence in Medicine Lab (BCN-AIM)</a>, University of Barcelona, and <b>Technical Coordinator</b> of <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, a Horizon Europe project on trustworthy AI for clinical risk prediction with clinical partners in Europe, Africa and the Americas.",
+    it:"Il mio interesse principale è l'<b>AI per la sanità</b>: modelli che funzionano fuori dal paper, su pazienti reali, in ospedali reali, con regole reali. Sono <b>ricercatore postdoc</b> all'<a class='p' href='https://bcn-aim.org' target='_blank' rel='noopener'>Artificial Intelligence in Medicine Lab (BCN-AIM)</a> dell'Università di Barcellona e <b>Technical Coordinator</b> di <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un progetto Horizon Europe sull'AI affidabile per la predizione del rischio clinico con partner clinici in Europa, Africa e America.",
+    es:"Mi interés principal es la <b>IA para la salud</b>: modelos que funcionan fuera del paper, con pacientes reales, en hospitales reales y bajo una regulación real. Soy <b>investigador postdoctoral</b> en el <a class='p' href='https://bcn-aim.org' target='_blank' rel='noopener'>Artificial Intelligence in Medicine Lab (BCN-AIM)</a> de la Universidad de Barcelona y <b>Coordinador Técnico</b> de <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un proyecto Horizon Europe sobre IA fiable para la predicción del riesgo clínico con socios clínicos en Europa, África y América.",
+    pt:"Meu principal interesse é a <b>IA para a saúde</b>: modelos que funcionam fora do paper, com pacientes reais, em hospitais reais e sob regulação real. Sou <b>pesquisador de pós-doutorado</b> no <a class='p' href='https://bcn-aim.org' target='_blank' rel='noopener'>Artificial Intelligence in Medicine Lab (BCN-AIM)</a> da Universidade de Barcelona e <b>Coordenador Técnico</b> do <a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, um projeto Horizon Europe sobre IA confiável para a previsão de risco clínico com parceiros clínicos na Europa, África e América.",
+    ca:"El meu interès principal és la <b>IA per a la salut</b>: models que funcionen fora del paper, amb pacients reals, en hospitals reals i sota una regulació real. Soc <b>investigador postdoctoral</b> a l'<a class='p' href='https://bcn-aim.org' target='_blank' rel='noopener'>Artificial Intelligence in Medicine Lab (BCN-AIM)</a> de la Universitat de Barcelona i <b>Coordinador Tècnic</b> d'<a class='p' href='https://www.ai4hf.com' target='_blank' rel='noopener'>AI4HF</a>, un projecte Horizon Europe sobre IA fiable per a la predicció del risc clínic amb socis clínics a Europa, l'Àfrica i Amèrica."},
+  "about.p2":{en:"Day to day, I work with researchers, clinicians and engineers, and now and then with ethicists too. I build clinical inference services (mortality prediction with SHAP explanations, served through FastAPI and Docker), lead the requirements engineering behind a 173-requirement trustworthy-AI specification aligned with the <b>EU AI Act</b> and <b>FUTURE-AI</b>, work on <b>explainable AI</b>, and own our work on privacy-preserving federated learning.",
+    it:"Ogni giorno lavoro con ricercatori, clinici e ingegneri, e ogni tanto anche con esperti di etica. Sviluppo servizi di inferenza clinica (predizione della mortalità con spiegazioni SHAP, servita con FastAPI e Docker), guido la requirements engineering di una specifica di AI affidabile da 173 requisiti allineata all'<b>EU AI Act</b> e a <b>FUTURE-AI</b>, lavoro sulla <b>explainable AI</b> e sono responsabile del nostro lavoro sul federated learning privacy-preserving.",
+    es:"En el día a día trabajo con investigadores, clínicos e ingenieros, y de vez en cuando también con expertos en ética. Desarrollo servicios de inferencia clínica (predicción de mortalidad con explicaciones SHAP, servida con FastAPI y Docker), lidero la ingeniería de requisitos de una especificación de IA fiable de 173 requisitos alineada con el <b>EU AI Act</b> y <b>FUTURE-AI</b>, trabajo en <b>IA explicable</b> y soy responsable de nuestro trabajo en federated learning que preserva la privacidad.",
+    pt:"No dia a dia trabalho com pesquisadores, clínicos e engenheiros e, de vez em quando, também com especialistas em ética. Desenvolvo serviços de inferência clínica (previsão de mortalidade com explicações SHAP, servida com FastAPI e Docker), lidero a engenharia de requisitos de uma especificação de IA confiável com 173 requisitos alinhada com o <b>EU AI Act</b> e o <b>FUTURE-AI</b>, trabalho em <b>IA explicável</b> e sou responsável pelo nosso trabalho em federated learning com preservação da privacidade.",
+    ca:"Al dia a dia treballo amb investigadors, clínics i enginyers, i de tant en tant també amb experts en ètica. Desenvolupo serveis d'inferència clínica (predicció de mortalitat amb explicacions SHAP, servida amb FastAPI i Docker), lidero l'enginyeria de requisits d'una especificació d'IA fiable de 173 requisits alineada amb l'<b>EU AI Act</b> i <b>FUTURE-AI</b>, treballo en <b>IA explicable</b> i soc responsable de la nostra feina en federated learning que preserva la privadesa."},
   "about.p3":{en:"My path started in networks: my Ph.D. at <b>Politecnico di Torino</b> was on intent-based networking (IBN), using AI to turn high-level intents into network configurations. Along the way I fine-tuned LLMs for Kubernetes at <b>IBM Research</b>, trained deep RL schedulers for GPU edge clusters at <b>Telefónica</b> and programmed P4 switches at <b>Saint Louis University</b>. What I enjoyed most was seeing AI solve concrete problems for people, so I chose to focus on the field where I feel that most closely: medicine. I bring with me what networks taught me: thinking in systems, and caring about reliability when things have to work in the real world.",
     it:"Il mio percorso è partito dalle reti: durante il dottorato al <b>Politecnico di Torino</b> mi sono occupato di intent-based networking (IBN), usando l'AI per tradurre intenti di alto livello in configurazioni di rete. Nel frattempo ho fatto fine-tuning di LLM per Kubernetes in <b>IBM Research</b>, addestrato scheduler deep RL per cluster edge con GPU in <b>Telefónica</b> e programmato switch P4 alla <b>Saint Louis University</b>. Quello che mi appassionava di più era vedere l'AI risolvere problemi concreti per le persone, così ho scelto di concentrarmi sul campo in cui lo sento più vicino: la medicina. Porto con me ciò che le reti mi hanno insegnato: ragionare per sistemi e curare l'affidabilità quando le cose devono funzionare nel mondo reale.",
     es:"Mi camino empezó en las redes: en mi doctorado en el <b>Politecnico di Torino</b> trabajé en intent-based networking (IBN), usando la IA para traducir intenciones de alto nivel en configuraciones de red. Por el camino hice fine-tuning de LLM para Kubernetes en <b>IBM Research</b>, entrené schedulers de deep RL para clústeres edge con GPU en <b>Telefónica</b> y programé switches P4 en la <b>Saint Louis University</b>. Lo que más me apasionaba era ver la IA resolver problemas concretos para las personas, así que decidí centrarme en el campo donde lo siento más cerca: la medicina. Me llevo lo que aprendí en las redes: pensar en sistemas y cuidar la fiabilidad cuando las cosas tienen que funcionar en el mundo real.",
@@ -1076,20 +1062,26 @@ const T = {
 
   "k.demo":{en:"Try it",it:"Provalo",es:"Pruébalo",pt:"Experimente",ca:"Prova-ho"},
   "demo.h":{en:"Why this, <em>rather than that?</em>",it:"Perché questo, <em>e non quello?</em>",es:"¿Por qué esto <em>y no aquello?</em>",pt:"Por que isto <em>e não aquilo?</em>",ca:"Per què això <em>i no allò?</em>"},
-  "demo.sub":{en:"My research is about explaining AI decisions. Play with this toy risk model: move the sliders, watch how each feature pushes the prediction, then look at the contrastive question, the topic of my systematic review.",
-    it:"La mia ricerca riguarda la spiegazione delle decisioni dell'AI. Gioca con questo modello di rischio giocattolo: muovi i cursori, guarda come ogni variabile spinge la predizione e poi guarda la domanda contrastiva, il tema della mia revisione sistematica.",
-    es:"Mi investigación trata de explicar las decisiones de la IA. Juega con este modelo de riesgo de juguete: mueve los controles, mira cómo cada variable empuja la predicción y luego mira la pregunta contrastiva, el tema de mi revisión sistemática.",
-    pt:"Minha pesquisa é sobre explicar as decisões da IA. Brinque com este modelo de risco de brinquedo: mova os controles, veja como cada variável empurra a previsão e depois veja a pergunta contrastiva, o tema da minha revisão sistemática.",
-    ca:"La meva recerca tracta d'explicar les decisions de la IA. Juga amb aquest model de risc de joguina: mou els controls, mira com cada variable empeny la predicció i després mira la pregunta contrastiva, el tema de la meva revisió sistemàtica."},
+  "demo.sub":{en:"Differential diagnosis is inherently contrastive: clinicians already reason this way. Contrastive XAI is something I have worked on to make AI more explainable and trustworthy, and closer to the way people actually think. Play with this toy triage model, see which features push the prediction, then ask the question my research is about: why this, rather than that?",
+    it:"La diagnosi differenziale è per natura contrastiva: i clinici ragionano già così. La XAI contrastiva è un tema su cui ho lavorato per rendere l'AI più spiegabile e affidabile, e più vicina al modo in cui ragionano le persone. Gioca con questo modello di triage giocattolo, guarda quali variabili spingono la predizione e poi fai la domanda su cui lavora la mia ricerca: perché questo, e non quello?",
+    es:"El diagnóstico diferencial es contrastivo por naturaleza: los clínicos ya razonan así. La XAI contrastiva es un tema en el que he trabajado para que la IA sea más explicable y fiable, y más cercana a la forma en que razonan las personas. Juega con este modelo de triaje de juguete, mira qué variables empujan la predicción y haz la pregunta de mi investigación: ¿por qué esto y no aquello?",
+    pt:"O diagnóstico diferencial é contrastivo por natureza: os clínicos já raciocinam assim. A XAI contrastiva é um tema em que trabalhei para tornar a IA mais explicável e confiável, e mais próxima da forma como as pessoas raciocinam. Brinque com este modelo de triagem de brinquedo, veja quais variáveis empurram a previsão e faça a pergunta da minha pesquisa: por que isto e não aquilo?",
+    ca:"El diagnòstic diferencial és contrastiu per naturalesa: els clínics ja raonen així. La XAI contrastiva és un tema en què he treballat per fer la IA més explicable i fiable, i més propera a la manera com raonen les persones. Juga amb aquest model de triatge de joguina, mira quines variables empenyen la predicció i fes la pregunta de la meva recerca: per què això i no allò?"},
   "demo.disc":{en:"⚠ Toy model with invented coefficients, for illustration only. Not a clinical tool.",it:"⚠ Modello giocattolo con coefficienti inventati, solo a scopo illustrativo. Non è uno strumento clinico.",es:"⚠ Modelo de juguete con coeficientes inventados, solo con fines ilustrativos. No es una herramienta clínica.",pt:"⚠ Modelo de brinquedo com coeficientes inventados, apenas para ilustração. Não é uma ferramenta clínica.",ca:"⚠ Model de joguina amb coeficients inventats, només il·lustratiu. No és una eina clínica."},
   "demo.patient":{en:"Patient",it:"Paziente",es:"Paciente",pt:"Paciente",ca:"Pacient"},
   "demo.random":{en:"🎲 Random patient",it:"🎲 Paziente casuale",es:"🎲 Paciente aleatorio",pt:"🎲 Paciente aleatório",ca:"🎲 Pacient aleatori"},
-  "demo.risk":{en:"Predicted 1-year risk",it:"Rischio previsto a 1 anno",es:"Riesgo previsto a 1 año",pt:"Risco previsto em 1 ano",ca:"Risc previst a 1 any"},
-  "demo.hi":{en:"high risk",it:"rischio alto",es:"riesgo alto",pt:"risco alto",ca:"risc alt"},
-  "demo.lo":{en:"low risk",it:"rischio basso",es:"riesgo bajo",pt:"risco baixo",ca:"risc baix"},
+  "demo.risk":{en:"Predicted probability of ICU admission",it:"Probabilità prevista di ricovero in terapia intensiva",es:"Probabilidad prevista de ingreso en UCI",pt:"Probabilidade prevista de internação na UTI",ca:"Probabilitat prevista d'ingrés a l'UCI"},
+  "demo.hi":{en:"ICU",it:"terapia intensiva",es:"UCI",pt:"UTI",ca:"UCI"},
+  "demo.lo":{en:"ward",it:"reparto",es:"planta",pt:"enfermaria",ca:"planta"},
+  "demo.how.t":{en:"How does it work?",it:"Come è fatto?",es:"¿Cómo funciona?",pt:"Como funciona?",ca:"Com funciona?"},
+  "demo.how.p":{en:"It is a logistic regression with made-up coefficients. Each value is compared with that of an average patient, the differences are weighted, added up and turned into a probability: above 50%, the model says ICU. The bars show how much each feature moves the prediction away from the average patient (for a linear model, these are exactly its SHAP values). The contrastive part looks for the smallest change to a single feature that would flip the answer.",
+    it:"È una regressione logistica con coefficienti inventati. Ogni valore viene confrontato con quello di un paziente medio, le differenze vengono pesate, sommate e trasformate in una probabilità: sopra il 50% il modello dice terapia intensiva. Le barre mostrano quanto ogni variabile sposta la predizione rispetto al paziente medio (in un modello lineare sono esattamente i suoi valori SHAP). La parte contrastiva cerca il cambiamento più piccolo su una sola variabile che ribalterebbe la risposta.",
+    es:"Es una regresión logística con coeficientes inventados. Cada valor se compara con el de un paciente medio, las diferencias se ponderan, se suman y se convierten en una probabilidad: por encima del 50%, el modelo dice UCI. Las barras muestran cuánto mueve cada variable la predicción respecto al paciente medio (en un modelo lineal son exactamente sus valores SHAP). La parte contrastiva busca el cambio más pequeño en una sola variable que invertiría la respuesta.",
+    pt:"É uma regressão logística com coeficientes inventados. Cada valor é comparado com o de um paciente médio, as diferenças são ponderadas, somadas e transformadas em uma probabilidade: acima de 50%, o modelo diz UTI. As barras mostram quanto cada variável desloca a previsão em relação ao paciente médio (em um modelo linear, são exatamente seus valores SHAP). A parte contrastiva procura a menor mudança em uma única variável que inverteria a resposta.",
+    ca:"És una regressió logística amb coeficients inventats. Cada valor es compara amb el d'un pacient mitjà, les diferències es ponderen, se sumen i es converteixen en una probabilitat: per sobre del 50%, el model diu UCI. Les barres mostren quant mou cada variable la predicció respecte al pacient mitjà (en un model lineal són exactament els seus valors SHAP). La part contrastiva busca el canvi més petit en una sola variable que capgiraria la resposta."},
   "demo.shap":{en:"What pushed the prediction (SHAP-style)",it:"Cosa ha spinto la predizione (stile SHAP)",es:"Qué empujó la predicción (estilo SHAP)",pt:"O que empurrou a previsão (estilo SHAP)",ca:"Què ha empès la predicció (estil SHAP)"},
-  "demo.whyhi":{en:"Why <b>high</b> rather than <b>low</b> risk?",it:"Perché rischio <b>alto</b> e non <b>basso</b>?",es:"¿Por qué riesgo <b>alto</b> y no <b>bajo</b>?",pt:"Por que risco <b>alto</b> e não <b>baixo</b>?",ca:"Per què risc <b>alt</b> i no <b>baix</b>?"},
-  "demo.whylo":{en:"Why <b>low</b> rather than <b>high</b> risk?",it:"Perché rischio <b>basso</b> e non <b>alto</b>?",es:"¿Por qué riesgo <b>bajo</b> y no <b>alto</b>?",pt:"Por que risco <b>baixo</b> e não <b>alto</b>?",ca:"Per què risc <b>baix</b> i no <b>alt</b>?"},
+  "demo.whyhi":{en:"Why <b>ICU</b>, rather than <b>ward</b>?",it:"Perché <b>terapia intensiva</b>, e non <b>reparto</b>?",es:"¿Por qué <b>UCI</b> y no <b>planta</b>?",pt:"Por que <b>UTI</b> e não <b>enfermaria</b>?",ca:"Per què <b>UCI</b> i no <b>planta</b>?"},
+  "demo.whylo":{en:"Why <b>ward</b>, rather than <b>ICU</b>?",it:"Perché <b>reparto</b>, e non <b>terapia intensiva</b>?",es:"¿Por qué <b>planta</b> y no <b>UCI</b>?",pt:"Por que <b>enfermaria</b> e não <b>UTI</b>?",ca:"Per què <b>planta</b> i no <b>UCI</b>?"},
   "demo.cf":{en:"If <b>{f}</b> were <b>{n}</b> instead of {o}, the model would say <b>{r}</b>.",it:"Se <b>{f}</b> fosse <b>{n}</b> invece di {o}, il modello direbbe <b>{r}</b>.",es:"Si <b>{f}</b> fuera <b>{n}</b> en lugar de {o}, el modelo diría <b>{r}</b>.",pt:"Se <b>{f}</b> fosse <b>{n}</b> em vez de {o}, o modelo diria <b>{r}</b>.",ca:"Si <b>{f}</b> fos <b>{n}</b> en lloc de {o}, el model diria <b>{r}</b>."},
   "demo.none":{en:"No single change would flip it: it takes several factors together.",it:"Nessun singolo cambiamento basta: servono più fattori insieme.",es:"Ningún cambio por sí solo basta: hacen falta varios factores juntos.",pt:"Nenhuma mudança isolada basta: são necessários vários fatores juntos.",ca:"Cap canvi per si sol no n'hi ha prou: calen diversos factors alhora."},
   "demo.try":{en:"Try it →",it:"Prova →",es:"Pruébalo →",pt:"Testar →",ca:"Prova-ho →"},
@@ -1097,12 +1089,17 @@ const T = {
   "demo.no":{en:"no",it:"no",es:"no",pt:"não",ca:"no"},
   "u.years":{en:"years",it:"anni",es:"años",pt:"anos",ca:"anys"},
   "f.age":{en:"Age",it:"Età",es:"Edad",pt:"Idade",ca:"Edat"},
-  "f.lvef":{en:"Ejection fraction",it:"Frazione di eiezione",es:"Fracción de eyección",pt:"Fração de ejeção",ca:"Fracció d'ejecció"},
+  "f.spo2":{en:"Oxygen saturation",it:"Saturazione di ossigeno",es:"Saturación de oxígeno",pt:"Saturação de oxigênio",ca:"Saturació d'oxigen"},
+  "f.rr":{en:"Respiratory rate",it:"Frequenza respiratoria",es:"Frecuencia respiratoria",pt:"Frequência respiratória",ca:"Freqüència respiratòria"},
+  "f.lac":{en:"Lactate",it:"Lattato",es:"Lactato",pt:"Lactato",ca:"Lactat"},
   "f.sbp":{en:"Systolic pressure",it:"Pressione sistolica",es:"Presión sistólica",pt:"Pressão sistólica",ca:"Pressió sistòlica"},
-  "f.crea":{en:"Creatinine",it:"Creatinina",es:"Creatinina",pt:"Creatinina",ca:"Creatinina"},
-  "f.smoke":{en:"Smoker",it:"Fumatore",es:"Fumador",pt:"Fumante",ca:"Fumador"},
   "k.contact":{en:"Contact",it:"Contatti",es:"Contacto",pt:"Contato",ca:"Contacte"},
   "contact.h":{en:"Let's <em>talk.</em>",it:"Parliamo<em>ne.</em>",es:"<em>Hablemos.</em>",pt:"Vamos <em>conversar.</em>",ca:"Parlem<em>-ne.</em>"},
+  "made":{en:"This website was designed and coded with Claude, an AI assistant by Anthropic. Content, choices and edits are mine.",
+    it:"Questo sito è stato progettato e programmato con Claude, un assistente AI di Anthropic. Contenuti, scelte e revisioni sono miei.",
+    es:"Esta web se diseñó y programó con Claude, un asistente de IA de Anthropic. Los contenidos, las decisiones y las revisiones son míos.",
+    pt:"Este site foi projetado e programado com o Claude, um assistente de IA da Anthropic. Conteúdos, escolhas e revisões são meus.",
+    ca:"Aquest web s'ha dissenyat i programat amb Claude, un assistent d'IA d'Anthropic. Els continguts, les decisions i les revisions són meus."},
   "updated":{en:"Last updated",it:"Ultimo aggiornamento",es:"Última actualización",pt:"Última atualização",ca:"Darrera actualització"}
 };
 
@@ -1224,7 +1221,7 @@ function playJourney(){
 $("#play").addEventListener("click",playJourney);
 
 const sig = z => 1/(1+Math.exp(-z)), logit = p => Math.log(p/(1-p));
-const fmtV = (f,v) => f.bin ? t(v?"demo.yes":"demo.no") : (f.k==="crea"? v.toFixed(1) : Math.round(v)) + (f.unit==="years" ? " "+t("u.years") : f.unit);
+const fmtV = (f,v) => f.bin ? t(v?"demo.yes":"demo.no") : (f.step<1 ? v.toFixed(1) : Math.round(v)) + (f.unit==="years" ? " "+t("u.years") : f.unit);
 function renderSliders(){
   $("#sliders").innerHTML = FEATS.map(f => f.bin
     ? `<div class="sl tg"><span>${t("f."+f.k)}</span><button class="sw${patient[f.k]?" on":""}" data-k="${f.k}" aria-label="${t("f."+f.k)}"></button></div>`
@@ -1237,7 +1234,6 @@ function updateDemo(){
   const z = B0 + phi.reduce((a,b)=>a+b.v,0), p = sig(z), hi = p>=THR;
   $("#rv").textContent = Math.round(p*100)+"%";
   $("#rc").className = "rc "+(hi?"hi":"lo"); $("#rc").textContent = t(hi?"demo.hi":"demo.lo");
-  $("#beat").style.setProperty("--bpm",(60/(55+p*110)).toFixed(2)+"s");
   const mx = Math.max(1.2,...phi.map(x=>Math.abs(x.v)));
   $("#wf").innerHTML = [...phi].sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).map(x=>
     `<div class="wf-row"><span>${t("f."+x.f.k)}</span><div class="wf-bar"><i class="${x.v>=0?"up":"dn"}" style="width:${(Math.abs(x.v)/mx*50).toFixed(1)}%"></i></div><span class="v">${x.v>=0?"+":"−"}${Math.abs(x.v).toFixed(2)}</span></div>`).join("");
@@ -1269,6 +1265,7 @@ function randomPatient(){
   renderSliders(); updateDemo();
 }
 $("#rnd").addEventListener("click",randomPatient);
+$("#howbtn").addEventListener("click",()=>{ const h=$("#how"), b=$("#howbtn"); h.hidden=!h.hidden; b.setAttribute("aria-expanded",String(!h.hidden)); });
 
 const SECTIONS=[["about","nav.about"],["path","nav.path"],["map","nav.map"],["demo","nav.demo"],["live","nav.live"],["gallery","nav.gallery"],["experience","nav.exp"],["publications","nav.pubs"],["skills","nav.skills"],["off","nav.off"],["contact","nav.contact"]];
 const LNAMES={en:"English",it:"Italiano",es:"Español",pt:"Português (BR)",ca:"Català"};
@@ -1313,7 +1310,7 @@ document.addEventListener("keydown",e=>{
 });
 if(!/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent)) document.querySelector("#menuBtn kbd").textContent="Ctrl K";
 
-console.log("%c──╮╭──╯╰──╮╭── ♥\n%cHi! If you're reading the console, we'd probably get along.\nantoninoangi96@gmail.com","color:#E5484D;font:16px monospace","font:13px sans-serif");
+console.log("%c♥\n%cHi! If you're reading the console, we'd probably get along.\nantoninoangi96@gmail.com","color:#E5484D;font:16px monospace","font:13px sans-serif");
 
 let savedTheme=null, savedLang=null; try{savedTheme=localStorage.getItem("theme"); savedLang=localStorage.getItem("lang")}catch(e){}
 document.documentElement.dataset.theme = savedTheme || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
